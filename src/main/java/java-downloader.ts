@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import { downloadFile, downloadAndExtract } from '../utils/downloader';
 import { ServerConfig } from '../config/server-config';
+import { log } from '../utils/logger';
 
 const DEFAULT_JAVA_DOWNLOADS: Record<string, Record<string, string>> = {
   win32: {
@@ -46,6 +47,9 @@ export async function installJava(
     throw new Error(`No hay descarga de Java para ${platform}-${arch}`);
   }
   
+  log.info('java', `Plataforma: ${platform}-${arch}`);
+  log.info('java', `URL de descarga: ${downloadUrl}`);
+
   const javaDir = path.join(gameDir, 'java');
   await fs.ensureDir(javaDir);
   
@@ -89,5 +93,6 @@ export async function installJava(
     throw new Error('Java no se instaló correctamente');
   }
   
+  log.info('java', '✅ Java instalado correctamente');
   onProgress?.(100, 'Java instalado correctamente');
 }

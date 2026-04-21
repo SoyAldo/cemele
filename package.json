@@ -15,8 +15,8 @@
     "license": "ISC",
     "type": "commonjs",
     "build": {
-        "appId": "com.tunombre.modpacklauncher",
-        "productName": "Mi Modpack Launcher",
+        "appId": "com.soyaldo.cemele",
+        "productName": "Cemele",
         "directories": {
             "output": "release"
         },

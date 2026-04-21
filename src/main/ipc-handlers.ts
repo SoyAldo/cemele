@@ -4,6 +4,7 @@ import path from 'path';
 import os from 'os';
 import fs from 'fs-extra';
 
+import { log, getLogFilePath } from './utils/logger';
 import { loadConfig, ServerConfig } from './config/server-config';
 import { installJava, isJavaInstalled, getJavaPath } from './java/java-downloader';
 import {
@@ -24,6 +25,8 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
   
   ipcMain.handle('get-server-config', () => serverConfig);
   
+  ipcMain.handle('get-log-path', () => getLogFilePath());
+
   ipcMain.handle('set-server-config', async (_, config: ServerConfig) => {
     serverConfig = config;
     const configDir = path.join(os.homedir(), 'AppData', 'Roaming', '.cemele-launcher');
@@ -35,6 +38,7 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
   // ========== AUTENTICACIÓN ==========
   
   ipcMain.handle('microsoft-login', async () => {
+    log.stage('Autenticación Microsoft');
     try {
       // MOCK temporal para testing
       currentSession = {
@@ -42,11 +46,10 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
         uuid: '00000000-0000-0000-0000-000000000000',
         accessToken: 'mock_token_' + Date.now()
       };
-      
-      console.log('✅ Login mock exitoso:', currentSession.username);
+      log.info('auth', `Login mock exitoso: ${currentSession.username}`);
       return { success: true, session: currentSession };
     } catch (error: any) {
-      console.error('❌ Login error:', error);
+      log.error('auth', 'Login fallido', error);
       return { success: false, error: error.message };
     }
   });
@@ -61,13 +64,14 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
   });
 
   ipcMain.handle('check-installation', async () => {
+    log.info('check', 'Verificando instalación...');
     try {
       const gameDir = getGameDir();
       const hasJava = await isJavaInstalled(gameDir);
       const hasMinecraft = await isMinecraftInstalled(serverConfig);
       const modsDir = path.join(gameDir, 'mods');
       const hasMods = await fs.pathExists(modsDir) && (await fs.readdir(modsDir)).length > 0;
-      
+      log.info('check', `Java: ${hasJava} | Minecraft: ${hasMinecraft} | Mods: ${hasMods}`);
       return {
         installed: hasJava && hasMinecraft,
         hasJava,
@@ -76,27 +80,37 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
         gameDir
       };
     } catch (error: any) {
+      log.error('check', 'Error verificando instalación', error);
       return { installed: false, error: error.message };
     }
   });
 
   ipcMain.handle('install-modpack', async () => {
     const gameDir = getGameDir();
+    log.stage('INSTALACIÓN DEL MODPACK');
+    log.info('install', `gameDir: ${gameDir}`);
+    log.info('install', `config: ${JSON.stringify(serverConfig)}`);
     
     try {
       // 1. Java
       if (!await isJavaInstalled(gameDir)) {
+        log.stage('Instalando Java');
         await installJava(gameDir, serverConfig, (pct, msg) => {
+          log.info('java', `[${pct}%] ${msg}`);
           mainWindow.webContents.send('install-progress', {
             stage: 'java',
             percentage: Math.round(pct * 0.25),
             message: msg
           });
         });
+      } else {
+        log.info('java', 'Java ya está instalado, saltando.');
       }
       
       // 2. Minecraft Vanilla
+      log.stage('Instalando Minecraft vanilla');
       await installMinecraft(serverConfig, (pct, msg) => {
+        log.info('minecraft', `[${pct}%] ${msg}`);
         mainWindow.webContents.send('install-progress', {
           stage: 'minecraft',
           percentage: 25 + Math.round((pct - 20) * 0.35),
@@ -104,17 +118,21 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
         });
       });
       
-      // 3. NEOFORGE (cambiado de Forge)
+      // 3. NeoForge
+      log.stage('Instalando NeoForge');
       await installNeoForge(serverConfig, (pct, msg) => {
+        log.info('neoforge', `[${pct}%] ${msg}`);
         mainWindow.webContents.send('install-progress', {
-          stage: 'neoforge',    // ← Cambiado
+          stage: 'neoforge',
           percentage: 60 + Math.round((pct - 60) * 0.25),
           message: msg
         });
       });
       
       // 4. Mods
+      log.stage('Descargando mods');
       await downloadMods(serverConfig, (pct, msg) => {
+        log.info('mods', `[${pct}%] ${msg}`);
         mainWindow.webContents.send('install-progress', {
           stage: 'mods',
           percentage: 85 + Math.round((pct - 85) * 0.15),
@@ -122,9 +140,11 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
         });
       });
       
+      log.info('install', '✅ Instalación completada exitosamente');
       mainWindow.webContents.send('install-complete', { success: true });
       return { success: true };
     } catch (error: any) {
+      log.error('install', `❌ Instalación fallida: ${error.message}`, error);
       mainWindow.webContents.send('install-error', { error: error.message });
       return { success: false, error: error.message };
     }
@@ -133,9 +153,12 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
   // ... resto de handlers (login, launch, etc.) igual ...
 
   ipcMain.handle('launch-game', async () => {
+    log.stage('Lanzando juego');
     if (!currentSession) {
+      log.warn('launch', 'Intento de lanzar sin sesión activa');
       return { success: false, error: 'No hay sesión activa' };
     }
+    log.info('launch', `Usuario: ${currentSession.username}`);
 
     try {
       const gameDir = getGameDir();

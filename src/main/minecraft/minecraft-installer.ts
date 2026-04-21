@@ -4,6 +4,7 @@ import fs from 'fs-extra';
 import { spawn } from 'child_process';
 import { downloadFile, downloadJson, downloadAndExtract } from '../utils/downloader';
 import { ServerConfig } from '../config/server-config';
+import { log } from '../utils/logger';
 
 const MOJANG_VERSIONS_URL = 'https://launchermeta.mojang.com/mc/game/version_manifest.json';
 
@@ -111,8 +112,8 @@ export async function installMinecraft(
       const libPath = path.join(getLibrariesDir(), lib.downloads.artifact.path);
       if (!await fs.pathExists(libPath)) {
         await fs.ensureDir(path.dirname(libPath));
-        await downloadFile(lib.downloads.artifact.url, libPath).catch(() => {
-          console.warn(`Falló descarga de librería: ${lib.name}`);
+        await downloadFile(lib.downloads.artifact.url, libPath).catch((e: Error) => {
+          log.warn('minecraft', `Falló descarga de librería: ${lib.name} — ${e.message}`);
         });
       }
     }
@@ -147,10 +148,6 @@ interface NeoForgeVersionMeta {
 async function createMinecraftProfile(gameDir: string, version: string): Promise<void> {
   const profilePath = path.join(gameDir, 'launcher_profiles.json');
   
-  if (await fs.pathExists(profilePath)) {
-    return; // Ya existe
-  }
-  
   // Crear perfil mínimo que NeoForge espera
   const profile = {
     profiles: {
@@ -180,7 +177,7 @@ async function createMinecraftProfile(gameDir: string, version: string): Promise
   };
   
   await fs.writeJson(profilePath, profile, { spaces: 2 });
-  console.log('✅ Perfil de Minecraft creado:', profilePath);
+  log.info('neoforge', `Perfil de Minecraft creado: ${profilePath}`);
 }
 
 /**
@@ -204,11 +201,13 @@ export async function installNeoForge(
   onProgress(60, 'Descargando instalador de NeoForge...');
   
   try {
+    log.info('neoforge', `Descargando installer desde: ${installerUrl}`);
     await downloadFile(installerUrl, installerPath);
+    log.info('neoforge', `Installer descargado: ${installerPath}`);
   } catch (error) {
-    // Fallback a formato legacy si falla
-    console.log(`Falló descarga principal, intentando formato alternativo...`);
+    log.warn('neoforge', `Falló descarga principal, intentando URL legacy...`);
     const legacyUrl = `https://maven.neoforged.net/releases/net/neoforged/forge/${version}-${neoforgeVersion}/forge-${version}-${neoforgeVersion}-installer.jar`;
+    log.info('neoforge', `URL legacy: ${legacyUrl}`);
     await downloadFile(legacyUrl, installerPath);
   }
 
@@ -221,65 +220,89 @@ export async function installNeoForge(
   
   const javaPath = path.join(getGameDir(), 'java', 'bin', 'java.exe');
   
-  // NeoForge installer usa argumentos similares a Forge pero puede variar
+  // IMPORTANTE: --installClient NO acepta un path como argumento.
+  // El installer lee %APPDATA% para encontrar la carpeta .minecraft.
+  // Estrategia: apuntar APPDATA al padre de gameDir y crear un junction
+  // .minecraft → gameDir, para que el installer instale exactamente en gameDir.
+  const gameDir = getGameDir();
+  const fakeAppData = path.dirname(gameDir);
+  const dotMinecraft = path.join(fakeAppData, '.minecraft');
+
+  if (!await fs.pathExists(dotMinecraft)) {
+    // Junction (symlink de directorio en Windows): .minecraft → .cemele-modpack
+    await fs.ensureSymlink(gameDir, dotMinecraft, 'junction');
+    log.info('neoforge', `Junction creado: ${dotMinecraft} → ${gameDir}`);
+  } else {
+    log.info('neoforge', `Junction ya existe: ${dotMinecraft}`);
+  }
+
+  const stderrLines: string[] = [];
   await new Promise<void>((resolve, reject) => {
     const proc = spawn(javaPath, [
+      '-Djava.awt.headless=true',   // JVM flag ANTES de -jar
       '-jar', installerPath,
-      '--install-client', getGameDir(),
+      '--installClient',             // sin path — usa APPDATA/.minecraft
     ], {
-      cwd: getGameDir(),
+      cwd: path.dirname(installerPath),
       env: {
         ...process.env,
-        // Prevenir que abra GUI del installer
-        'JAVA_TOOL_OPTIONS': '-Djava.awt.headless=true'
+        'APPDATA': fakeAppData,     // installer usará fakeAppData/.minecraft = gameDir
       }
     });
     
     proc.stdout.on('data', (data) => {
-      const output = data.toString();
-      console.log(`[NeoForge] ${output}`);
-      
-      // Parsear progreso si el installer lo reporta
-      if (output.includes('Downloading') || output.includes('Extracting')) {
-        onProgress(75, output.trim());
+      const output = data.toString().trim();
+      log.info('neoforge-installer', output);
+      if (output.includes('Downloading') || output.includes('Extracting') || output.includes('Installing')) {
+        onProgress(75, output.substring(0, 80));
       }
     });
     
     proc.stderr.on('data', (data) => {
-      console.error(`[NeoForge Error] ${data}`);
+      const line = data.toString().trim();
+      log.warn('neoforge-installer', `stderr: ${line}`);
+      stderrLines.push(line);
     });
     
+    proc.on('error', (err) => {
+      log.error('neoforge-installer', 'No se pudo iniciar el proceso', err);
+      reject(new Error(`No se pudo iniciar el instalador: ${err.message}`));
+    });
+
     proc.on('close', (code) => {
       if (code === 0) {
+        log.info('neoforge-installer', `Instalador terminó con código 0 (OK)`);
         resolve();
       } else {
-        reject(new Error(`NeoForge installer exited with code ${code}`));
+        const errDetail = stderrLines.slice(-5).join(' | ');
+        log.error('neoforge-installer', `Instalador terminó con código ${code}: ${errDetail}`);
+        reject(new Error(`NeoForge installer falló (código ${code}): ${errDetail}`));
       }
     });
   });
   
   // Limpiar installer
   await fs.remove(installerPath);
+  log.info('neoforge', 'Installer temporal eliminado');
   
   // NeoForge crea el perfil con nombre diferente, verificar
   const neoforgeVersionName = `${version}-neoforge-${neoforgeVersion}`;
   const expectedVersionDir = path.join(getVersionsDir(), neoforgeVersionName);
   
-  // Si NeoForge creó con nombre diferente, buscar el correcto
   if (!await fs.pathExists(expectedVersionDir)) {
-    const versions = await fs.readdir(getVersionsDir());
+    const versions = await fs.readdir(getVersionsDir()).catch(() => [] as string[]);
     const neoforgeDir = versions.find(v => v.includes('neoforge') || v.includes('neo'));
     if (neoforgeDir) {
-      console.log(`NeoForge instalado como: ${neoforgeDir}`);
-      // Opcional: renombrar para consistencia
-      // await fs.move(
-      //   path.join(getVersionsDir(), neoforgeDir),
-      //   expectedVersionDir
-      // );
+      log.info('neoforge', `Instalado con nombre: ${neoforgeDir}`);
+    } else {
+      log.warn('neoforge', `No se encontró carpeta de NeoForge en ${getVersionsDir()}. Versiones: ${versions.join(', ')}`);
     }
+  } else {
+    log.info('neoforge', `Versión encontrada: ${neoforgeVersionName}`);
   }
   
   onProgress(85, 'NeoForge instalado correctamente');
+  log.info('neoforge', '✅ NeoForge instalado');
 }
 
 // ========== MODS ==========
@@ -306,9 +329,11 @@ export async function downloadMods(
   
   let modsManifest: ModsManifest;
   try {
+    log.info('mods', `Descargando lista de mods desde: ${config.modsListUrl}`);
     modsManifest = await downloadJson<ModsManifest>(config.modsListUrl);
-  } catch (e) {
-    console.warn('No se pudo obtener mods.json del servidor, usando lista vacía');
+    log.info('mods', `Lista obtenida: ${modsManifest.mods.length} mod(s)`);
+  } catch (e: any) {
+    log.warn('mods', `No se pudo obtener mods.json: ${e.message}`);
     modsManifest = { mods: [] };
   }
   
@@ -316,17 +341,36 @@ export async function downloadMods(
   await fs.ensureDir(modsDir);
   
   const totalMods = modsManifest.mods.length;
+  if (totalMods === 0) {
+    log.warn('mods', 'La lista de mods está vacía. Verifica SERVER_MODS_LIST_URL en .env');
+  }
+
   for (let i = 0; i < modsManifest.mods.length; i++) {
     const mod = modsManifest.mods[i];
-    const modPath = path.join(modsDir, mod.filename);
+
+    // Asegurar que el filename termine en .jar
+    const filename = mod.filename.endsWith('.jar') ? mod.filename : `${mod.filename}.jar`;
+    const modPath = path.join(modsDir, filename);
     
     if (await fs.pathExists(modPath)) {
       const stats = await fs.stat(modPath);
-      if (stats.size === mod.size) continue;
+      // Solo saltear si el tamaño coincide Y el archivo no es 0 bytes
+      if (stats.size > 0 && (mod.size === 0 || stats.size === mod.size)) {
+        console.log(`[Mods] Saltando (ya existe): ${filename}`);
+        continue;
+      }
     }
     
-    onProgress(85 + Math.round((i / totalMods) * 10), `Descargando mod: ${mod.name}`);
-    await downloadFile(mod.url, modPath);
+    onProgress(85 + Math.round((i / totalMods) * 10), `Descargando mod ${i+1}/${totalMods}: ${mod.name}`);
+    log.info('mods', `Descargando [${i+1}/${totalMods}]: ${mod.url}`);
+    
+    try {
+      await downloadFile(mod.url, modPath);
+      log.info('mods', `✅ Descargado: ${filename}`);
+    } catch (err: any) {
+      log.error('mods', `❌ Falló descarga de "${mod.name}": ${err.message}`);
+      onProgress(85 + Math.round((i / totalMods) * 10), `⚠️ No se pudo descargar: ${mod.name}`);
+    }
   }
   
   if (modsManifest.configFiles) {

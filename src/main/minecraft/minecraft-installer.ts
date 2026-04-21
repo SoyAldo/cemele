@@ -58,10 +58,15 @@ export function getVersionsDir(): string {
 }
 
 export async function isMinecraftInstalled(config: ServerConfig): Promise<boolean> {
-  const neoforgeVersionName = `${config.version}-neoforge-${config.neoforgeVersion}`;
-  const versionDir = path.join(getVersionsDir(), neoforgeVersionName);
-  const jarFile = path.join(versionDir, `${neoforgeVersionName}.jar`);
-  return fs.pathExists(jarFile);
+  const versionsDir = getVersionsDir();
+  if (!await fs.pathExists(versionsDir)) return false;
+
+  const versions = await fs.readdir(versionsDir);
+  const neoDir = versions.find(v => v.includes('neoforge') && v.includes(config.neoforgeVersion));
+  if (!neoDir) return false;
+
+  const jsonFile = path.join(versionsDir, neoDir, `${neoDir}.json`);
+  return fs.pathExists(jsonFile);
 }
 
 export async function getMojangVersionJson(versionId: string): Promise<MojangVersion> {
@@ -222,19 +227,15 @@ export async function installNeoForge(
   
   // IMPORTANTE: --installClient NO acepta un path como argumento.
   // El installer lee %APPDATA% para encontrar la carpeta .minecraft.
-  // Estrategia: apuntar APPDATA al padre de gameDir y crear un junction
+  // Estrategia: apuntar APPDATA a un directorio temporal falso y crear un junction
   // .minecraft → gameDir, para que el installer instale exactamente en gameDir.
   const gameDir = getGameDir();
-  const fakeAppData = path.dirname(gameDir);
+  const fakeAppData = await fs.mkdtemp(path.join(os.tmpdir(), 'cemele-fake-appdata-'));
   const dotMinecraft = path.join(fakeAppData, '.minecraft');
 
-  if (!await fs.pathExists(dotMinecraft)) {
-    // Junction (symlink de directorio en Windows): .minecraft → .cemele-modpack
-    await fs.ensureSymlink(gameDir, dotMinecraft, 'junction');
-    log.info('neoforge', `Junction creado: ${dotMinecraft} → ${gameDir}`);
-  } else {
-    log.info('neoforge', `Junction ya existe: ${dotMinecraft}`);
-  }
+  // Junction (symlink de directorio en Windows): .minecraft → .cemele-modpack
+  await fs.ensureSymlink(gameDir, dotMinecraft, 'junction');
+  log.info('neoforge', `Junction creado: ${dotMinecraft} → ${gameDir}`);
 
   const stderrLines: string[] = [];
   await new Promise<void>((resolve, reject) => {
@@ -281,24 +282,19 @@ export async function installNeoForge(
     });
   });
   
-  // Limpiar installer
+  // Limpiar installer temporal y fakeAppData
   await fs.remove(installerPath);
-  log.info('neoforge', 'Installer temporal eliminado');
+  await fs.remove(fakeAppData);
+  log.info('neoforge', 'Archivos temporales (installer y fakeAppData) eliminados');
   
-  // NeoForge crea el perfil con nombre diferente, verificar
-  const neoforgeVersionName = `${version}-neoforge-${neoforgeVersion}`;
-  const expectedVersionDir = path.join(getVersionsDir(), neoforgeVersionName);
+  // NeoForge crea el perfil con nombre diferente (legacy: MC-neoforge-NF, moderno: neoforge-NF)
+  const versions = await fs.readdir(getVersionsDir()).catch(() => [] as string[]);
+  const neoforgeDir = versions.find(v => v.includes('neoforge') && v.includes(neoforgeVersion));
   
-  if (!await fs.pathExists(expectedVersionDir)) {
-    const versions = await fs.readdir(getVersionsDir()).catch(() => [] as string[]);
-    const neoforgeDir = versions.find(v => v.includes('neoforge') || v.includes('neo'));
-    if (neoforgeDir) {
-      log.info('neoforge', `Instalado con nombre: ${neoforgeDir}`);
-    } else {
-      log.warn('neoforge', `No se encontró carpeta de NeoForge en ${getVersionsDir()}. Versiones: ${versions.join(', ')}`);
-    }
+  if (neoforgeDir) {
+    log.info('neoforge', `Versión detectada exitosamente tras instalación: ${neoforgeDir}`);
   } else {
-    log.info('neoforge', `Versión encontrada: ${neoforgeVersionName}`);
+    log.warn('neoforge', `No se encontró carpeta de NeoForge en ${getVersionsDir()}. Versiones: ${versions.join(', ')}`);
   }
   
   onProgress(85, 'NeoForge instalado correctamente');

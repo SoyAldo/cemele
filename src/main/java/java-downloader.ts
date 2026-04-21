@@ -7,14 +7,14 @@ import { log } from '../utils/logger';
 
 const DEFAULT_JAVA_DOWNLOADS: Record<string, Record<string, string>> = {
   win32: {
-    x64: 'https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9.1/OpenJDK17U-jre_x64_windows_hotspot_17.0.9_9.zip',
+    x64: 'https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jre_x64_windows_hotspot_21.0.3_9.zip',
   },
   linux: {
-    x64: 'https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jre_x64_linux_hotspot_17.0.9_9.tar.gz',
+    x64: 'https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jre_x64_linux_hotspot_21.0.3_9.tar.gz',
   },
   darwin: {
-    x64: 'https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jre_x64_mac_hotspot_17.0.9_9.tar.gz',
-    arm64: 'https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jre_aarch64_mac_hotspot_17.0.9_9.tar.gz',
+    x64: 'https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jre_x64_mac_hotspot_21.0.3_9.tar.gz',
+    arm64: 'https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jre_aarch64_mac_hotspot_21.0.3_9.tar.gz',
   }
 };
 
@@ -53,7 +53,7 @@ export async function installJava(
   const javaDir = path.join(gameDir, 'java');
   await fs.ensureDir(javaDir);
   
-  onProgress?.(0, 'Descargando Java 17...');
+  onProgress?.(0, 'Descargando Java 21...');
   
   const tempFile = path.join(os.tmpdir(), `java-${Date.now()}.zip`);
   

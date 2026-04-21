@@ -32,6 +32,34 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
     return true;
   });
 
+  // ========== AUTENTICACIÓN ==========
+  
+  ipcMain.handle('microsoft-login', async () => {
+    try {
+      // MOCK temporal para testing
+      currentSession = {
+        username: 'JugadorTest',
+        uuid: '00000000-0000-0000-0000-000000000000',
+        accessToken: 'mock_token_' + Date.now()
+      };
+      
+      console.log('✅ Login mock exitoso:', currentSession.username);
+      return { success: true, session: currentSession };
+    } catch (error: any) {
+      console.error('❌ Login error:', error);
+      return { success: false, error: error.message };
+    }
+  });
+
+  ipcMain.handle('get-session', async () => {
+    return currentSession;
+  });
+  
+  ipcMain.handle('logout', async () => {
+    currentSession = null;
+    return;
+  });
+
   ipcMain.handle('check-installation', async () => {
     try {
       const gameDir = getGameDir();

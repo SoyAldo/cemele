@@ -10,8 +10,8 @@ function createWindow() {
     height: 650,
     minWidth: 800,
     minHeight: 500,
-    frame: false,        // Sin bordes de Windows
-    transparent: true,   // Para esquinas redondeadas
+    frame: false,
+    transparent: true,
     resizable: true,
     show: false,
     webPreferences: {

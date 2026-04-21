@@ -144,6 +144,45 @@ interface NeoForgeVersionMeta {
   // NeoForge usa un formato diferente en su Maven
 }
 
+async function createMinecraftProfile(gameDir: string, version: string): Promise<void> {
+  const profilePath = path.join(gameDir, 'launcher_profiles.json');
+  
+  if (await fs.pathExists(profilePath)) {
+    return; // Ya existe
+  }
+  
+  // Crear perfil mínimo que NeoForge espera
+  const profile = {
+    profiles: {
+      [version]: {
+        name: version,
+        type: "custom",
+        created: new Date().toISOString(),
+        lastUsed: new Date().toISOString(),
+        lastVersionId: version,
+        gameDir: gameDir
+      }
+    },
+    settings: {
+      crashAssistance: true,
+      enableAdvanced: false,
+      enableAnalytics: true,
+      enableHistorical: false,
+      enableReleases: true,
+      enableSnapshots: false,
+      keepLauncherOpen: false,
+      profileSorting: "ByLastPlayed",
+      showGameLog: false,
+      showMenu: false,
+      soundOn: false
+    },
+    version: 3
+  };
+  
+  await fs.writeJson(profilePath, profile, { spaces: 2 });
+  console.log('✅ Perfil de Minecraft creado:', profilePath);
+}
+
 /**
  * NeoForge usa un sistema de versionado diferente:
  * - Las versiones son tipo: 47.1.106 (sin prefijo de MC)
@@ -172,7 +211,12 @@ export async function installNeoForge(
     const legacyUrl = `https://maven.neoforged.net/releases/net/neoforged/forge/${version}-${neoforgeVersion}/forge-${version}-${neoforgeVersion}-installer.jar`;
     await downloadFile(legacyUrl, installerPath);
   }
+
+  onProgress(65, 'Creando perfil de Minecraft...');
   
+  // CREAR PERFIL ANTES DE EJECUTAR INSTALLER
+  await createMinecraftProfile(getGameDir(), config.version);
+
   onProgress(70, 'Ejecutando instalador de NeoForge...');
   
   const javaPath = path.join(getGameDir(), 'java', 'bin', 'java.exe');
@@ -181,10 +225,14 @@ export async function installNeoForge(
   await new Promise<void>((resolve, reject) => {
     const proc = spawn(javaPath, [
       '-jar', installerPath,
-      '--installClient', getGameDir(),
-      '--progress'  // Muestra progreso en consola
+      '--install-client', getGameDir(),
     ], {
-      cwd: getGameDir()
+      cwd: getGameDir(),
+      env: {
+        ...process.env,
+        // Prevenir que abra GUI del installer
+        'JAVA_TOOL_OPTIONS': '-Djava.awt.headless=true'
+      }
     });
     
     proc.stdout.on('data', (data) => {

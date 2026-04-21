@@ -8,6 +8,7 @@
         "clean": "if exist dist rmdir /s /q dist && if exist release rmdir /s /q release",
         "build:main": "tsc -p tsconfig.main.json",
         "build": "npm run build:main && vite build",
+        "build:generate-mods-json": "node scripts/generateModsJson.js",
         "dist:win": "npm run clean && npm run build && electron-builder --win"
     },
     "keywords": [],

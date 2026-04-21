@@ -11,6 +11,10 @@ release/
 # Logs
 *.log
 
+# Modpack
+modpack/mods/
+modpack/config/
+
 # IDE
 .vscode/
 .idea/

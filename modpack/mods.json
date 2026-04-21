@@ -1,0 +1,158 @@
+{
+  "mods": [
+    {
+      "name": "Cloth Config",
+      "filename": "cloth-config-14.0.126-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/cloth-config-14.0.126-neoforge.jar",
+      "size": 1151840,
+      "sha1": "267e6cf228af4afa30e065f3e428a21485291c03",
+      "required": true
+    },
+    {
+      "name": "Dynamic Fps",
+      "filename": "dynamic-fps-3.4.3+minecraft-1.20.5-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/dynamic-fps-3.4.3%2Bminecraft-1.20.5-neoforge.jar",
+      "size": 89059,
+      "sha1": "98bf6b2a68462698b5620d6fd4a10494b1b4f251",
+      "required": true
+    },
+    {
+      "name": "Embeddium",
+      "filename": "embeddium-0.3.20+mc1.20.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/embeddium-0.3.20%2Bmc1.20.6.jar",
+      "size": 1070967,
+      "sha1": "996625713f8080a100f8cae9b49e14c475d86d65",
+      "required": true
+    },
+    {
+      "name": "Entityculling Neoforge",
+      "filename": "entityculling-neoforge-1.6.5-mc1.20.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/entityculling-neoforge-1.6.5-mc1.20.6.jar",
+      "size": 66491,
+      "sha1": "dc028a385a8f8e7294fb3eabae5d59e4ce0a674e",
+      "required": true
+    },
+    {
+      "name": "Ferritecore",
+      "filename": "ferritecore-6.1.1-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ferritecore-6.1.1-neoforge.jar",
+      "size": 116131,
+      "sha1": "a0433f16cf87244045f01a3e07f4fc65abf920c8",
+      "required": true
+    },
+    {
+      "name": "ImmediatelyFast NeoForge",
+      "filename": "ImmediatelyFast-NeoForge-1.2.17+1.20.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ImmediatelyFast-NeoForge-1.2.17%2B1.20.6.jar",
+      "size": 271546,
+      "sha1": "a5035419d2e89527276d7412670508d8580a79cb",
+      "required": true
+    },
+    {
+      "name": "Modernfix Neoforge",
+      "filename": "modernfix-neoforge-5.18.0+mc1.20.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/modernfix-neoforge-5.18.0%2Bmc1.20.6.jar",
+      "size": 530776,
+      "sha1": "1ab6481935f0313392cc4a63f306380ae282460d",
+      "required": true
+    },
+    {
+      "name": "ObsidianUI Neoforge",
+      "filename": "ObsidianUI-neoforge-0.2.5+mc1.20.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ObsidianUI-neoforge-0.2.5%2Bmc1.20.6.jar",
+      "size": 210839,
+      "sha1": "bd7b90c812d68dbd5ea54a51538107c81175bac9",
+      "required": true
+    },
+    {
+      "name": "Rrls",
+      "filename": "rrls-4.0.7+mc1.20.6-forge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/rrls-4.0.7%2Bmc1.20.6-forge.jar",
+      "size": 168903,
+      "sha1": "56f8029d0cd2999a69a2490d3f73065406aa6479",
+      "required": true
+    },
+    {
+      "name": "RyoamicLights Neoforge",
+      "filename": "RyoamicLights-neoforge-0.2.6+mc1.20.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/RyoamicLights-neoforge-0.2.6%2Bmc1.20.6.jar",
+      "size": 158406,
+      "sha1": "5edb6d8289d51364a1017d4f71e9aec3c3efadf4",
+      "required": true
+    },
+    {
+      "name": "Yeetusexperimentus Neoforge",
+      "filename": "yeetusexperimentus-neoforge-86.0.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/yeetusexperimentus-neoforge-86.0.0.jar",
+      "size": 570059,
+      "sha1": "6aa90ab3340db96f31f878182b69bc054fe557ff",
+      "required": true
+    }
+  ],
+  "configFiles": [
+    {
+      "path": "dynamic_fps.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/dynamic_fps.json"
+    },
+    {
+      "path": "embeddium-fingerprint.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/embeddium-fingerprint.json"
+    },
+    {
+      "path": "embeddium-mixins.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/embeddium-mixins.properties"
+    },
+    {
+      "path": "embeddium-options.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/embeddium-options.json"
+    },
+    {
+      "path": "entityculling.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/entityculling.json"
+    },
+    {
+      "path": "ferritecore-mixin.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ferritecore-mixin.toml"
+    },
+    {
+      "path": "fml.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/fml.toml"
+    },
+    {
+      "path": "immediatelyfast.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/immediatelyfast.json"
+    },
+    {
+      "path": "lithium.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/lithium.properties"
+    },
+    {
+      "path": "modernfix-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/modernfix-common.toml"
+    },
+    {
+      "path": "modernfix-mixins.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/modernfix-mixins.properties"
+    },
+    {
+      "path": "neoforge-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/neoforge-client.toml"
+    },
+    {
+      "path": "neoforge-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/neoforge-common.toml"
+    },
+    {
+      "path": "neoforge-server.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/neoforge-server.toml"
+    },
+    {
+      "path": "rrls.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/rrls.toml"
+    },
+    {
+      "path": "ryoamiclights.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ryoamiclights.toml"
+    }
+  ]
+}

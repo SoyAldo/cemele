@@ -18,17 +18,19 @@ const App: React.FC = () => {
 
     const checkInitialState = async () => {
         try {
-            // Verificar sesión
+            // PRIMERO verificar instalación
+            const status = await window.electronAPI.checkInstallation();
+            setInstallStatus(status);
+
+            // LUEGO verificar sesión
             const currentSession = await window.electronAPI.getSession();
+
             if (!currentSession) {
                 setScreen("login");
                 return;
             }
-            setSession(currentSession);
 
-            // Verificar instalación
-            const status = await window.electronAPI.checkInstallation();
-            setInstallStatus(status);
+            setSession(currentSession);
             setScreen(status.installed ? "play" : "install");
         } catch (error) {
             console.error("Error inicial:", error);

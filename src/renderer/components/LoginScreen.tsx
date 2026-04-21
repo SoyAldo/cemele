@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface Props {
     onLogin: () => void;
 }
 
 const LoginScreen: React.FC<Props> = ({ onLogin }) => {
+    const [loading, setLoading] = useState(false);
+
     const handleLogin = async () => {
-        console.log("Login button clicked"); // Debug
+        setLoading(true);
+        console.log("Login button clicked");
 
         try {
             const result = await window.electronAPI.microsoftLogin();
-            console.log("Login result:", result); // Debug
+            console.log("Login result:", result);
 
             if (result.success && result.session) {
-                onLogin(); // Llamar al callback del padre
+                onLogin();
             } else {
                 console.error("Login failed:", result.error);
+                alert("Error: " + (result.error || "Login falló"));
             }
         } catch (error) {
             console.error("Login error:", error);
+            alert("Error de conexión: " + error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -32,9 +39,8 @@ const LoginScreen: React.FC<Props> = ({ onLogin }) => {
                     <div className="minecraft-block">⛏</div>
                 </div>
 
-                {/* Botón con onClick correcto */}
-                <button onClick={handleLogin} className="btn-microsoft">
-                    Iniciar sesión con Microsoft
+                <button onClick={handleLogin} className="btn-microsoft" disabled={loading}>
+                    {loading ? "Conectando..." : "Iniciar sesión con Microsoft"}
                 </button>
 
                 <p className="hint">Se requiere cuenta de Microsoft con Minecraft comprado</p>

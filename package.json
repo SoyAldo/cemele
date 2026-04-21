@@ -23,7 +23,8 @@
         "files": [
             "dist/**/*",
             "assets/**/*",
-            ".env"
+            ".env",
+            "package.json"
         ],
         "win": {
             "target": "nsis",

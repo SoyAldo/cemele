@@ -205,15 +205,13 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
     }
   });
 
-  // ========== CONTROL DE VENTANA ==========
+ // ========== CONTROL DE VENTANA ==========
   
   ipcMain.handle('minimize-window', () => {
-    console.log('Minimizing window');  // Debug
     mainWindow.minimize();
   });
 
   ipcMain.handle('close-window', () => {
-    console.log('Closing window');  // Debug
     mainWindow.close();
   });
 }

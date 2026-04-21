@@ -1,0 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #1a1a2e;
+    --bg-card: #16213e;
+    --accent: #e94560;
+    --accent-hover: #c13651;
+    --text: #eee;
+    --text-muted: #a0a0a0;
+    --success: #0f3460;
+    --border: #2a2a4a;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    overflow: hidden;
+    user-select: none;
+}
+
+/* Title Bar */
+.title-bar {
+    height: 32px;
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    -webkit-app-region: drag;
+    border-bottom: 1px solid var(--border);
+}
+
+.title-bar-drag {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--accent);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+    -webkit-app-region: no-drag;
+}
+
+.window-controls button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window-controls button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-close:hover {
+    background: var(--accent) !important;
+}
+
+/* Main Layout */
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.screen {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Loading */
+.loading-screen {
+    flex-direction: column;
+    gap: 16px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Login Screen */
+.login-card {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid var(--border);
+}
+
+.login-card h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.minecraft-block {
+    font-size: 64px;
+    margin: 20px 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.btn-microsoft {
+    width: 100%;
+    padding: 12px;
+    background: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-microsoft:hover {
+    background: #006cbd;
+}
+
+.hint {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Install Screen */
+.install-card {
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid var(--border);
+}
+
+.install-card h2 {
+    margin-bottom: 8px;
+}
+
+.welcome {
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.modpack-info {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.label {
+    color: var(--text-muted);
+}
+
+.value {
+    font-weight: 500;
+}
+
+.progress-section {
+    margin-top: 16px;
+}
+
+.progress-bar-bg {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #ff6b6b);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.btn-install {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-install:hover {
+    background: var(--accent-hover);
+}
+
+/* Play Screen */
+.play-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.username {
+    display: block;
+    font-weight: 600;
+}
+
+.status {
+    display: block;
+    font-size: 12px;
+    color: #4ade80;
+}
+
+.btn-logout {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.play-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.modpack-banner {
+    text-align: center;
+}
+
+.modpack-banner h1 {
+    font-size: 48px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.version-badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 12px;
+    background: var(--success);
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.btn-play {
+    padding: 16px 64px;
+    background: linear-gradient(135deg, var(--accent), #ff6b6b);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.btn-play:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+}
+
+.btn-play.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.secondary-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.secondary-actions button {
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.secondary-actions button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.news-section {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    background: var(--bg-card);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.news-section h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+}
+
+.news-item {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.news-item .date {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.install-stages {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 8px;
+}
+
+.stage {
+    flex: 1;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.stage.active {
+    opacity: 1;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+}
+
+.stage.done {
+    opacity: 1;
+    background: #4ade80;
+}
+
+.stage-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.progress-percent {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 8px;
+    color: var(--accent);
+}
+
+.error-message {
+    margin-top: 16px;
+    padding: 12px;
+    background: rgba(233, 69, 96, 0.2);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    color: #ff6b6b;
+}
+
+.btn-retry {
+    margin-left: 12px;
+    padding: 4px 12px;
+    background: var(--accent);
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}

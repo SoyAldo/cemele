@@ -1,0 +1,93 @@
+import os from 'os';
+import path from 'path';
+import fs from 'fs-extra';
+import { downloadFile, downloadAndExtract } from '../utils/downloader';
+import { ServerConfig } from '../config/server-config';
+
+const DEFAULT_JAVA_DOWNLOADS: Record<string, Record<string, string>> = {
+  win32: {
+    x64: 'https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9.1/OpenJDK17U-jre_x64_windows_hotspot_17.0.9_9.zip',
+  },
+  linux: {
+    x64: 'https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jre_x64_linux_hotspot_17.0.9_9.tar.gz',
+  },
+  darwin: {
+    x64: 'https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jre_x64_mac_hotspot_17.0.9_9.tar.gz',
+    arm64: 'https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jre_aarch64_mac_hotspot_17.0.9_9.tar.gz',
+  }
+};
+
+export function getJavaPath(gameDir: string): string {
+  const platform = os.platform();
+  const javaDir = path.join(gameDir, 'java', 'bin');
+  
+  const javaExe = platform === 'win32' ? 'java.exe' : 'java';
+  return path.join(javaDir, javaExe);
+}
+
+export async function isJavaInstalled(gameDir: string): Promise<boolean> {
+  const javaPath = getJavaPath(gameDir);
+  return fs.pathExists(javaPath);
+}
+
+export async function installJava(
+  gameDir: string,
+  config: ServerConfig,
+  onProgress?: (percentage: number, message: string) => void
+): Promise<void> {
+  const platform = os.platform();
+  const arch = os.arch();
+  
+  // Usar URL forzada desde .env, o la default
+  const downloadUrl = config.javaDownloadUrl || 
+    DEFAULT_JAVA_DOWNLOADS[platform]?.[arch];
+  
+  if (!downloadUrl) {
+    throw new Error(`No hay descarga de Java para ${platform}-${arch}`);
+  }
+  
+  const javaDir = path.join(gameDir, 'java');
+  await fs.ensureDir(javaDir);
+  
+  onProgress?.(0, 'Descargando Java 17...');
+  
+  const tempFile = path.join(os.tmpdir(), `java-${Date.now()}.zip`);
+  
+  // Descargar
+  await downloadFile(downloadUrl, tempFile, (prog) => {
+    onProgress?.(Math.round(prog.percentage * 0.5), `Descargando Java... ${prog.percentage}%`);
+  });
+  
+  onProgress?.(50, 'Extrayendo Java...');
+  
+  // Extraer
+  const AdmZip = require('adm-zip');
+  const zip = new AdmZip(tempFile);
+  
+  // El ZIP de Adoptium tiene una carpeta raíz como jdk-17.0.9+9-jre/
+  // Necesitamos extraer el contenido de esa carpeta a java/
+  const entries = zip.getEntries();
+  const rootFolder = entries[0].entryName.split('/')[0];
+  
+  // Extraer todo
+  zip.extractAllTo(javaDir, true);
+  
+  // Mover contenido de la subcarpeta a java/
+  const extractedDir = path.join(javaDir, rootFolder);
+  if (await fs.pathExists(extractedDir)) {
+    const files = await fs.readdir(extractedDir);
+    for (const file of files) {
+      await fs.move(path.join(extractedDir, file), path.join(javaDir, file), { overwrite: true });
+    }
+    await fs.rmdir(extractedDir);
+  }
+  
+  await fs.remove(tempFile);
+  
+  // Verificar
+  if (!await isJavaInstalled(gameDir)) {
+    throw new Error('Java no se instaló correctamente');
+  }
+  
+  onProgress?.(100, 'Java instalado correctamente');
+}

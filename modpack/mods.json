@@ -1,130 +1,3674 @@
 {
   "mods": [
     {
+      "name": "Accessories Neoforge",
+      "filename": "accessories-neoforge-1.1.0-beta.53+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/accessories-neoforge-1.1.0-beta.53%2B1.21.1.jar",
+      "size": 1078697,
+      "sha1": "77d75c2e13cfdf56a45cdd29806c1c97c3d250fc",
+      "required": true
+    },
+    {
+      "name": "AI Improvements",
+      "filename": "AI-Improvements-1.21-0.5.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/AI-Improvements-1.21-0.5.3.jar",
+      "size": 28984,
+      "sha1": "b4a8e11384454bcc341043b251db7fb5afdfdf45",
+      "required": true
+    },
+    {
+      "name": "Alexscaves",
+      "filename": "alexscaves-2.0.9.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/alexscaves-2.0.9.jar",
+      "size": 74901045,
+      "sha1": "a21b02ef825124b417a7ed8e44afd68342c00748",
+      "required": true
+    },
+    {
+      "name": "Alexscavesdelight",
+      "filename": "alexscavesdelight-1.0.28.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/alexscavesdelight-1.0.28.jar",
+      "size": 255154,
+      "sha1": "ace42d4940be77372b9c41d04718f966c4a00658",
+      "required": true
+    },
+    {
+      "name": "Alexsdelight",
+      "filename": "alexsdelight-1.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/alexsdelight-1.6.jar",
+      "size": 89430,
+      "sha1": "19e8d1e255c431b706e79412be92d8448c668f4c",
+      "required": true
+    },
+    {
+      "name": "Alexsmobs",
+      "filename": "alexsmobs-1.22.17.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/alexsmobs-1.22.17.jar",
+      "size": 26620546,
+      "sha1": "5070e8070f60650d773bfd9f1d031496f8f50259",
+      "required": true
+    },
+    {
+      "name": "Alex_s Mobs Music Mod 1.21.1 V1.1.0.Jar",
+      "filename": "Alex_s Mobs Music Mod 1.21.1 v1.1.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Alex_s%20Mobs%20Music%20Mod%201.21.1%20v1.1.0.jar",
+      "size": 3963161,
+      "sha1": "85ce1565edf8d1d8435155952ccbe915adf5c1f8",
+      "required": true
+    },
+    {
+      "name": "Alltheleaks",
+      "filename": "alltheleaks-1.1.8+1.21.1-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/alltheleaks-1.1.8%2B1.21.1-neoforge.jar",
+      "size": 536828,
+      "sha1": "f91b11a1cfa718b9291fbe7b80356f17a572577e",
+      "required": true
+    },
+    {
+      "name": "Appleskin Neoforge Mc1.21",
+      "filename": "appleskin-neoforge-mc1.21-3.0.9.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/appleskin-neoforge-mc1.21-3.0.9.jar",
+      "size": 75804,
+      "sha1": "81cf0e668f991f83ac8820c386fbd6c9c3602246",
+      "required": true
+    },
+    {
+      "name": "Aquaculture",
+      "filename": "Aquaculture-1.21.1-2.7.21.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Aquaculture-1.21.1-2.7.21.jar",
+      "size": 605949,
+      "sha1": "93c2043c6a5cfbfbfba93321d044bc61d8a6547b",
+      "required": true
+    },
+    {
+      "name": "Aquaculturedelight",
+      "filename": "aquaculturedelight-1.2.0-neoforge-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/aquaculturedelight-1.2.0-neoforge-1.21.1.jar",
+      "size": 213607,
+      "sha1": "111393c07a98f29cab1de0d91965cc1bc6d9d73f",
+      "required": true
+    },
+    {
+      "name": "Archeological Neoforge",
+      "filename": "Archeological-neoforge-1.21.1-1.2.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Archeological-neoforge-1.21.1-1.2.2.jar",
+      "size": 1985525,
+      "sha1": "1196343e95723454de83b8106d230d4f10771b5f",
+      "required": true
+    },
+    {
+      "name": "Archers Neoforge",
+      "filename": "archers-neoforge-2.7.0+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/archers-neoforge-2.7.0%2B1.21.1.jar",
+      "size": 723267,
+      "sha1": "3bfb1bad97242573cd00529474f57813c34251c7",
+      "required": true
+    },
+    {
+      "name": "Archers_expansion Neoforge",
+      "filename": "archers_expansion-neoforge-1.5.1+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/archers_expansion-neoforge-1.5.1%2B1.21.1.jar",
+      "size": 763468,
+      "sha1": "14dd4ca727211ae6fce13de963602748e00807d1",
+      "required": true
+    },
+    {
+      "name": "Architectury",
+      "filename": "architectury-13.0.8-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/architectury-13.0.8-neoforge.jar",
+      "size": 584004,
+      "sha1": "6ca11d3cc136bf69bb8f4d56982481eb85b5100b",
+      "required": true
+    },
+    {
+      "name": "Armageddon For 1.21.1 (V2.0.8c)   The Madness Update.Jar",
+      "filename": "Armageddon for 1.21.1 (v2.0.8c) - The Madness Update.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Armageddon%20for%201.21.1%20(v2.0.8c)%20-%20The%20Madness%20Update.jar",
+      "size": 10790704,
+      "sha1": "f1aed4d4d4009e813591f4f823cb4202b5931b12",
+      "required": true
+    },
+    {
+      "name": "Arsenal Neoforge",
+      "filename": "arsenal-neoforge-1.4.2+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/arsenal-neoforge-1.4.2%2B1.21.1.jar",
+      "size": 1187853,
+      "sha1": "46f6b3e27b1bd472ab2c6dfccbb8cc715984cd7a",
+      "required": true
+    },
+    {
+      "name": "Ars_additions",
+      "filename": "ars_additions-1.21.1-21.3.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ars_additions-1.21.1-21.3.0.jar",
+      "size": 1458261,
+      "sha1": "ce2440b606acb20b79a42bf7c6c24d163c93241f",
+      "required": true
+    },
+    {
+      "name": "Ars_elemental",
+      "filename": "ars_elemental-1.21.1-0.7.9.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ars_elemental-1.21.1-0.7.9.2.jar",
+      "size": 2298625,
+      "sha1": "7454a00b27356ce13d0a8be9664df46d47331633",
+      "required": true
+    },
+    {
+      "name": "Ars_nouveau",
+      "filename": "ars_nouveau-1.21.1-5.11.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ars_nouveau-1.21.1-5.11.3.jar",
+      "size": 20689115,
+      "sha1": "0af12dd7fda63a4261ceb302c9bb57fc235641c6",
+      "required": true
+    },
+    {
+      "name": "Ars_ocultas",
+      "filename": "ars_ocultas-1.21.1-2.4.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ars_ocultas-1.21.1-2.4.0.jar",
+      "size": 78505,
+      "sha1": "c9eacfed1170c07bd1bd239548a034a7a4256011",
+      "required": true
+    },
+    {
+      "name": "Ars_technica",
+      "filename": "ars_technica-1.21.1-2.7.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ars_technica-1.21.1-2.7.6.jar",
+      "size": 3691171,
+      "sha1": "adb2641d538375f6eff6a22f0196bb330ab0b171",
+      "required": true
+    },
+    {
+      "name": "Artifacts Neoforge",
+      "filename": "artifacts-neoforge-13.2.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/artifacts-neoforge-13.2.1.jar",
+      "size": 1030252,
+      "sha1": "3fe4d52cc0b11d91c75005030e83e3f675e62383",
+      "required": true
+    },
+    {
+      "name": "Atg",
+      "filename": "atg-2.0.1+1.21.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/atg-2.0.1%2B1.21.3.jar",
+      "size": 18776,
+      "sha1": "303a7f4bf20a1008b3747519c6c46fabf9cc04d0",
+      "required": true
+    },
+    {
+      "name": "Athena Neoforge",
+      "filename": "athena-neoforge-1.21-4.0.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/athena-neoforge-1.21-4.0.2.jar",
+      "size": 92698,
+      "sha1": "069f397f1b3a30b3d5f5a98cac76304dfe345d76",
+      "required": true
+    },
+    {
+      "name": "Attributefix Neoforge",
+      "filename": "attributefix-neoforge-1.21.1-21.1.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/attributefix-neoforge-1.21.1-21.1.3.jar",
+      "size": 19809,
+      "sha1": "7aae849f6d2a6cb1368227407ea5deb552e100ba",
+      "required": true
+    },
+    {
+      "name": "Azurelibarmor Neo",
+      "filename": "azurelibarmor-neo-1.21.1-3.1.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/azurelibarmor-neo-1.21.1-3.1.1.jar",
+      "size": 573880,
+      "sha1": "f5fac97ca7d3ed20f735124997c8a63af914bcfa",
+      "required": true
+    },
+    {
+      "name": "BadOptimizations",
+      "filename": "BadOptimizations-2.4.1-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/BadOptimizations-2.4.1-1.21.1.jar",
+      "size": 283566,
+      "sha1": "1461d8e46391efd32a3085150e86094c9f6f5c9d",
+      "required": true
+    },
+    {
+      "name": "Balm Neoforge",
+      "filename": "balm-neoforge-1.21.1-21.0.56.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/balm-neoforge-1.21.1-21.0.56.jar",
+      "size": 739709,
+      "sha1": "c1c1d4859c7943c7d1c181c07fa7273a1d56df15",
+      "required": true
+    },
+    {
+      "name": "Bettercombat Extension",
+      "filename": "bettercombat-extension-2.10.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/bettercombat-extension-2.10.1.jar",
+      "size": 211165,
+      "sha1": "1f5c48435a346bdaf17f52139c176e3cca545249",
+      "required": true
+    },
+    {
+      "name": "Bettercombat Neoforge",
+      "filename": "bettercombat-neoforge-2.3.1+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/bettercombat-neoforge-2.3.1%2B1.21.1.jar",
+      "size": 1039102,
+      "sha1": "0ab8800ae6d10279f6728ae4f85672cba3f36190",
+      "required": true
+    },
+    {
+      "name": "Better_carryon_maid",
+      "filename": "better_carryon_maid-1.21.1-1.0.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/better_carryon_maid-1.21.1-1.0.2.jar",
+      "size": 12749,
+      "sha1": "9dce52c197fe2646c54f549ac728facd965c33fe",
+      "required": true
+    },
+    {
+      "name": "Biolith Neoforge",
+      "filename": "biolith-neoforge-3.0.10.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/biolith-neoforge-3.0.10.jar",
+      "size": 215482,
+      "sha1": "e04f50b55f1a917956a038c10066118264e4e170",
+      "required": true
+    },
+    {
+      "name": "BiomesOPlenty Neoforge",
+      "filename": "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
+      "size": 22338081,
+      "sha1": "a0dec78a9c1bb7e0167e5326aaf3c58a94f3aa86",
+      "required": true
+    },
+    {
+      "name": "Block_factorys_bosses",
+      "filename": "block_factorys_bosses-2.0.12-neo-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/block_factorys_bosses-2.0.12-neo-1.21.1.jar",
+      "size": 20707172,
+      "sha1": "4d0da6d81b445bdeb10308fec7a5dd8c7e3a4d8f",
+      "required": true
+    },
+    {
+      "name": "Bookshelf Neoforge",
+      "filename": "bookshelf-neoforge-1.21.1-21.1.81.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/bookshelf-neoforge-1.21.1-21.1.81.jar",
+      "size": 328813,
+      "sha1": "efc4cda6da4dd879f24d057ed0a6413764c9ba40",
+      "required": true
+    },
+    {
+      "name": "Botanypots Neoforge",
+      "filename": "botanypots-neoforge-1.21.1-21.1.41.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/botanypots-neoforge-1.21.1-21.1.41.jar",
+      "size": 1065153,
+      "sha1": "4f216887a3b95d6abde0f2458a94487523531a1c",
+      "required": true
+    },
+    {
+      "name": "Botanypotsmystical Neoforge",
+      "filename": "botanypotsmystical-neoforge-1.21.1-21.1.11.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/botanypotsmystical-neoforge-1.21.1-21.1.11.jar",
+      "size": 89375,
+      "sha1": "c9f09d5194b3aa36bc55eb6fd621f6527ef046fc",
+      "required": true
+    },
+    {
+      "name": "Boundless",
+      "filename": "boundless-7.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/boundless-7.1.jar",
+      "size": 799816,
+      "sha1": "046bbdee7cd93840ea67435d8bbb14446f62c68c",
+      "required": true
+    },
+    {
+      "name": "Bundle Api Neoforge",
+      "filename": "bundle-api-neoforge-1.1.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/bundle-api-neoforge-1.1.0.jar",
+      "size": 64124,
+      "sha1": "49ea32e2872c9738363eb76a97ce0553bd2ff756",
+      "required": true
+    },
+    {
+      "name": "Carryon Neoforge",
+      "filename": "carryon-neoforge-1.21.1-2.2.4.4.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/carryon-neoforge-1.21.1-2.2.4.4.jar",
+      "size": 357489,
+      "sha1": "774bf57a199784c35e74f2d619d6001c87185a11",
+      "required": true
+    },
+    {
+      "name": "Cataclysmiccombat",
+      "filename": "cataclysmiccombat-1.4.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/cataclysmiccombat-1.4.1.jar",
+      "size": 3558,
+      "sha1": "26cbd6cc0a2fb4ce02b647e257da12d1f4454c33",
+      "required": true
+    },
+    {
+      "name": "Cataclysm_dimension Neoforge1.21.1",
+      "filename": "cataclysm_dimension-neoforge1.21.1-1.5.5.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/cataclysm_dimension-neoforge1.21.1-1.5.5.jar",
+      "size": 330824,
+      "sha1": "023db20a1c2fefbf41d3f9c7a5e9ae46e1e77dbe",
+      "required": true
+    },
+    {
+      "name": "Chipped Neoforge",
+      "filename": "chipped-neoforge-1.21.1-4.0.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/chipped-neoforge-1.21.1-4.0.2.jar",
+      "size": 15020578,
+      "sha1": "6f5395f58139802edfde7cb9170279f92f291971",
+      "required": true
+    },
+    {
+      "name": "Chunky NeoForge",
+      "filename": "Chunky-NeoForge-1.4.23.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Chunky-NeoForge-1.4.23.jar",
+      "size": 340572,
+      "sha1": "ab0c74743a653020fe2dfc4986b43e893947f3e9",
+      "required": true
+    },
+    {
+      "name": "Citadel",
+      "filename": "citadel-1.21.1-2.7.5.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/citadel-1.21.1-2.7.5.jar",
+      "size": 3029054,
+      "sha1": "e8c3e1fdb29c0ff6eeb0c65712eee5be21d8ef94",
+      "required": true
+    },
+    {
+      "name": "Citadel",
+      "filename": "citadel-2.7.0-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/citadel-2.7.0-1.21.1.jar",
+      "size": 3033192,
+      "sha1": "01b18dfa37528aebd63b49874c9ac7795a4fc084",
+      "required": true
+    },
+    {
       "name": "Cloth Config",
-      "filename": "cloth-config-14.0.126-neoforge.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/cloth-config-14.0.126-neoforge.jar",
-      "size": 1151840,
-      "sha1": "267e6cf228af4afa30e065f3e428a21485291c03",
+      "filename": "cloth-config-15.0.140-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/cloth-config-15.0.140-neoforge.jar",
+      "size": 1163890,
+      "sha1": "c3e5733ba4503b102589a026000fd5ce0212f6f2",
       "required": true
     },
     {
-      "name": "Dynamic Fps",
-      "filename": "dynamic-fps-3.4.3+minecraft-1.20.5-neoforge.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/dynamic-fps-3.4.3%2Bminecraft-1.20.5-neoforge.jar",
-      "size": 89059,
-      "sha1": "98bf6b2a68462698b5620d6fd4a10494b1b4f251",
+      "name": "Clumps Neoforge",
+      "filename": "Clumps-neoforge-1.21.1-19.0.0.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Clumps-neoforge-1.21.1-19.0.0.1.jar",
+      "size": 18382,
+      "sha1": "fa2576297c7bd12b28aa7070e8141792bd66da4c",
       "required": true
     },
     {
-      "name": "Embeddium",
-      "filename": "embeddium-0.3.20+mc1.20.6.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/embeddium-0.3.20%2Bmc1.20.6.jar",
-      "size": 1070967,
-      "sha1": "996625713f8080a100f8cae9b49e14c475d86d65",
+      "name": "Clutternomore",
+      "filename": "clutternomore-1.1.9+1.21.1-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/clutternomore-1.1.9%2B1.21.1-neoforge.jar",
+      "size": 426994,
+      "sha1": "147817465c5c0c2ea9c14b495d548e713092ec46",
       "required": true
     },
     {
-      "name": "Entityculling Neoforge",
-      "filename": "entityculling-neoforge-1.6.5-mc1.20.6.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/entityculling-neoforge-1.6.5-mc1.20.6.jar",
-      "size": 66491,
-      "sha1": "dc028a385a8f8e7294fb3eabae5d59e4ce0a674e",
+      "name": "Collective",
+      "filename": "collective-1.21.1-8.20.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/collective-1.21.1-8.20.jar",
+      "size": 942780,
+      "sha1": "843bd92e270196c1b52eabc7ac54b0b6c521e395",
+      "required": true
+    },
+    {
+      "name": "Comforts Neoforge",
+      "filename": "comforts-neoforge-9.0.5+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/comforts-neoforge-9.0.5%2B1.21.1.jar",
+      "size": 422658,
+      "sha1": "21d6bee3821d62fe3356c51fb1d697871a3087ff",
+      "required": true
+    },
+    {
+      "name": "CompletionistsIndex V21.1.0",
+      "filename": "CompletionistsIndex-v21.1.0-1.21.1-NeoForge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/CompletionistsIndex-v21.1.0-1.21.1-NeoForge.jar",
+      "size": 85308,
+      "sha1": "0977cc9f95a07f00641856ec02a4a387d00cf07c",
+      "required": true
+    },
+    {
+      "name": "Connector",
+      "filename": "connector-2.0.0-beta.14+1.21.1-full.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/connector-2.0.0-beta.14%2B1.21.1-full.jar",
+      "size": 4526785,
+      "sha1": "8ec2b9acc1881a15d7ae625e3bc3821a2d1af4e1",
+      "required": true
+    },
+    {
+      "name": "ConnectorExtras",
+      "filename": "ConnectorExtras-1.12.1+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ConnectorExtras-1.12.1%2B1.21.1.jar",
+      "size": 86284,
+      "sha1": "8ea07df55b26c8343d06df77936505a23e0d2140",
+      "required": true
+    },
+    {
+      "name": "Controlling Neoforge",
+      "filename": "Controlling-neoforge-1.21.1-19.0.5.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Controlling-neoforge-1.21.1-19.0.5.jar",
+      "size": 77555,
+      "sha1": "8a34424fc1428778be2fdbfa4da67b21b70bcbfe",
+      "required": true
+    },
+    {
+      "name": "Cosmeticarmorreworked",
+      "filename": "cosmeticarmorreworked-1.21.1-v1-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/cosmeticarmorreworked-1.21.1-v1-neoforge.jar",
+      "size": 92722,
+      "sha1": "5f1e699cd0888b857ec63f01adaeb3571848bfea",
+      "required": true
+    },
+    {
+      "name": "CrashAssistant Neoforge",
+      "filename": "CrashAssistant-neoforge-1.20.6-1.21.4-1.11.8.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/CrashAssistant-neoforge-1.20.6-1.21.4-1.11.8.jar",
+      "size": 3159461,
+      "sha1": "558bc3dfee4d6e5fd7a3d7c794bb01df1aff40e9",
+      "required": true
+    },
+    {
+      "name": "Create",
+      "filename": "create-1.21.1-6.0.10.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/create-1.21.1-6.0.10.jar",
+      "size": 19123767,
+      "sha1": "0e97e49837bed766e6f28a4c95b04885d6acc353",
+      "required": true
+    },
+    {
+      "name": "Create Aeronautics Bundled",
+      "filename": "create-aeronautics-bundled-1.21.1-1.1.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/create-aeronautics-bundled-1.21.1-1.1.3.jar",
+      "size": 33003314,
+      "sha1": "320d5c580462fb4bdec3d99837f16e842c314ff6",
+      "required": true
+    },
+    {
+      "name": "CreateOPlenty NeoForge Create+6.0.7",
+      "filename": "CreateOPlenty-NeoForge-Create+6.0.7-3.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/CreateOPlenty-NeoForge-Create%2B6.0.7-3.0.jar",
+      "size": 45837,
+      "sha1": "9c636f52e9354fdccc0b53201c22dfb5887f0589",
+      "required": true
+    },
+    {
+      "name": "Create_sophback_compat",
+      "filename": "create_sophback_compat-1.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/create_sophback_compat-1.0.jar",
+      "size": 679850,
+      "sha1": "401e8b83ab79c13bf71ba6209f4c8c487c001b38",
+      "required": true
+    },
+    {
+      "name": "CreativeCore_NEOFORGE_v2.13.36_mc1.21.1.Jar",
+      "filename": "CreativeCore_NEOFORGE_v2.13.36_mc1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/CreativeCore_NEOFORGE_v2.13.36_mc1.21.1.jar",
+      "size": 1213893,
+      "sha1": "83af278fd8da376480d7847204c3e124bda94add",
+      "required": true
+    },
+    {
+      "name": "Cristellib Neoforge",
+      "filename": "cristellib-neoforge-1.21.1-3.0.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/cristellib-neoforge-1.21.1-3.0.3.jar",
+      "size": 539899,
+      "sha1": "8e61459df2c76caa19d3f1e218522389ad812f6c",
+      "required": true
+    },
+    {
+      "name": "Cucumber",
+      "filename": "Cucumber-1.21.1-8.0.15.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Cucumber-1.21.1-8.0.15.jar",
+      "size": 275523,
+      "sha1": "e2928961f305d0a48e43a03b0a668ee123270f69",
+      "required": true
+    },
+    {
+      "name": "Cupboard",
+      "filename": "cupboard-1.21-3.5.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/cupboard-1.21-3.5.jar",
+      "size": 26659,
+      "sha1": "e5f55c8f9d172048fe6f8b919cda1dbe3cbfbc70",
+      "required": true
+    },
+    {
+      "name": "Curios Neoforge",
+      "filename": "curios-neoforge-9.5.1+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/curios-neoforge-9.5.1%2B1.21.1.jar",
+      "size": 410690,
+      "sha1": "418fcd42e3a7844c9bdc71c9b6401fdb3894e0c4",
+      "required": true
+    },
+    {
+      "name": "Cyclopscore",
+      "filename": "cyclopscore-1.21.1-neoforge-1.29.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/cyclopscore-1.21.1-neoforge-1.29.0.jar",
+      "size": 1158061,
+      "sha1": "1e5584a3815371078c555dccf096f3397265ef93",
+      "required": true
+    },
+    {
+      "name": "Deeperdarker Neoforge",
+      "filename": "deeperdarker-neoforge-1.21.1-1.4.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/deeperdarker-neoforge-1.21.1-1.4.jar",
+      "size": 3906391,
+      "sha1": "ba6a751b9365b3e08a28c13ddfb43c566dfdf496",
+      "required": true
+    },
+    {
+      "name": "Delightfulcreators",
+      "filename": "delightfulcreators-1.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/delightfulcreators-1.2.jar",
+      "size": 352905,
+      "sha1": "7e98154dcea3d83cb83b8d71eb3671a27359508c",
+      "required": true
+    },
+    {
+      "name": "Dragonscale Nf",
+      "filename": "dragonscale-nf-0.0.2-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/dragonscale-nf-0.0.2-1.21.1.jar",
+      "size": 11344,
+      "sha1": "7d351ac8bedd8ce9a5cfc9d09284ae352d7a1086",
+      "required": true
+    },
+    {
+      "name": "Dragonsteel Nf",
+      "filename": "dragonsteel-nf-0.0.3-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/dragonsteel-nf-0.0.3-1.21.1.jar",
+      "size": 30289,
+      "sha1": "6759d5096d3570a0b237262072a77b3d8fec6f01",
+      "required": true
+    },
+    {
+      "name": "Dtarsnouveau",
+      "filename": "dtarsnouveau-1.3.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/dtarsnouveau-1.3.0.jar",
+      "size": 276118,
+      "sha1": "e61f5753c5485de7c3874ddd36fdf20e2684bfcb",
+      "required": true
+    },
+    {
+      "name": "Dtbop",
+      "filename": "dtbop-3.4.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/dtbop-3.4.0.jar",
+      "size": 411408,
+      "sha1": "fe3d3901a33bd2f18e917fc579859e67401330c8",
+      "required": true
+    },
+    {
+      "name": "Dtru",
+      "filename": "dtru-1.1.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/dtru-1.1.1.jar",
+      "size": 764594,
+      "sha1": "8be2f54a80edd6e4af4fc08262c04db5b4d86d12",
+      "required": true
+    },
+    {
+      "name": "DungeonsArise",
+      "filename": "DungeonsArise-1.21.1-2.1.68-release.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/DungeonsArise-1.21.1-2.1.68-release.jar",
+      "size": 11842679,
+      "sha1": "c651339154da7b9e9cf47a80fdef22c4d59cad5c",
+      "required": true
+    },
+    {
+      "name": "DungeonsAriseSevenSeas",
+      "filename": "DungeonsAriseSevenSeas-1.21.x-1.0.4-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/DungeonsAriseSevenSeas-1.21.x-1.0.4-neoforge.jar",
+      "size": 244981,
+      "sha1": "ac9edb266a1360e9e4c80ed0b2f931f1505307eb",
+      "required": true
+    },
+    {
+      "name": "Dynamictrees Neoforge",
+      "filename": "dynamictrees-neoforge-1.21.1-1.7.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/dynamictrees-neoforge-1.21.1-1.7.0.jar",
+      "size": 3792883,
+      "sha1": "214b57ccd42bc306de8aff347162172fc4ba971b",
+      "required": true
+    },
+    {
+      "name": "DynamicTreesPlus Neoforge",
+      "filename": "DynamicTreesPlus-neoforge-1.21.1-1.3.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/DynamicTreesPlus-neoforge-1.21.1-1.3.2.jar",
+      "size": 530533,
+      "sha1": "9f261be4cb8f83ffbc126f7198cdbe297f2b2166",
+      "required": true
+    },
+    {
+      "name": "Eidolon_repraised",
+      "filename": "eidolon_repraised-1.21.1-0.5.0.0-pre20.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/eidolon_repraised-1.21.1-0.5.0.0-pre20.jar",
+      "size": 4047868,
+      "sha1": "5cca85f3cb02754dcf8e89f40b4d84cb54530155",
+      "required": true
+    },
+    {
+      "name": "Elemental_wizards_rpg Neoforge",
+      "filename": "elemental_wizards_rpg-neoforge-2.6.6+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/elemental_wizards_rpg-neoforge-2.6.6%2B1.21.1.jar",
+      "size": 1391797,
+      "sha1": "edd411b5893c397129fbe83c941b0a9a247f65ab",
+      "required": true
+    },
+    {
+      "name": "Enchdesc Neoforge",
+      "filename": "enchdesc-neoforge-1.21.1-21.1.9.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/enchdesc-neoforge-1.21.1-21.1.9.jar",
+      "size": 81847,
+      "sha1": "e4fa515c5deab3165f250f2a1297ac836d496064",
+      "required": true
+    },
+    {
+      "name": "Entityplayercompat",
+      "filename": "entityplayercompat-1.1-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/entityplayercompat-1.1-1.21.1.jar",
+      "size": 84662,
+      "sha1": "ee2520b70197c9906b6855cd3710ded1a448b100",
+      "required": true
+    },
+    {
+      "name": "Entity_model_features_1.21 Neoforge",
+      "filename": "entity_model_features_1.21-neoforge-3.1.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/entity_model_features_1.21-neoforge-3.1.1.jar",
+      "size": 514814,
+      "sha1": "351df74c0136efe5ba297e4d8d6cd2a40a79801e",
+      "required": true
+    },
+    {
+      "name": "Entity_texture_features_1.21 Neoforge",
+      "filename": "entity_texture_features_1.21-neoforge-7.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/entity_texture_features_1.21-neoforge-7.1.jar",
+      "size": 752334,
+      "sha1": "56de40b237ff44dbf1bb68844e0f118607902684",
+      "required": true
+    },
+    {
+      "name": "Eternal Starlight Delight Neoforge",
+      "filename": "eternal-starlight-delight-neoforge-1.1.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/eternal-starlight-delight-neoforge-1.1.0.jar",
+      "size": 501936,
+      "sha1": "c9c756c2a348520eb04d2bfcc0311f6496479fcd",
+      "required": true
+    },
+    {
+      "name": "Eternalstarlight",
+      "filename": "eternalstarlight-0.7.0-hotfix+1.21.1+neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/eternalstarlight-0.7.0-hotfix%2B1.21.1%2Bneoforge.jar",
+      "size": 57104470,
+      "sha1": "6efc861be86ad3ef29ae756c1fdf0f22bbc2a4a1",
+      "required": true
+    },
+    {
+      "name": "Evilcraft",
+      "filename": "evilcraft-1.21.1-neoforge-1.2.85.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/evilcraft-1.21.1-neoforge-1.2.85.jar",
+      "size": 2830843,
+      "sha1": "ad469d1ca051c111341df45c27c8f10c4da02ec9",
+      "required": true
+    },
+    {
+      "name": "Exposure Neoforge",
+      "filename": "exposure-neoforge-1.21.1-1.9.16.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/exposure-neoforge-1.21.1-1.9.16.jar",
+      "size": 2189912,
+      "sha1": "b933b1d8c38ced7af391a82bc70f5d5c601ff21b",
+      "required": true
+    },
+    {
+      "name": "Exposure_expanded Neoforge",
+      "filename": "exposure_expanded-neoforge-1.0.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/exposure_expanded-neoforge-1.0.1.jar",
+      "size": 951304,
+      "sha1": "a64e3b59d385f472c583cc4ed3e9353538a9290d",
+      "required": true
+    },
+    {
+      "name": "Fancymenu_neoforge_3.8.1_MC_1.21.1.Jar",
+      "filename": "fancymenu_neoforge_3.8.1_MC_1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/fancymenu_neoforge_3.8.1_MC_1.21.1.jar",
+      "size": 4297501,
+      "sha1": "061a2c1ae0563d9d433928c243c58ee9b45f630f",
+      "required": true
+    },
+    {
+      "name": "Farmers Cutting Regions Unexplored",
+      "filename": "farmers-cutting-regions-unexplored-1.21.1-1.1b-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/farmers-cutting-regions-unexplored-1.21.1-1.1b-neoforge.jar",
+      "size": 113172,
+      "sha1": "1c3c1f0bba76a3e7722c1e6f117ad66e21ef6fe6",
+      "required": true
+    },
+    {
+      "name": "FarmersDelight",
+      "filename": "FarmersDelight-1.21.1-1.2.11a.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/FarmersDelight-1.21.1-1.2.11a.jar",
+      "size": 2944552,
+      "sha1": "a63092cb1e9cd1fb40a9bf1e9a5042d241eddb21",
+      "required": true
+    },
+    {
+      "name": "Farmers_delight_christmas_edition V1.0.2 Neoforge",
+      "filename": "farmers_delight_christmas_edition-V1.0.2-neoforge-1.20.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/farmers_delight_christmas_edition-V1.0.2-neoforge-1.20.1.jar",
+      "size": 399944,
+      "sha1": "5cd37977c0c07f38439860e153fcef12aa53a1bb",
       "required": true
     },
     {
       "name": "Ferritecore",
-      "filename": "ferritecore-6.1.1-neoforge.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/ferritecore-6.1.1-neoforge.jar",
-      "size": 116131,
-      "sha1": "a0433f16cf87244045f01a3e07f4fc65abf920c8",
+      "filename": "ferritecore-7.0.3-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ferritecore-7.0.3-neoforge.jar",
+      "size": 121559,
+      "sha1": "9563692efb708b6b568df27a01ec52f6311928ef",
       "required": true
     },
     {
-      "name": "ImmediatelyFast NeoForge",
-      "filename": "ImmediatelyFast-NeoForge-1.2.17+1.20.6.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/ImmediatelyFast-NeoForge-1.2.17%2B1.20.6.jar",
-      "size": 271546,
-      "sha1": "a5035419d2e89527276d7412670508d8580a79cb",
+      "name": "Forgified Fabric Api",
+      "filename": "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/forgified-fabric-api-0.116.7%2B2.2.4%2B1.21.1.jar",
+      "size": 5569717,
+      "sha1": "c0267082a59e166f47c3c64ba605faa778a29480",
+      "required": true
+    },
+    {
+      "name": "Framework Neoforge",
+      "filename": "framework-neoforge-1.21.1-0.13.11.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/framework-neoforge-1.21.1-0.13.11.jar",
+      "size": 387334,
+      "sha1": "e46eb138fbb13a12f37154fb4ec407d64b326475",
+      "required": true
+    },
+    {
+      "name": "Ftb Chunks Neoforge",
+      "filename": "ftb-chunks-neoforge-2101.1.14.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ftb-chunks-neoforge-2101.1.14.jar",
+      "size": 642340,
+      "sha1": "908b63b11d0e00ae6c9557d3fe6440bdbcf21bb7",
+      "required": true
+    },
+    {
+      "name": "Ftb Essentials Neoforge",
+      "filename": "ftb-essentials-neoforge-2101.1.9.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ftb-essentials-neoforge-2101.1.9.jar",
+      "size": 209459,
+      "sha1": "7d6f274b38d767215549ec066246390c49ac7ad8",
+      "required": true
+    },
+    {
+      "name": "Ftb Jei Extras",
+      "filename": "ftb-jei-extras-21.1.7.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ftb-jei-extras-21.1.7.jar",
+      "size": 69759,
+      "sha1": "ef01126201a805991bbfe5351cff7d0a9e3a077b",
+      "required": true
+    },
+    {
+      "name": "Ftb Library Neoforge",
+      "filename": "ftb-library-neoforge-2101.1.31.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ftb-library-neoforge-2101.1.31.jar",
+      "size": 1411181,
+      "sha1": "686d4e784c28c14f7760cc22b2de6a8573b56b74",
+      "required": true
+    },
+    {
+      "name": "Ftb Teams Neoforge",
+      "filename": "ftb-teams-neoforge-2101.1.10.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ftb-teams-neoforge-2101.1.10.jar",
+      "size": 302712,
+      "sha1": "363376ae0fb22cb0527170fdf6a066d1da9b0225",
+      "required": true
+    },
+    {
+      "name": "Fzzy_config",
+      "filename": "fzzy_config-0.7.6+1.21+neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/fzzy_config-0.7.6%2B1.21%2Bneoforge.jar",
+      "size": 2369895,
+      "sha1": "c0910f9b975aaab8545ce950539748fb33d704d1",
+      "required": true
+    },
+    {
+      "name": "Galosphere",
+      "filename": "Galosphere-1.21.1-1.5.3-NeoForge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Galosphere-1.21.1-1.5.3-NeoForge.jar",
+      "size": 35546284,
+      "sha1": "2cc8119b05f716639c5aff59185a3f52d00969a8",
+      "required": true
+    },
+    {
+      "name": "Geckolib Neoforge",
+      "filename": "geckolib-neoforge-1.21.1-4.8.4.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/geckolib-neoforge-1.21.1-4.8.4.jar",
+      "size": 622582,
+      "sha1": "eb854c8ec53ef922a5f3877a1aa4c1ce1352e0ce",
+      "required": true
+    },
+    {
+      "name": "GlitchCore Neoforge",
+      "filename": "GlitchCore-neoforge-1.21.1-2.1.0.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/GlitchCore-neoforge-1.21.1-2.1.0.0.jar",
+      "size": 90918,
+      "sha1": "8bce11b0b5233146051bb7b7a227247e03fe88b2",
+      "required": true
+    },
+    {
+      "name": "Gobber NeoForge",
+      "filename": "Gobber-NeoForge-1.21.1-2.10.15.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Gobber-NeoForge-1.21.1-2.10.15.jar",
+      "size": 674321,
+      "sha1": "c22c23bfd0f8a4567083cea195d43e9b1fa66da6",
+      "required": true
+    },
+    {
+      "name": "Gobberdelight",
+      "filename": "gobberdelight-2.2.0-neoforge-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/gobberdelight-2.2.0-neoforge-1.21.1.jar",
+      "size": 247151,
+      "sha1": "5b0e4ed301386e1ae783caea4a92335d1b1c4386",
+      "required": true
+    },
+    {
+      "name": "Gpumemleakfix",
+      "filename": "gpumemleakfix-1.21-1.8.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/gpumemleakfix-1.21-1.8.jar",
+      "size": 6574,
+      "sha1": "1894d2f0dd0c275aea0f1a6265ebd5715569c208",
+      "required": true
+    },
+    {
+      "name": "Handcrafted Neoforge",
+      "filename": "handcrafted-neoforge-1.21.1-4.0.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/handcrafted-neoforge-1.21.1-4.0.3.jar",
+      "size": 7132842,
+      "sha1": "8ecd27f1d66f9b742cfae3c8ffa773765f574b52",
+      "required": true
+    },
+    {
+      "name": "Hominid",
+      "filename": "hominid-1.3.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/hominid-1.3.2.jar",
+      "size": 1515351,
+      "sha1": "a8bdb3db32a4e1263521b537cc45f263506c455f",
+      "required": true
+    },
+    {
+      "name": "IceAndFireCE",
+      "filename": "IceAndFireCE-2.0-beta.15-1.21.1-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/IceAndFireCE-2.0-beta.15-1.21.1-neoforge.jar",
+      "size": 20933691,
+      "sha1": "c4d33745a8041465f2d12bb76fc048750288ce24",
+      "required": true
+    },
+    {
+      "name": "Iceandfirexbettercombat",
+      "filename": "iceandfirexbettercombat-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/iceandfirexbettercombat-1.21.1.jar",
+      "size": 3827,
+      "sha1": "d2fe560a1636a2f283a858592de628aa6d8c9dd1",
+      "required": true
+    },
+    {
+      "name": "Iceberg",
+      "filename": "Iceberg-1.21.1-neoforge-1.3.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Iceberg-1.21.1-neoforge-1.3.2.jar",
+      "size": 213853,
+      "sha1": "f6014d198be9503573cd9cb41cc789d282768ad8",
+      "required": true
+    },
+    {
+      "name": "Iris Neoforge",
+      "filename": "iris-neoforge-1.8.12+mc1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/iris-neoforge-1.8.12%2Bmc1.21.1.jar",
+      "size": 2438548,
+      "sha1": "a3e6355915c7d3b2bc392724795113e51d289378",
+      "required": true
+    },
+    {
+      "name": "Irons_lib",
+      "filename": "irons_lib-1.21.1-1.0.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/irons_lib-1.21.1-1.0.2.jar",
+      "size": 374610,
+      "sha1": "ef92f362a352a30f927c30c2be72a2d843c41342",
+      "required": true
+    },
+    {
+      "name": "Irons_spellbooks",
+      "filename": "irons_spellbooks-1.21.1-3.15.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/irons_spellbooks-1.21.1-3.15.6.jar",
+      "size": 13559913,
+      "sha1": "c9fea9c9b38376af74b7a7da68dc8a7671f4b961",
+      "required": true
+    },
+    {
+      "name": "Irons_spells_dynamic_skilltree_1.1.0.Jar",
+      "filename": "irons_spells_dynamic_skilltree_1.1.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/irons_spells_dynamic_skilltree_1.1.0.jar",
+      "size": 254720,
+      "sha1": "de961262e4328fea6861f6ba94323037df2d44ab",
+      "required": true
+    },
+    {
+      "name": "Item_descriptions",
+      "filename": "item_descriptions-2.7.2+1.21.1-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/item_descriptions-2.7.2%2B1.21.1-neoforge.jar",
+      "size": 574304,
+      "sha1": "492eaaf303ab363b2d252a2ad45c452a521bae04",
+      "required": true
+    },
+    {
+      "name": "Jade",
+      "filename": "Jade-1.21.1-NeoForge-15.10.5.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Jade-1.21.1-NeoForge-15.10.5.jar",
+      "size": 725742,
+      "sha1": "d5bf134b3dbde9f5258666823900e21341dc0a50",
+      "required": true
+    },
+    {
+      "name": "JadeAddons",
+      "filename": "JadeAddons-1.21.1-NeoForge-6.1.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/JadeAddons-1.21.1-NeoForge-6.1.0.jar",
+      "size": 74419,
+      "sha1": "d0aef07e67f9e2dd7ae68f9f27d845511d8eaff3",
+      "required": true
+    },
+    {
+      "name": "Jei",
+      "filename": "jei-1.21.1-neoforge-19.27.0.336.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/jei-1.21.1-neoforge-19.27.0.336.jar",
+      "size": 1529192,
+      "sha1": "d02c849e4e321e7b056a48e0242ec641560c2ab8",
+      "required": true
+    },
+    {
+      "name": "Jupiter",
+      "filename": "jupiter-2.3.7-1.21.1-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/jupiter-2.3.7-1.21.1-neoforge.jar",
+      "size": 278988,
+      "sha1": "569fb484ea5c8e8d690945ad4cd132131a719751",
+      "required": true
+    },
+    {
+      "name": "Just Hammers Neoforge",
+      "filename": "just-hammers-neoforge-21.1.4.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/just-hammers-neoforge-21.1.4.jar",
+      "size": 102133,
+      "sha1": "9db9f80eeb27ab968b989f4b9b0f4ab88af6ec01",
+      "required": true
+    },
+    {
+      "name": "Konkrete_neoforge_1.9.9_MC_1.21.Jar",
+      "filename": "konkrete_neoforge_1.9.9_MC_1.21.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/konkrete_neoforge_1.9.9_MC_1.21.jar",
+      "size": 618842,
+      "sha1": "97771eb287d5ac7fe667d1df9493d5e54c8ca1fa",
+      "required": true
+    },
+    {
+      "name": "Kotlinforforge",
+      "filename": "kotlinforforge-5.11.0-all.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/kotlinforforge-5.11.0-all.jar",
+      "size": 6869790,
+      "sha1": "a8b9f1233336ca9fe4702bc2cc5a6f97ad5e3b65",
+      "required": true
+    },
+    {
+      "name": "Lionfishapi",
+      "filename": "lionfishapi-2.7-fix-fix.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/lionfishapi-2.7-fix-fix.jar",
+      "size": 141535,
+      "sha1": "af90b807eed100e899b9afa13bb75e7d45294ba3",
+      "required": true
+    },
+    {
+      "name": "Lithostitched",
+      "filename": "lithostitched-1.7.0-neoforge-21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/lithostitched-1.7.0-neoforge-21.1.jar",
+      "size": 810138,
+      "sha1": "af79e2bdd58ecd0fd47bbc6667da1b8e345d224c",
+      "required": true
+    },
+    {
+      "name": "Lne_paladins Neoforge",
+      "filename": "lne_paladins-neoforge-1.1.0+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/lne_paladins-neoforge-1.1.0%2B1.21.1.jar",
+      "size": 719458,
+      "sha1": "e90751eaf02e86eb59073748d60ca28f353a5446",
+      "required": true
+    },
+    {
+      "name": "Lne_rogues Neoforge",
+      "filename": "lne_rogues-neoforge-1.1.0+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/lne_rogues-neoforge-1.1.0%2B1.21.1.jar",
+      "size": 356335,
+      "sha1": "98310669bdcda06810bcc63154bea605c9beb147",
+      "required": true
+    },
+    {
+      "name": "Lootr Neoforge",
+      "filename": "lootr-neoforge-1.21.1-1.11.37.118.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/lootr-neoforge-1.21.1-1.11.37.118.jar",
+      "size": 970642,
+      "sha1": "95058da06c16441211619ce46950502fd5ac1f64",
+      "required": true
+    },
+    {
+      "name": "L_Ender_s Cataclysm 1.21.1",
+      "filename": "L_Ender_s Cataclysm 1.21.1-3.27.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/L_Ender_s%20Cataclysm%201.21.1-3.27.jar",
+      "size": 73346519,
+      "sha1": "f34a5e3994fff1953c631b87b3dfa89ed62c26dc",
+      "required": true
+    },
+    {
+      "name": "Matc",
+      "filename": "matc-1.7.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/matc-1.7.1.jar",
+      "size": 41329,
+      "sha1": "ca1227efed35a55414ca03159e1e31ec70288d3a",
+      "required": true
+    },
+    {
+      "name": "Mca Neoforge",
+      "filename": "mca-neoforge-7.7.7+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mca-neoforge-7.7.7%2B1.21.1.jar",
+      "size": 10466270,
+      "sha1": "4eeee7fb0e95e69f2f9453c00e1677d2daf36f87",
+      "required": true
+    },
+    {
+      "name": "Mcw Doors",
+      "filename": "mcw-doors-1.1.5-mc1.21.1neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mcw-doors-1.1.5-mc1.21.1neoforge.jar",
+      "size": 1190404,
+      "sha1": "c127904f23db1a641dd9e065ec51c5c177cb4cd7",
+      "required": true
+    },
+    {
+      "name": "Mcw Furniture",
+      "filename": "mcw-furniture-3.4.1-mc1.21.1neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mcw-furniture-3.4.1-mc1.21.1neoforge.jar",
+      "size": 2080436,
+      "sha1": "3dccc819f14bcc60b3683edd82ca8c5e64964229",
+      "required": true
+    },
+    {
+      "name": "Mcw Lights",
+      "filename": "mcw-lights-1.1.5-mc1.21.1neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mcw-lights-1.1.5-mc1.21.1neoforge.jar",
+      "size": 525744,
+      "sha1": "13c1107caf26b2c60d8626b3658b26cc7f634b38",
+      "required": true
+    },
+    {
+      "name": "Mcw Mcwfences",
+      "filename": "mcw-mcwfences-1.2.1-mc1.21.1neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mcw-mcwfences-1.2.1-mc1.21.1neoforge.jar",
+      "size": 673871,
+      "sha1": "b5580c3fc521ed8bf4db3e407bd590efc317f74d",
+      "required": true
+    },
+    {
+      "name": "Mcw Mcwwindows",
+      "filename": "mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar",
+      "size": 1261268,
+      "sha1": "eb1d3c118acb450cc2fe14c2ce7ce247a1bca60c",
+      "required": true
+    },
+    {
+      "name": "Mcw Trapdoors",
+      "filename": "mcw-trapdoors-1.1.5-mc1.21.1neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mcw-trapdoors-1.1.5-mc1.21.1neoforge.jar",
+      "size": 572870,
+      "sha1": "1f8b59e31f889f53b6296b42ee09d447e7e56620",
+      "required": true
+    },
+    {
+      "name": "Melody_neoforge_1.0.10_MC_1.21.Jar",
+      "filename": "melody_neoforge_1.0.10_MC_1.21.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/melody_neoforge_1.0.10_MC_1.21.jar",
+      "size": 36096,
+      "sha1": "e83052a92c4ca0016bcfe7f0207273983dc84698",
       "required": true
     },
     {
       "name": "Modernfix Neoforge",
-      "filename": "modernfix-neoforge-5.18.0+mc1.20.6.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/modernfix-neoforge-5.18.0%2Bmc1.20.6.jar",
-      "size": 530776,
-      "sha1": "1ab6481935f0313392cc4a63f306380ae282460d",
+      "filename": "modernfix-neoforge-5.27.2+mc1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/modernfix-neoforge-5.27.2%2Bmc1.21.1.jar",
+      "size": 562003,
+      "sha1": "6a164013d692c209157d06e178bc43deb3e1d946",
       "required": true
     },
     {
-      "name": "ObsidianUI Neoforge",
-      "filename": "ObsidianUI-neoforge-0.2.5+mc1.20.6.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/ObsidianUI-neoforge-0.2.5%2Bmc1.20.6.jar",
-      "size": 210839,
-      "sha1": "bd7b90c812d68dbd5ea54a51538107c81175bac9",
+      "name": "Modonomicon",
+      "filename": "modonomicon-1.21.1-neoforge-1.120.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/modonomicon-1.21.1-neoforge-1.120.1.jar",
+      "size": 2403998,
+      "sha1": "e127c8ba3d194678e11a00af6422394a7ed476b1",
       "required": true
     },
     {
-      "name": "Rrls",
-      "filename": "rrls-4.0.7+mc1.20.6-forge.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/rrls-4.0.7%2Bmc1.20.6-forge.jar",
-      "size": 168903,
-      "sha1": "56f8029d0cd2999a69a2490d3f73065406aa6479",
+      "name": "Moonlight",
+      "filename": "moonlight-1.21-2.29.33-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/moonlight-1.21-2.29.33-neoforge.jar",
+      "size": 1596760,
+      "sha1": "24e720753a7abc80f6673cf957c1e74aed52c084",
       "required": true
     },
     {
-      "name": "RyoamicLights Neoforge",
-      "filename": "RyoamicLights-neoforge-0.2.6+mc1.20.6.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/RyoamicLights-neoforge-0.2.6%2Bmc1.20.6.jar",
-      "size": 158406,
-      "sha1": "5edb6d8289d51364a1017d4f71e9aec3c3efadf4",
+      "name": "Morerunesmod Nf",
+      "filename": "morerunesmod-nf-0.0.2-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/morerunesmod-nf-0.0.2-1.21.1.jar",
+      "size": 24442,
+      "sha1": "8360124a236d751066b829f49b63dd8225d7e409",
       "required": true
     },
     {
-      "name": "Yeetusexperimentus Neoforge",
-      "filename": "yeetusexperimentus-neoforge-86.0.0.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/yeetusexperimentus-neoforge-86.0.0.jar",
-      "size": 570059,
-      "sha1": "6aa90ab3340db96f31f878182b69bc054fe557ff",
+      "name": "More_rpg_library Neoforge",
+      "filename": "more_rpg_library-neoforge-2.5.27+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/more_rpg_library-neoforge-2.5.27%2B1.21.1.jar",
+      "size": 1979517,
+      "sha1": "26262cbd67b2e0532cfb42bca36e073cfb19532b",
+      "required": true
+    },
+    {
+      "name": "More_spell_attributes Nf",
+      "filename": "more_spell_attributes-nf-0.0.9-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/more_spell_attributes-nf-0.0.9-1.21.1.jar",
+      "size": 33913,
+      "sha1": "62d14259947e26057df983d997bcff4eaef92f78",
+      "required": true
+    },
+    {
+      "name": "Mowziesmobs",
+      "filename": "mowziesmobs-1.21.1-1.8.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mowziesmobs-1.21.1-1.8.2.jar",
+      "size": 36042925,
+      "sha1": "d64475cd77444b056ece6472c79d40293dc63c6c",
+      "required": true
+    },
+    {
+      "name": "MysticalAgriculture",
+      "filename": "MysticalAgriculture-1.21.1-8.0.24.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/MysticalAgriculture-1.21.1-8.0.24.jar",
+      "size": 2323380,
+      "sha1": "3084737e2ff780dd2847e40df5fe8bc709ee7261",
+      "required": true
+    },
+    {
+      "name": "Mythsandlegends",
+      "filename": "mythsandlegends-0.0.8.5.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/mythsandlegends-0.0.8.5.jar",
+      "size": 4710259,
+      "sha1": "e3fc8e03783b241dfc68237911b122ae13b5509d",
+      "required": true
+    },
+    {
+      "name": "Notenoughanimations Neoforge",
+      "filename": "notenoughanimations-neoforge-1.12.2-mc1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/notenoughanimations-neoforge-1.12.2-mc1.21.1.jar",
+      "size": 1933309,
+      "sha1": "a7713e65d5c5bbda51ef396275869db3f5d675a6",
+      "required": true
+    },
+    {
+      "name": "Nullscape_1.21.X_v1.2.14.Jar",
+      "filename": "Nullscape_1.21.x_v1.2.14.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Nullscape_1.21.x_v1.2.14.jar",
+      "size": 355748,
+      "sha1": "ae8e1cbd5de6cf6f450bb44cd69cd284dad690dd",
+      "required": true
+    },
+    {
+      "name": "Occultengineering",
+      "filename": "occultengineering-1.21.1-0.12.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/occultengineering-1.21.1-0.12.1.jar",
+      "size": 593367,
+      "sha1": "9881f2e885b77b69ebc775e4088a40f56ec3ab0a",
+      "required": true
+    },
+    {
+      "name": "Occultism",
+      "filename": "occultism-1.21.1-neoforge-1.214.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/occultism-1.21.1-neoforge-1.214.0.jar",
+      "size": 6942952,
+      "sha1": "d22268a682a5f78a384253c317572b17505b4fa9",
+      "required": true
+    },
+    {
+      "name": "OctoLib NEOFORGE",
+      "filename": "OctoLib-NEOFORGE-0.6.1+1.21.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/OctoLib-NEOFORGE-0.6.1%2B1.21.jar",
+      "size": 540285,
+      "sha1": "052b71b4897b3a76b4b10afda4d9342e66fb19f1",
+      "required": true
+    },
+    {
+      "name": "Owo Lib Neoforge",
+      "filename": "owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/owo-lib-neoforge-0.12.15.5-beta.1%2B1.21.jar",
+      "size": 1221583,
+      "sha1": "48dda11a6710591cf162bdbedf982ea21dd1f2ed",
+      "required": true
+    },
+    {
+      "name": "Paladins Neoforge",
+      "filename": "paladins-neoforge-2.7.1+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/paladins-neoforge-2.7.1%2B1.21.1.jar",
+      "size": 2474189,
+      "sha1": "321898839cfcec923c543092c706ccdd3dec0a43",
+      "required": true
+    },
+    {
+      "name": "Player Animation Lib Forge",
+      "filename": "player-animation-lib-forge-2.0.4+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/player-animation-lib-forge-2.0.4%2B1.21.1.jar",
+      "size": 203149,
+      "sha1": "05be8ddcc78532b9a5520c718edc6c971cd0057c",
+      "required": true
+    },
+    {
+      "name": "PlayerRevive_NEOFORGE_v2.1.0_mc1.21.1.Jar",
+      "filename": "PlayerRevive_NEOFORGE_v2.1.0_mc1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/PlayerRevive_NEOFORGE_v2.1.0_mc1.21.1.jar",
+      "size": 5304844,
+      "sha1": "adfcce760562c383a22bd912cda829cb4f1f3847",
+      "required": true
+    },
+    {
+      "name": "Pneumaticcraft Repressurized",
+      "filename": "pneumaticcraft-repressurized-8.2.19+mc1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/pneumaticcraft-repressurized-8.2.19%2Bmc1.21.1.jar",
+      "size": 11780404,
+      "sha1": "b54ae52676ec7e51dd3adb7006f0b838faae9dbb",
+      "required": true
+    },
+    {
+      "name": "Polymorph Neoforge",
+      "filename": "polymorph-neoforge-1.1.0+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/polymorph-neoforge-1.1.0%2B1.21.1.jar",
+      "size": 174972,
+      "sha1": "84f8c539fa326dc723ae62b7a6916d6b01982d07",
+      "required": true
+    },
+    {
+      "name": "Prickle Neoforge",
+      "filename": "prickle-neoforge-1.21.1-21.1.11.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/prickle-neoforge-1.21.1-21.1.11.jar",
+      "size": 84812,
+      "sha1": "5174059ecf97340a0de5ef211b938de26c4eaa36",
+      "required": true
+    },
+    {
+      "name": "Pufferfish_unofficial_additions",
+      "filename": "pufferfish_unofficial_additions-1.21.1-2.2.8.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/pufferfish_unofficial_additions-1.21.1-2.2.8.jar",
+      "size": 52976,
+      "sha1": "b273ea691e027b33fb9a19fb966c5f072edfa5c0",
+      "required": true
+    },
+    {
+      "name": "Puffish_attributes",
+      "filename": "puffish_attributes-0.8.2-1.21-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/puffish_attributes-0.8.2-1.21-neoforge.jar",
+      "size": 235521,
+      "sha1": "f4b67aa8da294203203bc8e6cd4b0cbf0a99d9dc",
+      "required": true
+    },
+    {
+      "name": "Puffish_skills",
+      "filename": "puffish_skills-0.17.3-1.21-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/puffish_skills-0.17.3-1.21-neoforge.jar",
+      "size": 617167,
+      "sha1": "4e6119010eaad3a571f70b7198422bb1b9d92589",
+      "required": true
+    },
+    {
+      "name": "PuzzlesLib V21.1.39",
+      "filename": "PuzzlesLib-v21.1.39-1.21.1-NeoForge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/PuzzlesLib-v21.1.39-1.21.1-NeoForge.jar",
+      "size": 1080389,
+      "sha1": "bcc0900fbbf6d6fc5ca05039cd5725e6145225f2",
+      "required": true
+    },
+    {
+      "name": "Ranged_weapon_api Neoforge",
+      "filename": "ranged_weapon_api-neoforge-2.3.3+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ranged_weapon_api-neoforge-2.3.3%2B1.21.1.jar",
+      "size": 141442,
+      "sha1": "1c44e981e0bc99ddd0983577b0f28375bdf9f338",
+      "required": true
+    },
+    {
+      "name": "Reeses Sodium Options Neoforge",
+      "filename": "reeses-sodium-options-neoforge-1.8.3+mc1.21.4.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/reeses-sodium-options-neoforge-1.8.3%2Bmc1.21.4.jar",
+      "size": 78451,
+      "sha1": "b03d05495be28d8cef7a34872941bb8d703d60e6",
+      "required": true
+    },
+    {
+      "name": "Refurbished_furniture Neoforge",
+      "filename": "refurbished_furniture-neoforge-1.21.1-1.0.22.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/refurbished_furniture-neoforge-1.21.1-1.0.22.jar",
+      "size": 7133477,
+      "sha1": "6c209e6b755ff26218efd55aedf2dea49183d29b",
+      "required": true
+    },
+    {
+      "name": "Regions Unexplored",
+      "filename": "regions-unexplored-0.6+beta4-neoforge-21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/regions-unexplored-0.6%2Bbeta4-neoforge-21.1.jar",
+      "size": 6154310,
+      "sha1": "66b009aee6545da64232835a24f1a9a765736720",
+      "required": true
+    },
+    {
+      "name": "Resourcefullib Neoforge",
+      "filename": "resourcefullib-neoforge-1.21-3.0.12.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/resourcefullib-neoforge-1.21-3.0.12.jar",
+      "size": 484332,
+      "sha1": "24389c8e48ff0e8594e4686b750c494c66a5f8df",
+      "required": true
+    },
+    {
+      "name": "Rogues Neoforge",
+      "filename": "rogues-neoforge-2.7.0+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/rogues-neoforge-2.7.0%2B1.21.1.jar",
+      "size": 877247,
+      "sha1": "dc41eaa29a9835362b03560cd9208ae62d799d9e",
+      "required": true
+    },
+    {
+      "name": "Runes Neoforge",
+      "filename": "runes-neoforge-1.2.1+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/runes-neoforge-1.2.1%2B1.21.1.jar",
+      "size": 320254,
+      "sha1": "c38b440097cc48f4ff7e0e783635a90d07c40974",
+      "required": true
+    },
+    {
+      "name": "Sable Neoforge",
+      "filename": "sable-neoforge-1.21.1-1.1.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/sable-neoforge-1.21.1-1.1.3.jar",
+      "size": 24766579,
+      "sha1": "98b491efe417046ced3fc4b2e45f603b5007c972",
+      "required": true
+    },
+    {
+      "name": "Searchables Neoforge",
+      "filename": "Searchables-neoforge-1.21.1-1.0.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/Searchables-neoforge-1.21.1-1.0.2.jar",
+      "size": 77326,
+      "sha1": "5b8a0b43a474c066371b2e16f9bfb88622552a74",
+      "required": true
+    },
+    {
+      "name": "Servercore Neoforge",
+      "filename": "servercore-neoforge-1.5.5+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/servercore-neoforge-1.5.5%2B1.21.1.jar",
+      "size": 1391731,
+      "sha1": "a7694052c8a76c3a3fe19fd5043e8314a3d4d58a",
+      "required": true
+    },
+    {
+      "name": "Shield_api Neoforge",
+      "filename": "shield_api-neoforge-2.2.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/shield_api-neoforge-2.2.0.jar",
+      "size": 45428,
+      "sha1": "dfbb73a2a92bac5c06f6b0a747a6660a3e04ed0b",
+      "required": true
+    },
+    {
+      "name": "Simplylight",
+      "filename": "simplylight-1.5.3+1.21.1-b4.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/simplylight-1.5.3%2B1.21.1-b4.jar",
+      "size": 1103352,
+      "sha1": "d85bfed3824cb66d258acf11c73edaf11d583223",
+      "required": true
+    },
+    {
+      "name": "Simplyswords Neoforge",
+      "filename": "simplyswords-neoforge-1.63.0-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/simplyswords-neoforge-1.63.0-1.21.1.jar",
+      "size": 12617777,
+      "sha1": "7dd9bdbc601f8d8a8e5bbe2d2db5343321ee2fb4",
+      "required": true
+    },
+    {
+      "name": "SimplyTooltips Neoforge",
+      "filename": "SimplyTooltips-neoforge-0.1.3.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/SimplyTooltips-neoforge-0.1.3.jar",
+      "size": 5320037,
+      "sha1": "2bbc2c8b5eb0fcc7ece66e336639a4fd554fd746",
+      "required": true
+    },
+    {
+      "name": "SmartBrainLib Neoforge",
+      "filename": "SmartBrainLib-neoforge-1.21.1-1.16.11.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/SmartBrainLib-neoforge-1.21.1-1.16.11.jar",
+      "size": 391053,
+      "sha1": "0310135a01eeceefbc7f1ab017498a65f3ad6836",
+      "required": true
+    },
+    {
+      "name": "Smoothboot",
+      "filename": "smoothboot-1.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/smoothboot-1.0.jar",
+      "size": 16821,
+      "sha1": "3ddac22cb877c2be4aa4812a8f41320d05d6b5a0",
+      "required": true
+    },
+    {
+      "name": "Sodium Neoforge",
+      "filename": "sodium-neoforge-0.6.13+mc1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/sodium-neoforge-0.6.13%2Bmc1.21.1.jar",
+      "size": 1162994,
+      "sha1": "38af70fa4dc4b2aaac636e92fdba3bedd5a025e1",
+      "required": true
+    },
+    {
+      "name": "Sophisticatedbackpacks",
+      "filename": "sophisticatedbackpacks-1.21.1-3.25.41.1683.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/sophisticatedbackpacks-1.21.1-3.25.41.1683.jar",
+      "size": 1023170,
+      "sha1": "cd95506848aaa0aa2ad0d3df3274a28cf49bd7d3",
+      "required": true
+    },
+    {
+      "name": "Sophisticatedbackpackscreateintegration",
+      "filename": "sophisticatedbackpackscreateintegration-1.21.1-0.1.5.29.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/sophisticatedbackpackscreateintegration-1.21.1-0.1.5.29.jar",
+      "size": 82316,
+      "sha1": "51851c61e8be5b799b5ad8aa109b3416509605b7",
+      "required": true
+    },
+    {
+      "name": "Sophisticatedcore",
+      "filename": "sophisticatedcore-1.21.1-1.4.25.1696.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/sophisticatedcore-1.21.1-1.4.25.1696.jar",
+      "size": 1480937,
+      "sha1": "73a50ab2396d53445be6c7f45328f2c613c1f589",
+      "required": true
+    },
+    {
+      "name": "Sophisticatedstorage",
+      "filename": "sophisticatedstorage-1.21.1-1.5.39.1644.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/sophisticatedstorage-1.21.1-1.5.39.1644.jar",
+      "size": 1667457,
+      "sha1": "76c39b42f3040bf913f6728db292f70f9f7d8e4c",
+      "required": true
+    },
+    {
+      "name": "Sophisticatedstoragecreateintegration",
+      "filename": "sophisticatedstoragecreateintegration-1.21.1-0.1.16.122.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/sophisticatedstoragecreateintegration-1.21.1-0.1.16.122.jar",
+      "size": 133625,
+      "sha1": "b779e324bbd6b09dbbcbe42bd9b0b189ed775acd",
+      "required": true
+    },
+    {
+      "name": "Sound Physics Remastered Neoforge",
+      "filename": "sound-physics-remastered-neoforge-1.21.1-1.5.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/sound-physics-remastered-neoforge-1.21.1-1.5.1.jar",
+      "size": 202454,
+      "sha1": "31cf754f9e5f62d1ca257f297e5dce394024696c",
+      "required": true
+    },
+    {
+      "name": "Spell_engine Neoforge",
+      "filename": "spell_engine-neoforge-1.9.9+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/spell_engine-neoforge-1.9.9%2B1.21.1.jar",
+      "size": 3785539,
+      "sha1": "0469717da1a4870641f70fdd19955fc97bb8ce97",
+      "required": true
+    },
+    {
+      "name": "Spell_power Neoforge",
+      "filename": "spell_power-neoforge-1.4.6+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/spell_power-neoforge-1.4.6%2B1.21.1.jar",
+      "size": 195485,
+      "sha1": "2b8b01cffb2a5774b180b618630bd34cff2f9d54",
+      "required": true
+    },
+    {
+      "name": "Structure_pool_api Neoforge",
+      "filename": "structure_pool_api-neoforge-1.2.1+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/structure_pool_api-neoforge-1.2.1%2B1.21.1.jar",
+      "size": 140459,
+      "sha1": "5150191b29de8462705e5aa715c2554a5744dc7b",
+      "required": true
+    },
+    {
+      "name": "Supplementaries",
+      "filename": "supplementaries-1.21-3.5.34-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/supplementaries-1.21-3.5.34-neoforge.jar",
+      "size": 13366044,
+      "sha1": "9fa5889f7669d1f5f20e658f96cbf31a17c52171",
+      "required": true
+    },
+    {
+      "name": "TerraBlender Neoforge",
+      "filename": "TerraBlender-neoforge-1.21.1-4.1.0.8.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/TerraBlender-neoforge-1.21.1-4.1.0.8.jar",
+      "size": 120364,
+      "sha1": "2016eed89eac0eb0510d2190c3b0b80bf4346191",
+      "required": true
+    },
+    {
+      "name": "Theurgy",
+      "filename": "theurgy-1.21.1-neoforge-1.72.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/theurgy-1.21.1-neoforge-1.72.0.jar",
+      "size": 5298083,
+      "sha1": "2941582e65aac0934b369bfd42f91ecdc4b35e72",
+      "required": true
+    },
+    {
+      "name": "The_Undergarden",
+      "filename": "The_Undergarden-1.21.1-0.9.6.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/The_Undergarden-1.21.1-0.9.6.jar",
+      "size": 45294936,
+      "sha1": "75f1753eefa0b7b8e3afd7377deaf9fe71392476",
+      "required": true
+    },
+    {
+      "name": "Tombstone Neoforge",
+      "filename": "tombstone-neoforge-1.21.1-9.4.9.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/tombstone-neoforge-1.21.1-9.4.9.jar",
+      "size": 2306596,
+      "sha1": "b2b6e918554954e5f22dce6cff9154c289cac6ba",
+      "required": true
+    },
+    {
+      "name": "ToughAsNails Neoforge",
+      "filename": "ToughAsNails-neoforge-1.21.1-10.1.0.13.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/ToughAsNails-neoforge-1.21.1-10.1.0.13.jar",
+      "size": 429638,
+      "sha1": "a90d30bb2d4a53830319ecfc842c28c013e2428f",
+      "required": true
+    },
+    {
+      "name": "Touhoulittlemaid",
+      "filename": "touhoulittlemaid-1.5.2-neoforge+mc1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/touhoulittlemaid-1.5.2-neoforge%2Bmc1.21.1.jar",
+      "size": 24399610,
+      "sha1": "d9e4de0c5deae4c54d360b493596847765beae10",
+      "required": true
+    },
+    {
+      "name": "Twilightdelight",
+      "filename": "twilightdelight-3.1.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/twilightdelight-3.1.1.jar",
+      "size": 1330145,
+      "sha1": "69805c372c7c5c4dbff1724de3e4911371feb61d",
+      "required": true
+    },
+    {
+      "name": "Twilightforest",
+      "filename": "twilightforest-1.21.1-4.8.3345-universal.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/twilightforest-1.21.1-4.8.3345-universal.jar",
+      "size": 27154121,
+      "sha1": "9cfd4154928433e2f1f6cfc3deb48c284debb580",
+      "required": true
+    },
+    {
+      "name": "Txnilib Neoforge",
+      "filename": "txnilib-neoforge-1.0.24-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/txnilib-neoforge-1.0.24-1.21.1.jar",
+      "size": 6276522,
+      "sha1": "17b1bbb96e922e683a1807a2e7bece603fdc491d",
+      "required": true
+    },
+    {
+      "name": "T_and_t Neoforge Fabric",
+      "filename": "t_and_t-neoforge-fabric-1.13.7+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/t_and_t-neoforge-fabric-1.13.7%2B1.21.1.jar",
+      "size": 3641681,
+      "sha1": "eb7666961fb0b0d0ff8bc01ff62194952f6b6b8c",
+      "required": true
+    },
+    {
+      "name": "Undergardendelight",
+      "filename": "undergardendelight-1.2.1-neoforge-1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/undergardendelight-1.2.1-neoforge-1.21.1.jar",
+      "size": 287295,
+      "sha1": "7b9aa29f300e2694f770b786880f37dfa3964407",
+      "required": true
+    },
+    {
+      "name": "Uranus",
+      "filename": "uranus-2.4-1.21.1-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/uranus-2.4-1.21.1-neoforge.jar",
+      "size": 847484,
+      "sha1": "757d8dd20bf22c7157e275c2a7643cde76984e4d",
+      "required": true
+    },
+    {
+      "name": "VeggiesDelight",
+      "filename": "VeggiesDelight-1.21.1-1.9.2.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/VeggiesDelight-1.21.1-1.9.2.jar",
+      "size": 556428,
+      "sha1": "5f5aef456677e699eb9f9b6027a9c1ec8c58c437",
+      "required": true
+    },
+    {
+      "name": "Voicechat Neoforge",
+      "filename": "voicechat-neoforge-1.21.1-2.6.16.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/voicechat-neoforge-1.21.1-2.6.16.jar",
+      "size": 4901132,
+      "sha1": "d813f78eeeb6a27e2529df098128a12e4c043dd8",
+      "required": true
+    },
+    {
+      "name": "Walljump",
+      "filename": "walljump-1.21.1-1.3.5-neoforge.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/walljump-1.21.1-1.3.5-neoforge.jar",
+      "size": 166353,
+      "sha1": "944241dafbf6042bfd7ba0ef468832499b411a00",
+      "required": true
+    },
+    {
+      "name": "Waystones Neoforge",
+      "filename": "waystones-neoforge-1.21.1-21.1.30.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/waystones-neoforge-1.21.1-21.1.30.jar",
+      "size": 877356,
+      "sha1": "1321fbbe1484498b481ef05b6aef374b07fe6a23",
+      "required": true
+    },
+    {
+      "name": "Wizards Neoforge",
+      "filename": "wizards-neoforge-2.7.1+1.21.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/wizards-neoforge-2.7.1%2B1.21.1.jar",
+      "size": 2856093,
+      "sha1": "ed2260e48b4cd091527539fbfeff30b04cc948fc",
+      "required": true
+    },
+    {
+      "name": "[1.21.1] SecurityCraft V1.10.1.Jar",
+      "filename": "[1.21.1] SecurityCraft v1.10.1.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/%5B1.21.1%5D%20SecurityCraft%20v1.10.1.jar",
+      "size": 4951098,
+      "sha1": "692f81f4fdcd0d1298db96a9582eea41baeae252",
       "required": true
     }
   ],
   "configFiles": [
     {
-      "path": "dynamic_fps.json",
-      "url": "https://soyaldo.github.io/example-modpack/config/dynamic_fps.json"
+      "path": "accessories.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/accessories.json5"
     },
     {
-      "path": "embeddium-fingerprint.json",
-      "url": "https://soyaldo.github.io/example-modpack/config/embeddium-fingerprint.json"
+      "path": "aiimprovements-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/aiimprovements-common.toml"
     },
     {
-      "path": "embeddium-mixins.properties",
-      "url": "https://soyaldo.github.io/example-modpack/config/embeddium-mixins.properties"
+      "path": "alexscaves-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves-client.toml"
     },
     {
-      "path": "embeddium-options.json",
-      "url": "https://soyaldo.github.io/example-modpack/config/embeddium-options.json"
+      "path": "alexscaves-general.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves-general.toml"
     },
     {
-      "path": "entityculling.json",
-      "url": "https://soyaldo.github.io/example-modpack/config/entityculling.json"
+      "path": "alexscavesdelight-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscavesdelight-common.toml"
+    },
+    {
+      "path": "alexscaves_biome_generation/.version",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves_biome_generation/.version"
+    },
+    {
+      "path": "alexscaves_biome_generation/abyssal_chasm.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves_biome_generation/abyssal_chasm.json"
+    },
+    {
+      "path": "alexscaves_biome_generation/candy_cavity.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves_biome_generation/candy_cavity.json"
+    },
+    {
+      "path": "alexscaves_biome_generation/forlorn_hollows.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves_biome_generation/forlorn_hollows.json"
+    },
+    {
+      "path": "alexscaves_biome_generation/magnetic_caves.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves_biome_generation/magnetic_caves.json"
+    },
+    {
+      "path": "alexscaves_biome_generation/primordial_caves.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves_biome_generation/primordial_caves.json"
+    },
+    {
+      "path": "alexscaves_biome_generation/toxic_caves.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexscaves_biome_generation/toxic_caves.json"
+    },
+    {
+      "path": "alexsmobs/alligator_snapping_turtle_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/alligator_snapping_turtle_spawns.json"
+    },
+    {
+      "path": "alexsmobs/anaconda_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/anaconda_spawns.json"
+    },
+    {
+      "path": "alexsmobs/anteater_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/anteater_spawns.json"
+    },
+    {
+      "path": "alexsmobs/bald_eagle_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/bald_eagle_spawns.json"
+    },
+    {
+      "path": "alexsmobs/banana_slug_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/banana_slug_spawns.json"
+    },
+    {
+      "path": "alexsmobs/bison_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/bison_spawns.json"
+    },
+    {
+      "path": "alexsmobs/blobfish_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/blobfish_spawns.json"
+    },
+    {
+      "path": "alexsmobs/blue_jay_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/blue_jay_spawns.json"
+    },
+    {
+      "path": "alexsmobs/bone_serpent_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/bone_serpent_spawns.json"
+    },
+    {
+      "path": "alexsmobs/bunfungus_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/bunfungus_spawns.json"
+    },
+    {
+      "path": "alexsmobs/cachalot_whale_beached_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/cachalot_whale_beached_spawns.json"
+    },
+    {
+      "path": "alexsmobs/cachalot_whale_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/cachalot_whale_spawns.json"
+    },
+    {
+      "path": "alexsmobs/caiman_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/caiman_spawns.json"
+    },
+    {
+      "path": "alexsmobs/capuchin_monkey_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/capuchin_monkey_spawns.json"
+    },
+    {
+      "path": "alexsmobs/catfish_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/catfish_spawns.json"
+    },
+    {
+      "path": "alexsmobs/cave_centipede_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/cave_centipede_spawns.json"
+    },
+    {
+      "path": "alexsmobs/cockroach_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/cockroach_spawns.json"
+    },
+    {
+      "path": "alexsmobs/comb_jelly_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/comb_jelly_spawns.json"
+    },
+    {
+      "path": "alexsmobs/cosmaw_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/cosmaw_spawns.json"
+    },
+    {
+      "path": "alexsmobs/cosmic_cod_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/cosmic_cod_spawns.json"
+    },
+    {
+      "path": "alexsmobs/crimson_mosquito_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/crimson_mosquito_spawns.json"
+    },
+    {
+      "path": "alexsmobs/crocodile_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/crocodile_spawns.json"
+    },
+    {
+      "path": "alexsmobs/crow_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/crow_spawns.json"
+    },
+    {
+      "path": "alexsmobs/devils_hole_pupfish_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/devils_hole_pupfish_spawns.json"
+    },
+    {
+      "path": "alexsmobs/dropbear_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/dropbear_spawns.json"
+    },
+    {
+      "path": "alexsmobs/elephant_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/elephant_spawns.json"
+    },
+    {
+      "path": "alexsmobs/emu_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/emu_spawns.json"
+    },
+    {
+      "path": "alexsmobs/endergrade_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/endergrade_spawns.json"
+    },
+    {
+      "path": "alexsmobs/enderiophage_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/enderiophage_spawns.json"
+    },
+    {
+      "path": "alexsmobs/farseer.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/farseer.json"
+    },
+    {
+      "path": "alexsmobs/flutter_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/flutter_spawns.json"
+    },
+    {
+      "path": "alexsmobs/flying_fish_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/flying_fish_spawns.json"
+    },
+    {
+      "path": "alexsmobs/fly_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/fly_spawns.json"
+    },
+    {
+      "path": "alexsmobs/frilled_shark_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/frilled_shark_spawns.json"
+    },
+    {
+      "path": "alexsmobs/froststalker_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/froststalker_spawns.json"
+    },
+    {
+      "path": "alexsmobs/gazelle_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/gazelle_spawns.json"
+    },
+    {
+      "path": "alexsmobs/gelada_monkey_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/gelada_monkey_spawns.json"
+    },
+    {
+      "path": "alexsmobs/giant_squid_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/giant_squid_spawns.json"
+    },
+    {
+      "path": "alexsmobs/gorilla_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/gorilla_spawns.json"
+    },
+    {
+      "path": "alexsmobs/grizzly_bear_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/grizzly_bear_spawns.json"
+    },
+    {
+      "path": "alexsmobs/guster_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/guster_spawns.json"
+    },
+    {
+      "path": "alexsmobs/hammerhead_shark_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/hammerhead_shark_spawns.json"
+    },
+    {
+      "path": "alexsmobs/hummingbird_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/hummingbird_spawns.json"
+    },
+    {
+      "path": "alexsmobs/jerboa_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/jerboa_spawns.json"
+    },
+    {
+      "path": "alexsmobs/kangaroo_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/kangaroo_spawns.json"
+    },
+    {
+      "path": "alexsmobs/komodo_dragon_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/komodo_dragon_spawns.json"
+    },
+    {
+      "path": "alexsmobs/laviathan_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/laviathan_spawns.json"
+    },
+    {
+      "path": "alexsmobs/leafcutter_anthill_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/leafcutter_anthill_spawns.json"
+    },
+    {
+      "path": "alexsmobs/lobster_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/lobster_spawns.json"
+    },
+    {
+      "path": "alexsmobs/maned_wolf_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/maned_wolf_spawns.json"
+    },
+    {
+      "path": "alexsmobs/mantis_shrimp_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/mantis_shrimp_spawns.json"
+    },
+    {
+      "path": "alexsmobs/mimicube_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/mimicube_spawns.json"
+    },
+    {
+      "path": "alexsmobs/mimic_octopus_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/mimic_octopus_spawns.json"
+    },
+    {
+      "path": "alexsmobs/moose_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/moose_spawns.json"
+    },
+    {
+      "path": "alexsmobs/mudskipper_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/mudskipper_spawns.json"
+    },
+    {
+      "path": "alexsmobs/mungus_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/mungus_spawns.json"
+    },
+    {
+      "path": "alexsmobs/murmur.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/murmur.json"
+    },
+    {
+      "path": "alexsmobs/orca_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/orca_spawns.json"
+    },
+    {
+      "path": "alexsmobs/platypus_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/platypus_spawns.json"
+    },
+    {
+      "path": "alexsmobs/potoo_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/potoo_spawns.json"
+    },
+    {
+      "path": "alexsmobs/raccoon_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/raccoon_spawns.json"
+    },
+    {
+      "path": "alexsmobs/rain_frog_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/rain_frog_spawns.json"
+    },
+    {
+      "path": "alexsmobs/rattlesnake_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/rattlesnake_spawns.json"
+    },
+    {
+      "path": "alexsmobs/rhinoceros_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/rhinoceros_spawns.json"
+    },
+    {
+      "path": "alexsmobs/roadrunner_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/roadrunner_spawns.json"
+    },
+    {
+      "path": "alexsmobs/rocky_roller_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/rocky_roller_spawns.json"
+    },
+    {
+      "path": "alexsmobs/seagull_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/seagull_spawns.json"
+    },
+    {
+      "path": "alexsmobs/seal_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/seal_spawns.json"
+    },
+    {
+      "path": "alexsmobs/shoebill_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/shoebill_spawns.json"
+    },
+    {
+      "path": "alexsmobs/skelewag_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/skelewag_spawns.json"
+    },
+    {
+      "path": "alexsmobs/skreecher.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/skreecher.json"
+    },
+    {
+      "path": "alexsmobs/skunk_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/skunk_spawns.json"
+    },
+    {
+      "path": "alexsmobs/snow_leopard_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/snow_leopard_spawns.json"
+    },
+    {
+      "path": "alexsmobs/soul_vulture_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/soul_vulture_spawns.json"
+    },
+    {
+      "path": "alexsmobs/spectre_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/spectre_spawns.json"
+    },
+    {
+      "path": "alexsmobs/straddler_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/straddler_spawns.json"
+    },
+    {
+      "path": "alexsmobs/stradpole_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/stradpole_spawns.json"
+    },
+    {
+      "path": "alexsmobs/sugar_glider_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/sugar_glider_spawns.json"
+    },
+    {
+      "path": "alexsmobs/sunbird_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/sunbird_spawns.json"
+    },
+    {
+      "path": "alexsmobs/tarantula_hawk_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/tarantula_hawk_spawns.json"
+    },
+    {
+      "path": "alexsmobs/tasmanian_devil_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/tasmanian_devil_spawns.json"
+    },
+    {
+      "path": "alexsmobs/terrapin_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/terrapin_spawns.json"
+    },
+    {
+      "path": "alexsmobs/tiger_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/tiger_spawns.json"
+    },
+    {
+      "path": "alexsmobs/toucan_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/toucan_spawns.json"
+    },
+    {
+      "path": "alexsmobs/triops_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/triops_spawns.json"
+    },
+    {
+      "path": "alexsmobs/tusklin_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/tusklin_spawns.json"
+    },
+    {
+      "path": "alexsmobs/underminer.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/underminer.json"
+    },
+    {
+      "path": "alexsmobs/void_worm_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/void_worm_spawns.json"
+    },
+    {
+      "path": "alexsmobs/warped_mosco_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/warped_mosco_spawns.json"
+    },
+    {
+      "path": "alexsmobs/warped_toad_spawns.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs/warped_toad_spawns.json"
+    },
+    {
+      "path": "alexsmobs-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/alexsmobs-common.toml"
+    },
+    {
+      "path": "alltheleaks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/alltheleaks.json"
+    },
+    {
+      "path": "appleskin-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/appleskin-client.toml"
+    },
+    {
+      "path": "aquaculture-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/aquaculture-common.toml"
+    },
+    {
+      "path": "archers/effects.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/archers/effects.json"
+    },
+    {
+      "path": "archers/equipment.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/archers/equipment.json"
+    },
+    {
+      "path": "archers/tweaks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/archers/tweaks.json"
+    },
+    {
+      "path": "archers/villages.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/archers/villages.json"
+    },
+    {
+      "path": "archers_expansion/effects_v3.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/archers_expansion/effects_v3.json"
+    },
+    {
+      "path": "archers_expansion/equipment_v4.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/archers_expansion/equipment_v4.json"
+    },
+    {
+      "path": "archers_expansion/tweaks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/archers_expansion/tweaks.json"
+    },
+    {
+      "path": "armageddon_mod_config.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/armageddon_mod_config.toml"
+    },
+    {
+      "path": "arsenal/effects.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/arsenal/effects.json"
+    },
+    {
+      "path": "arsenal/equipment_v2.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/arsenal/equipment_v2.json"
+    },
+    {
+      "path": "arsenal/ranged_weapons.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/arsenal/ranged_weapons.json"
+    },
+    {
+      "path": "arsenal/shields.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/arsenal/shields.json"
+    },
+    {
+      "path": "ars_additions-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_additions-common.toml"
+    },
+    {
+      "path": "ars_elemental-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_elemental-client.toml"
+    },
+    {
+      "path": "ars_elemental-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_elemental-common.toml"
+    },
+    {
+      "path": "ars_elemental-startup.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_elemental-startup.toml"
+    },
+    {
+      "path": "ars_nouveau/doc_data.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau/doc_data.json"
+    },
+    {
+      "path": "ars_nouveau/search_index/segments_1",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau/search_index/segments_1"
+    },
+    {
+      "path": "ars_nouveau/search_index/write.lock",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau/search_index/write.lock"
+    },
+    {
+      "path": "ars_nouveau/search_index/_0.cfe",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau/search_index/_0.cfe"
+    },
+    {
+      "path": "ars_nouveau/search_index/_0.cfs",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau/search_index/_0.cfs"
+    },
+    {
+      "path": "ars_nouveau/search_index/_0.si",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau/search_index/_0.si"
+    },
+    {
+      "path": "ars_nouveau-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau-client.toml"
+    },
+    {
+      "path": "ars_nouveau-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau-common.toml"
+    },
+    {
+      "path": "ars_nouveau-startup.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_nouveau-startup.toml"
+    },
+    {
+      "path": "ars_technica-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ars_technica-common.toml"
+    },
+    {
+      "path": "artifacts/client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/artifacts/client.toml"
+    },
+    {
+      "path": "artifacts/general.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/artifacts/general.toml"
+    },
+    {
+      "path": "artifacts/items.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/artifacts/items.toml"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.drygmy.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.drygmy.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.feather.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.feather.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.mana_regen.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.mana_regen.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.max_mana.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.max_mana.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.saturation.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.saturation.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.spell_damage.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.spell_damage.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.warding.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.warding.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.weight.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.weight.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/ars_nouveau.perk.wixie.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/ars_nouveau.perk.wixie.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.abjuration_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.abjuration_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.abjuration_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.abjuration_resistance.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.air_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.air_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.air_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.air_resistance.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.earth_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.earth_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.earth_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.earth_resistance.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.elemental_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.elemental_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.elemental_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.elemental_resistance.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.fire_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.fire_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.fire_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.fire_resistance.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.mana_discount.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.mana_discount.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.manipulation_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.manipulation_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.manipulation_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.manipulation_resistance.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.necromancy_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.necromancy_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.necromancy_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.necromancy_resistance.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.spell_crit.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.spell_crit.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.spell_crit_damage.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.spell_crit_damage.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.summon_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.summon_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.summon_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.summon_resistance.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.water_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.water_power.json"
+    },
+    {
+      "path": "attributefix/ars_nouveau/sauce.perk.water_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ars_nouveau/sauce.perk.water_resistance.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.attack_burning_duration.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.attack_burning_duration.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.drinking_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.drinking_speed.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.eating_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.eating_speed.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.flatulence.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.flatulence.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.invincibility_ticks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.invincibility_ticks.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.mount_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.mount_speed.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.movement_speed_on_snow.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.movement_speed_on_snow.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.slip_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.slip_resistance.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.sprinting_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.sprinting_speed.json"
+    },
+    {
+      "path": "attributefix/artifacts/generic.sprinting_step_height.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/generic.sprinting_step_height.json"
+    },
+    {
+      "path": "attributefix/artifacts/player.entity_experience.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/player.entity_experience.json"
+    },
+    {
+      "path": "attributefix/artifacts/player.villager_reputation.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/artifacts/player.villager_reputation.json"
+    },
+    {
+      "path": "attributefix/bettercombatextension/generic.attack_stamina_cost.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/bettercombatextension/generic.attack_stamina_cost.json"
+    },
+    {
+      "path": "attributefix/block_factorys_bosses/roll_count.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/block_factorys_bosses/roll_count.json"
+    },
+    {
+      "path": "attributefix/botanypots/growth.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/botanypots/growth.json"
+    },
+    {
+      "path": "attributefix/botanypots/yield.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/botanypots/yield.json"
+    },
+    {
+      "path": "attributefix/cataclysm/additional_critical_damage.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/cataclysm/additional_critical_damage.json"
+    },
+    {
+      "path": "attributefix/cataclysm/charge_time.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/cataclysm/charge_time.json"
+    },
+    {
+      "path": "attributefix/cataclysm/eat_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/cataclysm/eat_speed.json"
+    },
+    {
+      "path": "attributefix/cataclysm/nature_heal.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/cataclysm/nature_heal.json"
+    },
+    {
+      "path": "attributefix/eidolon_repraised/chanting_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eidolon_repraised/chanting_speed.json"
+    },
+    {
+      "path": "attributefix/eidolon_repraised/magic_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eidolon_repraised/magic_power.json"
+    },
+    {
+      "path": "attributefix/eidolon_repraised/max_soul_hearts.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eidolon_repraised/max_soul_hearts.json"
+    },
+    {
+      "path": "attributefix/eidolon_repraised/persistent_soul_hearts.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eidolon_repraised/persistent_soul_hearts.json"
+    },
+    {
+      "path": "attributefix/eternal_starlight/generic.enemy_follow_range_multiplier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eternal_starlight/generic.enemy_follow_range_multiplier.json"
+    },
+    {
+      "path": "attributefix/eternal_starlight/generic.ether_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eternal_starlight/generic.ether_resistance.json"
+    },
+    {
+      "path": "attributefix/eternal_starlight/generic.fire_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eternal_starlight/generic.fire_resistance.json"
+    },
+    {
+      "path": "attributefix/eternal_starlight/generic.heal_multiplier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eternal_starlight/generic.heal_multiplier.json"
+    },
+    {
+      "path": "attributefix/eternal_starlight/generic.meteor_counterattack_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eternal_starlight/generic.meteor_counterattack_chance.json"
+    },
+    {
+      "path": "attributefix/eternal_starlight/generic.thrown_potion_distance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eternal_starlight/generic.thrown_potion_distance.json"
+    },
+    {
+      "path": "attributefix/eternal_starlight/player.fog_vision.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/eternal_starlight/player.fog_vision.json"
+    },
+    {
+      "path": "attributefix/galosphere/illager_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/galosphere/illager_resistance.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/blood_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/blood_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/blood_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/blood_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/casting_movespeed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/casting_movespeed.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/cast_time_reduction.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/cast_time_reduction.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/cooldown_reduction.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/cooldown_reduction.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/eldritch_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/eldritch_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/eldritch_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/eldritch_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/ender_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/ender_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/ender_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/ender_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/evocation_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/evocation_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/evocation_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/evocation_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/fire_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/fire_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/fire_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/fire_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/holy_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/holy_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/holy_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/holy_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/ice_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/ice_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/ice_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/ice_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/lightning_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/lightning_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/lightning_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/lightning_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/mana_regen.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/mana_regen.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/max_mana.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/max_mana.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/nature_magic_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/nature_magic_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/nature_spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/nature_spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/spell_power.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/spell_power.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/spell_resist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/spell_resist.json"
+    },
+    {
+      "path": "attributefix/irons_spellbooks/summon_damage.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/irons_spellbooks/summon_damage.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.armor.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.armor.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.armor_toughness.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.armor_toughness.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.attack_damage.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.attack_damage.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.attack_knockback.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.attack_knockback.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.attack_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.attack_speed.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.burning_time.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.burning_time.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.explosion_knockback_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.explosion_knockback_resistance.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.fall_damage_multiplier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.fall_damage_multiplier.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.flying_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.flying_speed.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.follow_range.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.follow_range.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.gravity.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.gravity.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.jump_strength.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.jump_strength.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.knockback_resistance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.knockback_resistance.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.luck.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.luck.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.max_absorption.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.max_absorption.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.max_health.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.max_health.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.movement_efficiency.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.movement_efficiency.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.movement_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.movement_speed.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.oxygen_bonus.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.oxygen_bonus.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.safe_fall_distance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.safe_fall_distance.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.scale.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.scale.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.step_height.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.step_height.json"
+    },
+    {
+      "path": "attributefix/minecraft/generic.water_movement_efficiency.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/generic.water_movement_efficiency.json"
+    },
+    {
+      "path": "attributefix/minecraft/player.block_break_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/player.block_break_speed.json"
+    },
+    {
+      "path": "attributefix/minecraft/player.block_interaction_range.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/player.block_interaction_range.json"
+    },
+    {
+      "path": "attributefix/minecraft/player.entity_interaction_range.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/player.entity_interaction_range.json"
+    },
+    {
+      "path": "attributefix/minecraft/player.mining_efficiency.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/player.mining_efficiency.json"
+    },
+    {
+      "path": "attributefix/minecraft/player.sneaking_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/player.sneaking_speed.json"
+    },
+    {
+      "path": "attributefix/minecraft/player.submerged_mining_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/player.submerged_mining_speed.json"
+    },
+    {
+      "path": "attributefix/minecraft/player.sweeping_damage_ratio.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/player.sweeping_damage_ratio.json"
+    },
+    {
+      "path": "attributefix/minecraft/zombie.spawn_reinforcements.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/minecraft/zombie.spawn_reinforcements.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/air_fuse_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/air_fuse_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/arcane_fuse_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/arcane_fuse_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/armor_piercing.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/armor_piercing.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/bleeding_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/bleeding_chance.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/burning_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/burning_chance.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/damage_reflect_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/damage_reflect_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/earth_fuse_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/earth_fuse_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/fire_fuse_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/fire_fuse_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/freeze_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/freeze_chance.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/frost_fuse_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/frost_fuse_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/healing_fuse_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/healing_fuse_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/lifesteal_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/lifesteal_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/poison_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/poison_chance.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/rage_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/rage_modifier.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/spell_vampire.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/spell_vampire.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/stagger_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/stagger_chance.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/stun_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/stun_chance.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/tenacity.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/tenacity.json"
+    },
+    {
+      "path": "attributefix/more_rpg_classes/water_fuse_modifier.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/more_rpg_classes/water_fuse_modifier.json"
+    },
+    {
+      "path": "attributefix/neoforge/nametag_distance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/neoforge/nametag_distance.json"
+    },
+    {
+      "path": "attributefix/neoforge/swim_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/neoforge/swim_speed.json"
+    },
+    {
+      "path": "attributefix/puffish_attributes/stamina.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/puffish_attributes/stamina.json"
+    },
+    {
+      "path": "attributefix/ranged_weapon/damage.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ranged_weapon/damage.json"
+    },
+    {
+      "path": "attributefix/ranged_weapon/haste.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ranged_weapon/haste.json"
+    },
+    {
+      "path": "attributefix/ranged_weapon/pull_time.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ranged_weapon/pull_time.json"
+    },
+    {
+      "path": "attributefix/ranged_weapon/velocity.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/ranged_weapon/velocity.json"
+    },
+    {
+      "path": "attributefix/sable/player.sub_level_punch_cooldown.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/sable/player.sub_level_punch_cooldown.json"
+    },
+    {
+      "path": "attributefix/sable/player.sub_level_punch_strength.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/sable/player.sub_level_punch_strength.json"
+    },
+    {
+      "path": "attributefix/spell_engine/damage_taken.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_engine/damage_taken.json"
+    },
+    {
+      "path": "attributefix/spell_engine/evasion_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_engine/evasion_chance.json"
+    },
+    {
+      "path": "attributefix/spell_engine/healing_taken.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_engine/healing_taken.json"
+    },
+    {
+      "path": "attributefix/spell_power/air.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/air.json"
+    },
+    {
+      "path": "attributefix/spell_power/arcane.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/arcane.json"
+    },
+    {
+      "path": "attributefix/spell_power/blood_element.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/blood_element.json"
+    },
+    {
+      "path": "attributefix/spell_power/corruption_element.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/corruption_element.json"
+    },
+    {
+      "path": "attributefix/spell_power/critical_chance.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/critical_chance.json"
+    },
+    {
+      "path": "attributefix/spell_power/critical_damage.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/critical_damage.json"
+    },
+    {
+      "path": "attributefix/spell_power/earth.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/earth.json"
+    },
+    {
+      "path": "attributefix/spell_power/fire.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/fire.json"
+    },
+    {
+      "path": "attributefix/spell_power/frost.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/frost.json"
+    },
+    {
+      "path": "attributefix/spell_power/generic.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/generic.json"
+    },
+    {
+      "path": "attributefix/spell_power/haste.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/haste.json"
+    },
+    {
+      "path": "attributefix/spell_power/healing.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/healing.json"
+    },
+    {
+      "path": "attributefix/spell_power/lightning.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/lightning.json"
+    },
+    {
+      "path": "attributefix/spell_power/nature.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/nature.json"
+    },
+    {
+      "path": "attributefix/spell_power/nature_element.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/nature_element.json"
+    },
+    {
+      "path": "attributefix/spell_power/resistance.generic.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/resistance.generic.json"
+    },
+    {
+      "path": "attributefix/spell_power/soul.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/soul.json"
+    },
+    {
+      "path": "attributefix/spell_power/sound_element.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/sound_element.json"
+    },
+    {
+      "path": "attributefix/spell_power/water.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/water.json"
+    },
+    {
+      "path": "attributefix/spell_power/water_element.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/water_element.json"
+    },
+    {
+      "path": "attributefix/spell_power/wind_element.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/spell_power/wind_element.json"
+    },
+    {
+      "path": "attributefix/touhou_little_maid/maid_crossbow_attack_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/touhou_little_maid/maid_crossbow_attack_speed.json"
+    },
+    {
+      "path": "attributefix/touhou_little_maid/maid_gun_attack_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/touhou_little_maid/maid_gun_attack_speed.json"
+    },
+    {
+      "path": "attributefix/touhou_little_maid/maid_hunger.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/touhou_little_maid/maid_hunger.json"
+    },
+    {
+      "path": "attributefix/touhou_little_maid/maid_passive_use_shield_tick.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/touhou_little_maid/maid_passive_use_shield_tick.json"
+    },
+    {
+      "path": "attributefix/touhou_little_maid/maid_pickup_range.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/touhou_little_maid/maid_pickup_range.json"
+    },
+    {
+      "path": "attributefix/touhou_little_maid/maid_shoot_cooldown.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/touhou_little_maid/maid_shoot_cooldown.json"
+    },
+    {
+      "path": "attributefix/touhou_little_maid/maid_trident_cooldown.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/touhou_little_maid/maid_trident_cooldown.json"
+    },
+    {
+      "path": "attributefix/touhou_little_maid/maid_use_item_speed.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/touhou_little_maid/maid_use_item_speed.json"
+    },
+    {
+      "path": "attributefix/twilightforest/clone_count.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/twilightforest/clone_count.json"
+    },
+    {
+      "path": "attributefix/twilightforest/max_shield_strength.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/twilightforest/max_shield_strength.json"
+    },
+    {
+      "path": "attributefix/twilightforest/minion_count.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/attributefix/twilightforest/minion_count.json"
+    },
+    {
+      "path": "badoptimizations.txt",
+      "url": "https://soyaldo.github.io/example-modpack/config/badoptimizations.txt"
+    },
+    {
+      "path": "bettercombat/client.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/bettercombat/client.json5"
+    },
+    {
+      "path": "bettercombat/fallback_compatibility.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/bettercombat/fallback_compatibility.json"
+    },
+    {
+      "path": "bettercombat/server.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/bettercombat/server.json5"
+    },
+    {
+      "path": "bettercombat/weapon_trails.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/bettercombat/weapon_trails.json"
+    },
+    {
+      "path": "bettercombatextension/client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/bettercombatextension/client.toml"
+    },
+    {
+      "path": "bettercombatextension/server.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/bettercombatextension/server.toml"
+    },
+    {
+      "path": "biomesoplenty/biome_toggles.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/biomesoplenty/biome_toggles.json"
+    },
+    {
+      "path": "biomesoplenty/gameplay.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/biomesoplenty/gameplay.toml"
+    },
+    {
+      "path": "biomesoplenty/generation.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/biomesoplenty/generation.toml"
+    },
+    {
+      "path": "bosses_rise_config.client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/bosses_rise_config.client.toml"
+    },
+    {
+      "path": "bosses_rise_config.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/bosses_rise_config.toml"
+    },
+    {
+      "path": "botanypots-mysticalagriculture/general.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/botanypots-mysticalagriculture/general.json"
+    },
+    {
+      "path": "botanypots.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/botanypots.json"
+    },
+    {
+      "path": "boundless/quest_state/default.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/boundless/quest_state/default.json"
+    },
+    {
+      "path": "boundless/quest_state/mp_172.93.111.198_25565.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/boundless/quest_state/mp_172.93.111.198_25565.json"
+    },
+    {
+      "path": "boundless-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/boundless-common.toml"
+    },
+    {
+      "path": "carryon-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/carryon-client.toml"
+    },
+    {
+      "path": "carryon-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/carryon-common.toml"
+    },
+    {
+      "path": "cataclysm-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/cataclysm-client.toml"
+    },
+    {
+      "path": "cataclysm-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/cataclysm-common.toml"
+    },
+    {
+      "path": "cataclysm_dimension/cataclysm_dimension.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/cataclysm_dimension/cataclysm_dimension.json"
+    },
+    {
+      "path": "citadel-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/citadel-common.toml"
+    },
+    {
+      "path": "clutternomore/client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/clutternomore/client.toml"
+    },
+    {
+      "path": "clutternomore/startup.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/clutternomore/startup.toml"
+    },
+    {
+      "path": "collective.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/collective.json5"
+    },
+    {
+      "path": "comforts-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/comforts-common.toml"
+    },
+    {
+      "path": "comforts-server.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/comforts-server.toml"
+    },
+    {
+      "path": "completionistsindex-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/completionistsindex-client.toml"
+    },
+    {
+      "path": "connector.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/connector.json"
+    },
+    {
+      "path": "connectorextras_energy_bridge-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/connectorextras_energy_bridge-common.toml"
+    },
+    {
+      "path": "cosmeticarmorreworked-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/cosmeticarmorreworked-client.toml"
+    },
+    {
+      "path": "cosmeticarmorreworked-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/cosmeticarmorreworked-common.toml"
+    },
+    {
+      "path": "crash_assistant/config.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/crash_assistant/config.toml"
+    },
+    {
+      "path": "crash_assistant/crash_assistant_localization_overrides/README.md",
+      "url": "https://soyaldo.github.io/example-modpack/config/crash_assistant/crash_assistant_localization_overrides/README.md"
+    },
+    {
+      "path": "crash_assistant/modlist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/crash_assistant/modlist.json"
+    },
+    {
+      "path": "crash_assistant/scripts/log_analysis/example.jexl",
+      "url": "https://soyaldo.github.io/example-modpack/config/crash_assistant/scripts/log_analysis/example.jexl"
+    },
+    {
+      "path": "crash_assistant/scripts/startup/example.jexl",
+      "url": "https://soyaldo.github.io/example-modpack/config/crash_assistant/scripts/startup/example.jexl"
+    },
+    {
+      "path": "create-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/create-client.toml"
+    },
+    {
+      "path": "create-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/create-common.toml"
+    },
+    {
+      "path": "creativecore-client.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/creativecore-client.json"
+    },
+    {
+      "path": "cristellib/alexscaves/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/alexscaves/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/alexscaves/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/alexscaves/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/archeological/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/archeological/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/archeological/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/archeological/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/ars_additions/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/ars_additions/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/ars_additions/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/ars_additions/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/ars_elemental/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/ars_elemental/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/ars_elemental/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/ars_elemental/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/ars_nouveau/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/ars_nouveau/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/ars_nouveau/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/ars_nouveau/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/auto_config_settings.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/auto_config_settings.json5"
+    },
+    {
+      "path": "cristellib/block_factorys_bosses/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/block_factorys_bosses/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/block_factorys_bosses/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/block_factorys_bosses/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/built_in_packs.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/built_in_packs.json5"
+    },
+    {
+      "path": "cristellib/cataclysm/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/cataclysm/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/cataclysm/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/cataclysm/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/deeperdarker/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/deeperdarker/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/deeperdarker/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/deeperdarker/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/dungeons_arise/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/dungeons_arise/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/dungeons_arise/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/dungeons_arise/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/dungeons_arise_seven_seas/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/dungeons_arise_seven_seas/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/dungeons_arise_seven_seas/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/dungeons_arise_seven_seas/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/eidolon_repraised/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/eidolon_repraised/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/eidolon_repraised/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/eidolon_repraised/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/eternal_starlight/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/eternal_starlight/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/eternal_starlight/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/eternal_starlight/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/evilcraft/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/evilcraft/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/evilcraft/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/evilcraft/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/evilcraftcompat/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/evilcraftcompat/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/evilcraftcompat/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/evilcraftcompat/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/galosphere/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/galosphere/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/galosphere/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/galosphere/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/iceandfire/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/iceandfire/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/iceandfire/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/iceandfire/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/irons_spellbooks/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/irons_spellbooks/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/irons_spellbooks/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/irons_spellbooks/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/lne_paladins/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/lne_paladins/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/lne_paladins/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/lne_paladins/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/lne_rogues/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/lne_rogues/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/lne_rogues/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/lne_rogues/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/mowziesmobs/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/mowziesmobs/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/mowziesmobs/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/mowziesmobs/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/mythsandlegends/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/mythsandlegends/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/mythsandlegends/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/mythsandlegends/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/nullscape/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/nullscape/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/nullscape/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/nullscape/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/supplementaries/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/supplementaries/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/supplementaries/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/supplementaries/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/tombstone/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/tombstone/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/tombstone/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/tombstone/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/twilightforest/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/twilightforest/structure_toggle_config.json5"
+    },
+    {
+      "path": "cristellib/undergarden/structure_placement_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/undergarden/structure_placement_config.json5"
+    },
+    {
+      "path": "cristellib/undergarden/structure_toggle_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/cristellib/undergarden/structure_toggle_config.json5"
+    },
+    {
+      "path": "cucumber-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/cucumber-client.toml"
+    },
+    {
+      "path": "cucumber-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/cucumber-common.toml"
+    },
+    {
+      "path": "cucumber-tags.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/cucumber-tags.json"
+    },
+    {
+      "path": "cupboard.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/cupboard.json"
+    },
+    {
+      "path": "curios-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/curios-client.toml"
+    },
+    {
+      "path": "curios-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/curios-common.toml"
+    },
+    {
+      "path": "cyclopscore-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/cyclopscore-common.toml"
+    },
+    {
+      "path": "deeperdarker-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/deeperdarker-common.toml"
+    },
+    {
+      "path": "dynamictrees-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/dynamictrees-common.toml"
+    },
+    {
+      "path": "dynamictreesplus-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/dynamictreesplus-common.toml"
+    },
+    {
+      "path": "eidolon_repraised-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/eidolon_repraised-client.toml"
+    },
+    {
+      "path": "eidolon_repraised-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/eidolon_repraised-common.toml"
+    },
+    {
+      "path": "elemental_wizards_rpg/effects_v2.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/elemental_wizards_rpg/effects_v2.json"
+    },
+    {
+      "path": "elemental_wizards_rpg/equipment_v1.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/elemental_wizards_rpg/equipment_v1.json"
+    },
+    {
+      "path": "elemental_wizards_rpg/tweaks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/elemental_wizards_rpg/tweaks.json"
+    },
+    {
+      "path": "enchdesc.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/enchdesc.json"
+    },
+    {
+      "path": "entity_model_features.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/entity_model_features.json"
+    },
+    {
+      "path": "entity_texture_features.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/entity_texture_features.json"
+    },
+    {
+      "path": "eternal_starlight.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/eternal_starlight.json"
+    },
+    {
+      "path": "eternal_starlight_delight.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/eternal_starlight_delight.json"
+    },
+    {
+      "path": "etf_warnings.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/etf_warnings.json"
+    },
+    {
+      "path": "evilcraft-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/evilcraft-common.toml"
+    },
+    {
+      "path": "exposure-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/exposure-client.toml"
+    },
+    {
+      "path": "exposure-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/exposure-common.toml"
+    },
+    {
+      "path": "fabric/indigo-renderer.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/fabric/indigo-renderer.properties"
+    },
+    {
+      "path": "fancymenu/customizablemenus.txt",
+      "url": "https://soyaldo.github.io/example-modpack/config/fancymenu/customizablemenus.txt"
+    },
+    {
+      "path": "fancymenu/custom_gui_screens.txt",
+      "url": "https://soyaldo.github.io/example-modpack/config/fancymenu/custom_gui_screens.txt"
+    },
+    {
+      "path": "fancymenu/legacy_checklist.txt",
+      "url": "https://soyaldo.github.io/example-modpack/config/fancymenu/legacy_checklist.txt"
+    },
+    {
+      "path": "fancymenu/options.txt",
+      "url": "https://soyaldo.github.io/example-modpack/config/fancymenu/options.txt"
+    },
+    {
+      "path": "fancymenu/ui_themes/dark.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/fancymenu/ui_themes/dark.json"
+    },
+    {
+      "path": "fancymenu/ui_themes/light.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/fancymenu/ui_themes/light.json"
+    },
+    {
+      "path": "fancymenu/user_variables.db",
+      "url": "https://soyaldo.github.io/example-modpack/config/fancymenu/user_variables.db"
+    },
+    {
+      "path": "farmersdelight-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/farmersdelight-client.toml"
+    },
+    {
+      "path": "farmersdelight-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/farmersdelight-common.toml"
     },
     {
       "path": "ferritecore-mixin.toml",
       "url": "https://soyaldo.github.io/example-modpack/config/ferritecore-mixin.toml"
     },
     {
+      "path": "flywheel-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/flywheel-client.toml"
+    },
+    {
       "path": "fml.toml",
       "url": "https://soyaldo.github.io/example-modpack/config/fml.toml"
     },
     {
-      "path": "immediatelyfast.json",
-      "url": "https://soyaldo.github.io/example-modpack/config/immediatelyfast.json"
+      "path": "ftbchunks-client.snbt",
+      "url": "https://soyaldo.github.io/example-modpack/config/ftbchunks-client.snbt"
     },
     {
-      "path": "lithium.properties",
-      "url": "https://soyaldo.github.io/example-modpack/config/lithium.properties"
+      "path": "ftbessentials.snbt",
+      "url": "https://soyaldo.github.io/example-modpack/config/ftbessentials.snbt"
+    },
+    {
+      "path": "ftblibrary-client.snbt",
+      "url": "https://soyaldo.github.io/example-modpack/config/ftblibrary-client.snbt"
+    },
+    {
+      "path": "fzzy_config/keybinds.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/fzzy_config/keybinds.toml"
+    },
+    {
+      "path": "galosphere-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/galosphere-common.toml"
+    },
+    {
+      "path": "gobber2/gobber2_config_settings.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/gobber2/gobber2_config_settings.json5"
+    },
+    {
+      "path": "hominid-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/hominid-common.toml"
+    },
+    {
+      "path": "iceandfire/iaf-client.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/iceandfire/iaf-client.json"
+    },
+    {
+      "path": "iceandfire/iaf-common.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/iceandfire/iaf-common.json"
+    },
+    {
+      "path": "iris-excluded.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/iris-excluded.json"
+    },
+    {
+      "path": "iris.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/iris.properties"
+    },
+    {
+      "path": "irons_spellbooks-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/irons_spellbooks-client.toml"
+    },
+    {
+      "path": "irons_spellbooks_spell_config/global_config.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/irons_spellbooks_spell_config/global_config.json"
+    },
+    {
+      "path": "irons_spellbooks_spell_config/irons_spellbooks/example.txt",
+      "url": "https://soyaldo.github.io/example-modpack/config/irons_spellbooks_spell_config/irons_spellbooks/example.txt"
+    },
+    {
+      "path": "item_descriptions.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/item_descriptions.toml"
+    },
+    {
+      "path": "jade/hide-blocks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jade/hide-blocks.json"
+    },
+    {
+      "path": "jade/hide-entities.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jade/hide-entities.json"
+    },
+    {
+      "path": "jade/jade.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jade/jade.json"
+    },
+    {
+      "path": "jade/plugins.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jade/plugins.json"
+    },
+    {
+      "path": "jade/sort-order.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jade/sort-order.json"
+    },
+    {
+      "path": "jei/blacklist.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/blacklist.json"
+    },
+    {
+      "path": "jei/ingredient-list-mod-sort-order.ini",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/ingredient-list-mod-sort-order.ini"
+    },
+    {
+      "path": "jei/ingredient-list-type-sort-order.ini",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/ingredient-list-type-sort-order.ini"
+    },
+    {
+      "path": "jei/jei-client.ini",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/jei-client.ini"
+    },
+    {
+      "path": "jei/jei-colors.ini",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/jei-colors.ini"
+    },
+    {
+      "path": "jei/jei-debug.ini",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/jei-debug.ini"
+    },
+    {
+      "path": "jei/jei-mod-id-format.ini",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/jei-mod-id-format.ini"
+    },
+    {
+      "path": "jei/recipe-category-sort-order.ini",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/recipe-category-sort-order.ini"
+    },
+    {
+      "path": "jei/world/server/Minecraft_Server_1e1d1718/bookmarks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/world/server/Minecraft_Server_1e1d1718/bookmarks.json"
+    },
+    {
+      "path": "jei/world/server/Minecraft_Server_1e1d1718/lookupHistory.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jei/world/server/Minecraft_Server_1e1d1718/lookupHistory.json"
+    },
+    {
+      "path": "jupiter.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/jupiter.json"
+    },
+    {
+      "path": "justhammers.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/justhammers.json"
+    },
+    {
+      "path": "konkrete/locals/de_de.local",
+      "url": "https://soyaldo.github.io/example-modpack/config/konkrete/locals/de_de.local"
+    },
+    {
+      "path": "konkrete/locals/en_us.local",
+      "url": "https://soyaldo.github.io/example-modpack/config/konkrete/locals/en_us.local"
+    },
+    {
+      "path": "konkrete/locals/pl_pl.local",
+      "url": "https://soyaldo.github.io/example-modpack/config/konkrete/locals/pl_pl.local"
+    },
+    {
+      "path": "konkrete/locals/pt_br.local",
+      "url": "https://soyaldo.github.io/example-modpack/config/konkrete/locals/pt_br.local"
+    },
+    {
+      "path": "l2configs/l2core-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/l2configs/l2core-client.toml"
+    },
+    {
+      "path": "lithostitched.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/lithostitched.json"
+    },
+    {
+      "path": "lne_paladins/effects.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/lne_paladins/effects.json"
+    },
+    {
+      "path": "lne_paladins/tweaks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/lne_paladins/tweaks.json"
+    },
+    {
+      "path": "lne_rogues/effects.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/lne_rogues/effects.json"
+    },
+    {
+      "path": "lne_rogues/tweaks_v1.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/lne_rogues/tweaks_v1.json"
+    },
+    {
+      "path": "lootr-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/lootr-client.toml"
+    },
+    {
+      "path": "lootr-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/lootr-common.toml"
+    },
+    {
+      "path": "matc-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/matc-client.toml"
+    },
+    {
+      "path": "mca.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/mca.json"
+    },
+    {
+      "path": "mobplayeranimator/client.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/mobplayeranimator/client.json5"
     },
     {
       "path": "modernfix-common.toml",
@@ -135,6 +3679,54 @@
       "url": "https://soyaldo.github.io/example-modpack/config/modernfix-mixins.properties"
     },
     {
+      "path": "modonomicon-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/modonomicon-client.toml"
+    },
+    {
+      "path": "moonlight-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/moonlight-client.toml"
+    },
+    {
+      "path": "moonlight-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/moonlight-common.toml"
+    },
+    {
+      "path": "more_rpg_classes/effects_v4.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/more_rpg_classes/effects_v4.json"
+    },
+    {
+      "path": "more_rpg_classes/elemental_weaknesses.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/more_rpg_classes/elemental_weaknesses.json"
+    },
+    {
+      "path": "more_rpg_classes/loot.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/more_rpg_classes/loot.json"
+    },
+    {
+      "path": "more_rpg_classes/tweaks_v2.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/more_rpg_classes/tweaks_v2.json"
+    },
+    {
+      "path": "more_spell_attributes-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/more_spell_attributes-common.toml"
+    },
+    {
+      "path": "mowziesmobs-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/mowziesmobs-client.toml"
+    },
+    {
+      "path": "mowziesmobs-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/mowziesmobs-common.toml"
+    },
+    {
+      "path": "mysticalagriculture-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/mysticalagriculture-common.toml"
+    },
+    {
+      "path": "mythsandlegends-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/mythsandlegends-common.toml"
+    },
+    {
       "path": "neoforge-client.toml",
       "url": "https://soyaldo.github.io/example-modpack/config/neoforge-client.toml"
     },
@@ -143,16 +3735,400 @@
       "url": "https://soyaldo.github.io/example-modpack/config/neoforge-common.toml"
     },
     {
-      "path": "neoforge-server.toml",
-      "url": "https://soyaldo.github.io/example-modpack/config/neoforge-server.toml"
+      "path": "notenoughanimations.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/notenoughanimations.json"
     },
     {
-      "path": "rrls.toml",
-      "url": "https://soyaldo.github.io/example-modpack/config/rrls.toml"
+      "path": "occultengineering-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/occultengineering-client.toml"
     },
     {
-      "path": "ryoamiclights.toml",
-      "url": "https://soyaldo.github.io/example-modpack/config/ryoamiclights.toml"
+      "path": "occultism-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/occultism-client.toml"
+    },
+    {
+      "path": "occultism-startup.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/occultism-startup.toml"
+    },
+    {
+      "path": "paladins/effects.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/paladins/effects.json"
+    },
+    {
+      "path": "paladins/equipment_v2.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/paladins/equipment_v2.json"
+    },
+    {
+      "path": "paladins/shields.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/paladins/shields.json"
+    },
+    {
+      "path": "paladins/tweaks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/paladins/tweaks.json"
+    },
+    {
+      "path": "paladins/villages.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/paladins/villages.json"
+    },
+    {
+      "path": "playerrevive-client.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/playerrevive-client.json"
+    },
+    {
+      "path": "pneumaticcraft/ArmorFeatureStatus.cfg",
+      "url": "https://soyaldo.github.io/example-modpack/config/pneumaticcraft/ArmorFeatureStatus.cfg"
+    },
+    {
+      "path": "pneumaticcraft/MicromissileDefaults.cfg",
+      "url": "https://soyaldo.github.io/example-modpack/config/pneumaticcraft/MicromissileDefaults.cfg"
+    },
+    {
+      "path": "pneumaticcraft/PneumaticArmorHUDLayout.cfg",
+      "url": "https://soyaldo.github.io/example-modpack/config/pneumaticcraft/PneumaticArmorHUDLayout.cfg"
+    },
+    {
+      "path": "pneumaticcraft/ProgrammingPuzzleBlacklist.cfg",
+      "url": "https://soyaldo.github.io/example-modpack/config/pneumaticcraft/ProgrammingPuzzleBlacklist.cfg"
+    },
+    {
+      "path": "pneumaticcraft/thirdparty.cfg",
+      "url": "https://soyaldo.github.io/example-modpack/config/pneumaticcraft/thirdparty.cfg"
+    },
+    {
+      "path": "pneumaticcraft-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/pneumaticcraft-client.toml"
+    },
+    {
+      "path": "pneumaticcraft-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/pneumaticcraft-common.toml"
+    },
+    {
+      "path": "ponder-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/ponder-client.toml"
+    },
+    {
+      "path": "refurbished_furniture.client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/refurbished_furniture.client.toml"
+    },
+    {
+      "path": "regions_unexplored/client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/regions_unexplored/client.toml"
+    },
+    {
+      "path": "regions_unexplored/common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/regions_unexplored/common.toml"
+    },
+    {
+      "path": "rogues/effects.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/rogues/effects.json"
+    },
+    {
+      "path": "rogues/equipment_v3.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/rogues/equipment_v3.json"
+    },
+    {
+      "path": "rogues/tweaks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/rogues/tweaks.json"
+    },
+    {
+      "path": "rogues/villages.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/rogues/villages.json"
+    },
+    {
+      "path": "rpg_series/loot_equipment_v2.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/rpg_series/loot_equipment_v2.json"
+    },
+    {
+      "path": "rpg_series/loot_scrolls_v2.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/rpg_series/loot_scrolls_v2.json"
+    },
+    {
+      "path": "rpg_series/tag_cache.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/rpg_series/tag_cache.json"
+    },
+    {
+      "path": "sable-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/sable-client.toml"
+    },
+    {
+      "path": "sable-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/sable-common.toml"
+    },
+    {
+      "path": "sauce-startup.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/sauce-startup.toml"
+    },
+    {
+      "path": "securitycraft-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/securitycraft-client.toml"
+    },
+    {
+      "path": "servercore/config.yml",
+      "url": "https://soyaldo.github.io/example-modpack/config/servercore/config.yml"
+    },
+    {
+      "path": "servercore/optimizations.yml",
+      "url": "https://soyaldo.github.io/example-modpack/config/servercore/optimizations.yml"
+    },
+    {
+      "path": "simplyswords/gem_powers.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/simplyswords/gem_powers.toml"
+    },
+    {
+      "path": "simplyswords/general.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/simplyswords/general.toml"
+    },
+    {
+      "path": "simplyswords/status_effects.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/simplyswords/status_effects.toml"
+    },
+    {
+      "path": "simplyswords/unique_effects.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/simplyswords/unique_effects.toml"
+    },
+    {
+      "path": "simplyswords/weapon_attributes.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/simplyswords/weapon_attributes.toml"
+    },
+    {
+      "path": "simplytooltips/config.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/simplytooltips/config.toml"
+    },
+    {
+      "path": "simulated-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/simulated-client.toml"
+    },
+    {
+      "path": "smoothboot.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/smoothboot.json"
+    },
+    {
+      "path": "sodium-fingerprint.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/sodium-fingerprint.json"
+    },
+    {
+      "path": "sodium-mixins.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/sodium-mixins.properties"
+    },
+    {
+      "path": "sodium-options.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/sodium-options.json"
+    },
+    {
+      "path": "sophisticatedbackpacks-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/sophisticatedbackpacks-common.toml"
+    },
+    {
+      "path": "sophisticatedcore-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/sophisticatedcore-client.toml"
+    },
+    {
+      "path": "sophisticatedcore-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/sophisticatedcore-common.toml"
+    },
+    {
+      "path": "sophisticatedstorage-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/sophisticatedstorage-client.toml"
+    },
+    {
+      "path": "sophisticatedstorage-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/sophisticatedstorage-common.toml"
+    },
+    {
+      "path": "sound_physics_remastered/occlusion.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/sound_physics_remastered/occlusion.properties"
+    },
+    {
+      "path": "sound_physics_remastered/reflectivity.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/sound_physics_remastered/reflectivity.properties"
+    },
+    {
+      "path": "sound_physics_remastered/soundphysics.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/sound_physics_remastered/soundphysics.properties"
+    },
+    {
+      "path": "sound_physics_remastered/sound_rates.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/sound_physics_remastered/sound_rates.properties"
+    },
+    {
+      "path": "spell_engine/client.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/spell_engine/client.json5"
+    },
+    {
+      "path": "spell_engine/elemental_weaknesses.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/spell_engine/elemental_weaknesses.json"
+    },
+    {
+      "path": "spell_engine/hud_config.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/spell_engine/hud_config.json"
+    },
+    {
+      "path": "spell_engine/server.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/spell_engine/server.json5"
+    },
+    {
+      "path": "spell_engine/spell_container_templates_v2.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/spell_engine/spell_container_templates_v2.json"
+    },
+    {
+      "path": "spell_engine/weapon_fallback.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/spell_engine/weapon_fallback.json"
+    },
+    {
+      "path": "spell_power/attributes.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/spell_power/attributes.json"
+    },
+    {
+      "path": "supplementaries-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/supplementaries-client.toml"
+    },
+    {
+      "path": "supplementaries-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/supplementaries-common.toml"
+    },
+    {
+      "path": "terrablender.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/terrablender.toml"
+    },
+    {
+      "path": "theurgy-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/theurgy-client.toml"
+    },
+    {
+      "path": "tombstone-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/tombstone-client.toml"
+    },
+    {
+      "path": "tombstone-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/tombstone-common.toml"
+    },
+    {
+      "path": "toughasnails/client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/toughasnails/client.toml"
+    },
+    {
+      "path": "toughasnails/temperature.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/toughasnails/temperature.toml"
+    },
+    {
+      "path": "toughasnails/thirst.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/toughasnails/thirst.toml"
+    },
+    {
+      "path": "touhou_little_maid/info.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/touhou_little_maid/info.json"
+    },
+    {
+      "path": "touhou_little_maid/sites/llm.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/touhou_little_maid/sites/llm.json"
+    },
+    {
+      "path": "touhou_little_maid/sites/stt.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/touhou_little_maid/sites/stt.json"
+    },
+    {
+      "path": "touhou_little_maid/sites/tts.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/touhou_little_maid/sites/tts.json"
+    },
+    {
+      "path": "touhou_little_maid-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/touhou_little_maid-common.toml"
+    },
+    {
+      "path": "towns_and_towers/structure_enable_or_disable_new.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/towns_and_towers/structure_enable_or_disable_new.json5"
+    },
+    {
+      "path": "towns_and_towers/structure_rarity_new.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/towns_and_towers/structure_rarity_new.json5"
+    },
+    {
+      "path": "transition.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/transition.json"
+    },
+    {
+      "path": "trender.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/trender.json"
+    },
+    {
+      "path": "twilightdelight-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/twilightdelight-client.toml"
+    },
+    {
+      "path": "twilightforest-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/twilightforest-client.toml"
+    },
+    {
+      "path": "twilightforest-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/twilightforest-common.toml"
+    },
+    {
+      "path": "undergarden-client.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/undergarden-client.toml"
+    },
+    {
+      "path": "undergarden-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/undergarden-common.toml"
+    },
+    {
+      "path": "vanilla_structures/placement_structure_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/vanilla_structures/placement_structure_config.json5"
+    },
+    {
+      "path": "vanilla_structures/toggle_structure_config.json5",
+      "url": "https://soyaldo.github.io/example-modpack/config/vanilla_structures/toggle_structure_config.json5"
+    },
+    {
+      "path": "veggiesdelight-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/veggiesdelight-common.toml"
+    },
+    {
+      "path": "voicechat/category-volumes.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/voicechat/category-volumes.properties"
+    },
+    {
+      "path": "voicechat/player-volumes.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/voicechat/player-volumes.properties"
+    },
+    {
+      "path": "voicechat/translations.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/voicechat/translations.properties"
+    },
+    {
+      "path": "voicechat/username-cache.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/voicechat/username-cache.json"
+    },
+    {
+      "path": "voicechat/voicechat-client.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/voicechat/voicechat-client.properties"
+    },
+    {
+      "path": "voicechat/voicechat-server.properties",
+      "url": "https://soyaldo.github.io/example-modpack/config/voicechat/voicechat-server.properties"
+    },
+    {
+      "path": "walljump.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/walljump.json"
+    },
+    {
+      "path": "waystones-common.toml",
+      "url": "https://soyaldo.github.io/example-modpack/config/waystones-common.toml"
+    },
+    {
+      "path": "wizards/effects.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/wizards/effects.json"
+    },
+    {
+      "path": "wizards/equipment_v2.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/wizards/equipment_v2.json"
+    },
+    {
+      "path": "wizards/tweaks.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/wizards/tweaks.json"
+    },
+    {
+      "path": "wizards/villages.json",
+      "url": "https://soyaldo.github.io/example-modpack/config/wizards/villages.json"
     }
   ]
 }

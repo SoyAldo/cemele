@@ -138,7 +138,7 @@ export async function installMinecraft(
     }
   }
   
-  onProgress(60, 'Minecraft vanilla instalado');
+  onProgress(100, 'Minecraft vanilla instalado');
 }
 
 // ========== NEOFORGE - SISTEMA DIFERENTE ==========
@@ -147,13 +147,11 @@ interface NeoForgeVersionMeta {
   version: string;
   rawVersion: string;
   stable: boolean;
-  // NeoForge usa un formato diferente en su Maven
 }
 
 async function createMinecraftProfile(gameDir: string, version: string): Promise<void> {
   const profilePath = path.join(gameDir, 'launcher_profiles.json');
   
-  // Crear perfil mínimo que NeoForge espera
   const profile = {
     profiles: {
       [version]: {
@@ -185,25 +183,18 @@ async function createMinecraftProfile(gameDir: string, version: string): Promise
   log.info('neoforge', `Perfil de Minecraft creado: ${profilePath}`);
 }
 
-/**
- * NeoForge usa un sistema de versionado diferente:
- * - Las versiones son tipo: 47.1.106 (sin prefijo de MC)
- * - El installer está en: maven.neoforged.net
- * - El formato es: neoforge-VERSION-installer.jar
- */
 export async function installNeoForge(
   config: ServerConfig,
   onProgress: (percentage: number, message: string) => void
 ): Promise<void> {
   const { version, neoforgeVersion } = config;
   
-  // Usar URL forzada desde .env si existe, si no calcular automáticamente
   const installerUrl = config.neoforgeInstallerUrl || 
     `${NEOFORGE_MAVEN}/${neoforgeVersion}/neoforge-${neoforgeVersion}-installer.jar`;
 
   const installerPath = path.join(os.tmpdir(), `neoforge-installer-${Date.now()}.jar`);
     
-  onProgress(60, 'Descargando instalador de NeoForge...');
+  onProgress(10, 'Descargando instalador de NeoForge...');
   
   try {
     log.info('neoforge', `Descargando installer desde: ${installerUrl}`);
@@ -216,38 +207,31 @@ export async function installNeoForge(
     await downloadFile(legacyUrl, installerPath);
   }
 
-  onProgress(65, 'Creando perfil de Minecraft...');
-  
-  // CREAR PERFIL ANTES DE EJECUTAR INSTALLER
+  onProgress(20, 'Creando perfil de Minecraft...');
   await createMinecraftProfile(getGameDir(), config.version);
 
-  onProgress(70, 'Ejecutando instalador de NeoForge...');
+  onProgress(30, 'Ejecutando instalador de NeoForge...');
   
   const javaPath = path.join(getGameDir(), 'java', 'bin', 'java.exe');
   
-  // IMPORTANTE: --installClient NO acepta un path como argumento.
-  // El installer lee %APPDATA% para encontrar la carpeta .minecraft.
-  // Estrategia: apuntar APPDATA a un directorio temporal falso y crear un junction
-  // .minecraft → gameDir, para que el installer instale exactamente en gameDir.
   const gameDir = getGameDir();
   const fakeAppData = await fs.mkdtemp(path.join(os.tmpdir(), 'cemele-fake-appdata-'));
   const dotMinecraft = path.join(fakeAppData, '.minecraft');
 
-  // Junction (symlink de directorio en Windows): .minecraft → .cemele-modpack
   await fs.ensureSymlink(gameDir, dotMinecraft, 'junction');
   log.info('neoforge', `Junction creado: ${dotMinecraft} → ${gameDir}`);
 
   const stderrLines: string[] = [];
   await new Promise<void>((resolve, reject) => {
     const proc = spawn(javaPath, [
-      '-Djava.awt.headless=true',   // JVM flag ANTES de -jar
+      '-Djava.awt.headless=true',
       '-jar', installerPath,
-      '--installClient',             // sin path — usa APPDATA/.minecraft
+      '--installClient',
     ], {
       cwd: path.dirname(installerPath),
       env: {
         ...process.env,
-        'APPDATA': fakeAppData,     // installer usará fakeAppData/.minecraft = gameDir
+        'APPDATA': fakeAppData,
       }
     });
     
@@ -255,7 +239,7 @@ export async function installNeoForge(
       const output = data.toString().trim();
       log.info('neoforge-installer', output);
       if (output.includes('Downloading') || output.includes('Extracting') || output.includes('Installing')) {
-        onProgress(75, output.substring(0, 80));
+        onProgress(60, output.substring(0, 80));
       }
     });
     
@@ -282,12 +266,10 @@ export async function installNeoForge(
     });
   });
   
-  // Limpiar installer temporal y fakeAppData
   await fs.remove(installerPath);
   await fs.remove(fakeAppData);
   log.info('neoforge', 'Archivos temporales (installer y fakeAppData) eliminados');
   
-  // NeoForge crea el perfil con nombre diferente (legacy: MC-neoforge-NF, moderno: neoforge-NF)
   const versions = await fs.readdir(getVersionsDir()).catch(() => [] as string[]);
   const neoforgeDir = versions.find(v => v.includes('neoforge') && v.includes(neoforgeVersion));
   
@@ -297,11 +279,11 @@ export async function installNeoForge(
     log.warn('neoforge', `No se encontró carpeta de NeoForge en ${getVersionsDir()}. Versiones: ${versions.join(', ')}`);
   }
   
-  onProgress(85, 'NeoForge instalado correctamente');
+  onProgress(100, 'NeoForge instalado correctamente');
   log.info('neoforge', '✅ NeoForge instalado');
 }
 
-// ========== MODS ==========
+// ========== MODS Y CONFIGS ==========
 
 interface ModInfo {
   name: string;
@@ -321,7 +303,7 @@ export async function downloadMods(
   config: ServerConfig,
   onProgress: (percentage: number, message: string) => void
 ): Promise<void> {
-  onProgress(85, 'Obteniendo lista de mods...');
+  onProgress(5, 'Obteniendo lista de mods...');
   
   let modsManifest: ModsManifest;
   try {
@@ -339,25 +321,25 @@ export async function downloadMods(
   const totalMods = modsManifest.mods.length;
   if (totalMods === 0) {
     log.warn('mods', 'La lista de mods está vacía. Verifica SERVER_MODS_LIST_URL en .env');
+    onProgress(100, 'Lista de mods vacía');
+    return;
   }
 
   for (let i = 0; i < modsManifest.mods.length; i++) {
     const mod = modsManifest.mods[i];
 
-    // Asegurar que el filename termine en .jar
     const filename = mod.filename.endsWith('.jar') ? mod.filename : `${mod.filename}.jar`;
     const modPath = path.join(modsDir, filename);
     
     if (await fs.pathExists(modPath)) {
       const stats = await fs.stat(modPath);
-      // Solo saltear si el tamaño coincide Y el archivo no es 0 bytes
       if (stats.size > 0 && (mod.size === 0 || stats.size === mod.size)) {
         console.log(`[Mods] Saltando (ya existe): ${filename}`);
         continue;
       }
     }
     
-    onProgress(85 + Math.round((i / totalMods) * 10), `Descargando mod ${i+1}/${totalMods}: ${mod.name}`);
+    onProgress(10 + Math.round((i / totalMods) * 90), `Descargando mod ${i+1}/${totalMods}: ${mod.name}`);
     log.info('mods', `Descargando [${i+1}/${totalMods}]: ${mod.url}`);
     
     try {
@@ -365,17 +347,66 @@ export async function downloadMods(
       log.info('mods', `✅ Descargado: ${filename}`);
     } catch (err: any) {
       log.error('mods', `❌ Falló descarga de "${mod.name}": ${err.message}`);
-      onProgress(85 + Math.round((i / totalMods) * 10), `⚠️ No se pudo descargar: ${mod.name}`);
+      onProgress(10 + Math.round((i / totalMods) * 90), `⚠️ No se pudo descargar: ${mod.name}`);
     }
   }
   
-  if (modsManifest.configFiles) {
-    for (const configFile of modsManifest.configFiles) {
-      const destPath = path.join(getGameDir(), configFile.path);
-      await fs.ensureDir(path.dirname(destPath));
+  onProgress(100, 'Mods instalados');
+}
+
+/**
+ * Nueva función dedicada a descargar los archivos de configuración
+ * leyendo la propiedad 'configFiles' del mismo JSON manifest de mods.
+ */
+export async function downloadConfigs(
+  config: ServerConfig,
+  onProgress: (percentage: number, message: string) => void
+): Promise<void> {
+  onProgress(5, 'Obteniendo lista de configuraciones...');
+  
+  let modsManifest: ModsManifest;
+  try {
+    modsManifest = await downloadJson<ModsManifest>(config.modsListUrl);
+  } catch (e: any) {
+    log.error('configs', `No se pudo obtener el manifest: ${e.message}`);
+    onProgress(100, 'Error obteniendo manifest de configs');
+    return;
+  }
+
+  const configFiles = modsManifest.configFiles;
+  
+  if (!configFiles || configFiles.length === 0) {
+    log.info('configs', 'No se encontraron archivos de configuración.');
+    onProgress(100, 'Sin configuraciones por instalar');
+    return;
+  }
+
+  // 1. Definimos explícitamente la carpeta 'config' dentro de la raíz del juego
+  const configDir = path.join(getGameDir(), 'config');
+  await fs.ensureDir(configDir);
+
+  const totalConfigs = configFiles.length;
+  log.info('configs', `Encontrados ${totalConfigs} archivos de configuración.`);
+
+  for (let i = 0; i < totalConfigs; i++) {
+    const configFile = configFiles[i];
+    
+    // 2. Unimos la carpeta 'config' con el nombre del archivo
+    // Ahora caerán en: .cemele-modpack/config/dynamic_fps.json
+    const destPath = path.join(configDir, configFile.path);
+    
+    // Mantenemos esto por si en el futuro agregas subcarpetas (ej: jei/jei.properties)
+    await fs.ensureDir(path.dirname(destPath));
+    
+    onProgress(10 + Math.round((i / totalConfigs) * 90), `Descargando config ${i+1}/${totalConfigs}...`);
+    
+    try {
       await downloadFile(configFile.url, destPath);
+      log.info('configs', `✅ Config descargada en: ${destPath}`);
+    } catch (err: any) {
+      log.error('configs', `❌ Falló descarga de config "${configFile.path}": ${err.message}`);
     }
   }
-  
-  onProgress(95, 'Mods instalados');
+
+  onProgress(100, 'Configuraciones instaladas');
 }

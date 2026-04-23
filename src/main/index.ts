@@ -1,6 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
-import { registerIpcHandlers } from './ipc-handlers';
+import { registerIpcHandlers } from './ipc';
 import { initLogger, closeLogger, log } from './utils/logger';
 
 // Inicializar logger ANTES de cualquier otra cosa
@@ -68,4 +68,4 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) createWindow();
-});
+});

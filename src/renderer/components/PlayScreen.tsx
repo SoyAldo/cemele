@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { AuthSession, InstallStatus } from "../../shared/types";
+import { AuthSession, InstallStatus, ServerConfigData } from "../../shared/types";
 
 interface Props {
     session: AuthSession;
     installStatus: InstallStatus;
+    config: ServerConfigData | null;
     onLogout: () => void;
+    onOpenSettings: () => void;
 }
 
-const PlayScreen: React.FC<Props> = ({ session, installStatus, onLogout }) => {
+const PlayScreen: React.FC<Props> = ({ session, installStatus, config, onLogout, onOpenSettings }) => {
     const [launching, setLaunching] = useState(false);
 
     const handlePlay = async () => {
@@ -30,37 +32,30 @@ const PlayScreen: React.FC<Props> = ({ session, installStatus, onLogout }) => {
                         <span className="status">● En línea</span>
                     </div>
                 </div>
-                <button onClick={onLogout} className="btn-logout">
-                    Cerrar sesión
-                </button>
+                <div className="header-right">
+                    <div className="header-actions">
+                        <button onClick={() => window.electronAPI.openModsFolder()} className="btn-icon" title="Abrir carpeta de mods">📁</button>
+                        <button onClick={onOpenSettings} className="btn-icon" title="Configuración">⚙</button>
+                    </div>
+                    <button onClick={onLogout} className="btn-logout">
+                        Cerrar sesión
+                    </button>
+                </div>
             </header>
 
             <div className="play-content">
                 <div className="modpack-banner">
                     <div className="banner-content">
-                        <h1>Mi Modpack</h1>
-                        <p>La mejor experiencia moddeada</p>
+                        <h1>{config?.name || "Cemele"}</h1>
+                        <p>La mejor experiencia moddeada con mapaches</p>
                         <div className="version-badge">{installStatus.version}</div>
                     </div>
                 </div>
 
-                <div className="actions-grid">
+                <div className="play-actions">
                     <button onClick={handlePlay} className={`btn-play ${launching ? "loading" : ""}`} disabled={launching}>
                         {launching ? "Iniciando..." : "▶ JUGAR"}
                     </button>
-
-                    <div className="secondary-actions">
-                        <button onClick={() => window.electronAPI.openModsFolder()}>📁 Mods</button>
-                        <button onClick={() => window.electronAPI.openSettings()}>⚙ Configuración</button>
-                    </div>
-                </div>
-
-                <div className="news-section">
-                    <h3>Noticias del Modpack</h3>
-                    <div className="news-item">
-                        <span className="date">20 Abr 2026</span>
-                        <p>Actualización 1.2.0 disponible</p>
-                    </div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
 import { ipcMain, BrowserWindow } from 'electron';
 import { handleGetServerConfig, handleSetServerConfig } from './handlers/config';
-import { handleMicrosoftLogin, handleGetSession, handleLogout } from './handlers/auth';
+import { handleMicrosoftLogin, handleOfflineLogin, handleGetSession, handleLogout } from './handlers/auth';
 import { handleCheckInstallation, handleInstallModpack } from './handlers/installer';
-import { handleLaunchGame } from './handlers/launcher';
+import { handleLaunchGame, handleOpenModsFolder } from './handlers/launcher';
 import { handleMinimizeWindow, handleCloseWindow } from './handlers/window';
 
 export function registerIpcHandlers(mainWindow: BrowserWindow) {
@@ -12,6 +12,7 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
 
   // ========== AUTENTICACIÓN ==========
   ipcMain.handle('microsoft-login', handleMicrosoftLogin);
+  ipcMain.handle('offline-login', handleOfflineLogin);
   ipcMain.handle('get-session', handleGetSession);
   ipcMain.handle('logout', handleLogout);
 
@@ -23,6 +24,7 @@ export function registerIpcHandlers(mainWindow: BrowserWindow) {
 
   // ========== LANZADOR ==========
   ipcMain.handle('launch-game', () => handleLaunchGame(mainWindow));
+  ipcMain.handle('open-mods-folder', handleOpenModsFolder);
 
   // ========== CONTROL DE VENTANA ==========
   ipcMain.handle('minimize-window', () => handleMinimizeWindow(mainWindow));

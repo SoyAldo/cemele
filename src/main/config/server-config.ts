@@ -15,6 +15,7 @@ export interface ServerConfig {
   serverIcon?: string;
   ramMin: string;
   ramMax: string;
+  lastUsername?: string;
   // Opcional: URLs forzadas
   neoforgeInstallerUrl?: string;
   javaDownloadUrl?: string;

@@ -3,7 +3,8 @@ import LoginScreen from "./components/LoginScreen";
 import InstallScreen from "./components/InstallScreen";
 import PlayScreen from "./components/PlayScreen";
 import TitleBar from "./components/TitleBar";
-import { AuthSession, InstallStatus } from "../shared/types";
+import SettingsModal from "./components/SettingsModal";
+import { AuthSession, InstallStatus, ServerConfigData } from "../shared/types";
 
 type Screen = "loading" | "login" | "install" | "play";
 
@@ -11,6 +12,8 @@ const App: React.FC = () => {
     const [screen, setScreen] = useState<Screen>("loading");
     const [session, setSession] = useState<AuthSession | null>(null);
     const [installStatus, setInstallStatus] = useState<InstallStatus | null>(null);
+    const [config, setConfig] = useState<ServerConfigData | null>(null);
+    const [showSettings, setShowSettings] = useState(false);
 
     useEffect(() => {
         checkInitialState();
@@ -18,7 +21,11 @@ const App: React.FC = () => {
 
     const checkInitialState = async () => {
         try {
-            // PRIMERO verificar instalación
+            // PRIMERO verificar config
+            const serverConfig = await window.electronAPI.getServerConfig();
+            setConfig(serverConfig);
+
+            // SEGUNDO verificar instalación
             const status = await window.electronAPI.checkInstallation();
             setInstallStatus(status);
 
@@ -41,6 +48,24 @@ const App: React.FC = () => {
     const handleLogin = async () => {
         const result = await window.electronAPI.microsoftLogin();
         if (result.success && result.session) {
+            // Actualizar config para capturar el lastUsername
+            const serverConfig = await window.electronAPI.getServerConfig();
+            setConfig(serverConfig);
+            
+            setSession(result.session);
+            const status = await window.electronAPI.checkInstallation();
+            setInstallStatus(status);
+            setScreen(status.installed ? "play" : "install");
+        }
+    };
+
+    const handleOfflineLogin = async (username: string) => {
+        const result = await window.electronAPI.offlineLogin(username);
+        if (result.success && result.session) {
+            // Actualizar config para capturar el lastUsername
+            const serverConfig = await window.electronAPI.getServerConfig();
+            setConfig(serverConfig);
+
             setSession(result.session);
             const status = await window.electronAPI.checkInstallation();
             setInstallStatus(status);
@@ -59,9 +84,19 @@ const App: React.FC = () => {
         setScreen("login");
     };
 
+    const handleUpdateConfig = async (newConfig: ServerConfigData) => {
+        const success = await window.electronAPI.setServerConfig(newConfig);
+        if (success) {
+            setConfig(newConfig);
+            setShowSettings(false);
+        } else {
+            alert("Error al guardar la configuración");
+        }
+    };
+
     return (
         <div className="app">
-            <TitleBar />
+            <TitleBar config={config} />
 
             <main className="main-content">
                 {screen === "loading" && (
@@ -71,12 +106,34 @@ const App: React.FC = () => {
                     </div>
                 )}
 
-                {screen === "login" && <LoginScreen onLogin={handleLogin} />}
+                {screen === "login" && (
+                    <LoginScreen 
+                        onLogin={handleLogin} 
+                        onOfflineLogin={handleOfflineLogin}
+                        config={config} 
+                    />
+                )}
 
                 {screen === "install" && <InstallScreen onComplete={handleInstallComplete} session={session!} />}
 
-                {screen === "play" && <PlayScreen session={session!} installStatus={installStatus!} onLogout={handleLogout} />}
+                {screen === "play" && (
+                    <PlayScreen 
+                        session={session!} 
+                        installStatus={installStatus!} 
+                        config={config}
+                        onLogout={handleLogout} 
+                        onOpenSettings={() => setShowSettings(true)}
+                    />
+                )}
             </main>
+
+            {showSettings && config && (
+                <SettingsModal 
+                    config={config} 
+                    onSave={handleUpdateConfig} 
+                    onClose={() => setShowSettings(false)} 
+                />
+            )}
         </div>
     );
 };

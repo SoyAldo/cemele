@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { ServerConfigData } from "../../shared/types";
 
 interface Props {
     onLogin: () => void;
+    onOfflineLogin: (username: string) => void;
+    config: ServerConfigData | null;
 }
 
-const LoginScreen: React.FC<Props> = ({ onLogin }) => {
+const LoginScreen: React.FC<Props> = ({ onLogin, onOfflineLogin, config }) => {
     const [loading, setLoading] = useState(false);
+    const [username, setUsername] = useState(config?.lastUsername || "");
 
     const handleLogin = async () => {
         setLoading(true);
@@ -29,21 +33,41 @@ const LoginScreen: React.FC<Props> = ({ onLogin }) => {
         }
     };
 
+    const handleOfflineLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!username.trim()) return;
+
+        setLoading(true);
+        await onOfflineLogin(username);
+        setLoading(false);
+    };
+
     return (
         <div className="screen login-screen">
             <div className="login-card">
-                <h1>Mi Modpack Launcher</h1>
-                <p className="subtitle">v1.0.0 • Minecraft 1.20.1</p>
+                <h1>{config?.name || "Cemele"}</h1>
+                <form onSubmit={handleOfflineLogin} className="offline-login-form">
+                    <input 
+                        type="text" 
+                        placeholder="Nombre de jugador" 
+                        value={username} 
+                        onChange={(e) => setUsername(e.target.value)}
+                        disabled={loading}
+                        className="input-username"
+                    />
+                    <button type="submit" className="btn-play-offline" disabled={loading || !username.trim()}>
+                        {loading ? "Entrando..." : "Entrar"}
+                    </button>
+                </form>
 
-                <div className="login-illustration">
-                    <div className="minecraft-block">⛏</div>
+                {/* <div className="login-divider">
+                    <span>o</span>
                 </div>
 
                 <button onClick={handleLogin} className="btn-microsoft" disabled={loading}>
                     {loading ? "Conectando..." : "Iniciar sesión con Microsoft"}
-                </button>
-
-                <p className="hint">Se requiere cuenta de Microsoft con Minecraft comprado</p>
+                </button> 
+                */}
             </div>
         </div>
     );

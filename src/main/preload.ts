@@ -18,6 +18,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.removeAllListeners(channel);
   },
   microsoftLogin: () => ipcRenderer.invoke('microsoft-login'),
+  offlineLogin: (username: string) => ipcRenderer.invoke('offline-login', username),
   getSession: () => ipcRenderer.invoke('get-session'),
   logout: () => ipcRenderer.invoke('logout'),
   launchGame: () => ipcRenderer.invoke('launch-game'),

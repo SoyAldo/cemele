@@ -34,6 +34,7 @@ export interface ServerConfigData {
   modsListUrl: string;
   ramMin: string;
   ramMax: string;
+  lastUsername?: string;
 }
 
 declare global {
@@ -48,6 +49,7 @@ declare global {
       onInstallError: (callback: (data: any) => void) => void;
       removeAllListeners: (channel: string) => void;
       microsoftLogin: () => Promise<{ success: boolean; session?: AuthSession; error?: string }>;
+      offlineLogin: (username: string) => Promise<{ success: boolean; session?: AuthSession; error?: string }>;
       getSession: () => Promise<AuthSession | null>;
       logout: () => Promise<void>;
       launchGame: () => Promise<LaunchResult>;

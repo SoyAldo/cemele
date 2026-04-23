@@ -1,20 +1,23 @@
 import React from "react";
+import { ServerConfigData } from "../../shared/types";
 
-const TitleBar: React.FC = () => {
+interface Props {
+    config: ServerConfigData | null;
+}
+
+const TitleBar: React.FC<Props> = ({ config }) => {
     const handleMinimize = () => {
-        console.log("Minimize clicked"); // Debug
         window.electronAPI.minimizeWindow();
     };
 
     const handleClose = () => {
-        console.log("Close clicked"); // Debug
         window.electronAPI.closeWindow();
     };
 
     return (
         <div className="title-bar">
             <div className="title-bar-drag">
-                <span className="logo">⛏ Mi Modpack</span>
+                <span className="logo">⛏ {config?.name || "Cemele"}</span>
             </div>
             <div className="window-controls">
                 <button onClick={handleMinimize} className="btn-minimize">

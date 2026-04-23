@@ -1,4 +1,7 @@
 import { IpcMainInvokeEvent } from 'electron';
+import path from 'path';
+import os from 'os';
+import fs from 'fs-extra';
 import { log } from '../../utils/logger';
 import { appState } from '../../stateManager';
 
@@ -24,6 +27,44 @@ export async function handleMicrosoftLogin(_event: IpcMainInvokeEvent) {
     
   } catch (error: any) {
     log.error('auth', 'Login fallido', error);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * Maneja el inicio de sesión offline (nombre personalizado).
+ */
+export async function handleOfflineLogin(_event: IpcMainInvokeEvent, username: string) {
+  log.stage('Autenticación Offline');
+  
+  if (!username || username.trim().length === 0) {
+    return { success: false, error: 'El nombre de usuario es obligatorio' };
+  }
+
+  try {
+    const session = {
+      username: username.trim(),
+      uuid: '00000000-0000-0000-0000-000000000000', // UUID genérico para offline
+      accessToken: 'offline_token_' + Date.now()
+    };
+
+    appState.set('currentSession', session);
+
+    // Guardar el último nombre en la configuración
+    const config = appState.get('serverConfig');
+    const newConfig = { ...config, lastUsername: session.username };
+    appState.set('serverConfig', newConfig);
+
+    const configDir = path.join(os.homedir(), 'AppData', 'Roaming', '.cemele-launcher');
+    const configPath = path.join(configDir, 'server-config.json');
+    await fs.ensureDir(configDir);
+    await fs.writeJson(configPath, newConfig, { spaces: 2 });
+
+    log.info('auth', `Login offline exitoso: ${session.username}`);
+    return { success: true, session };
+    
+  } catch (error: any) {
+    log.error('auth', 'Login offline fallido', error);
     return { success: false, error: error.message };
   }
 }

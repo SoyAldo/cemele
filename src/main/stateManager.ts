@@ -1,4 +1,7 @@
 import { loadConfig, ServerConfig } from './config/server-config';
+import path from 'path';
+import os from 'os';
+import fs from 'fs-extra';
 
 /**
  * Interfaz que define el estado actual de la aplicación.
@@ -12,10 +15,41 @@ export interface AppState {
  * Gestor de estado de la aplicación.
  */
 class StateManager {
-  private state: AppState = {
-    currentSession: null,
-    serverConfig: loadConfig(),
-  };
+  private state: AppState;
+  private sessionPath = path.join(os.homedir(), 'AppData', 'Roaming', '.cemele-launcher', 'session.json');
+
+  constructor() {
+    this.state = {
+      currentSession: this.loadSession(),
+      serverConfig: loadConfig(),
+    };
+  }
+
+  private loadSession(): any | null {
+    try {
+      if (fs.existsSync(this.sessionPath)) {
+        return fs.readJsonSync(this.sessionPath);
+      }
+    } catch (e) {
+      console.error('Error loading session:', e);
+    }
+    return null;
+  }
+
+  private saveSession(session: any | null): void {
+    try {
+      if (session) {
+        fs.ensureDirSync(path.dirname(this.sessionPath));
+        fs.writeJsonSync(this.sessionPath, session, { spaces: 2 });
+      } else {
+        if (fs.existsSync(this.sessionPath)) {
+          fs.removeSync(this.sessionPath);
+        }
+      }
+    } catch (e) {
+      console.error('Error saving session:', e);
+    }
+  }
 
   /**
    * Obtiene un valor del estado actual de la aplicación.
@@ -33,8 +67,10 @@ class StateManager {
    */
   set<K extends keyof AppState>(key: K, value: AppState[K]): void {
     this.state[key] = value;
-    // Aquí podrías agregar lógica extra, como emitir un evento al Logger
-    // log.info('state', `Estado actualizado: ${key} = ${value}`);
+    
+    if (key === 'currentSession') {
+      this.saveSession(value);
+    }
   }
 
   /**

@@ -67,18 +67,18 @@ const InstallScreen: React.FC<Props> = ({ onComplete, session }) => {
     return (
         <div className="screen install-screen">
             <div className="install-card">
-                <h2>Instalación del Modpack</h2>
+                <h2>Instalación</h2>
                 <p className="welcome">Bienvenido, {session.username}</p>
 
                 <div className="install-stages">
                     <div className={`stage ${stage === "java" ? "active" : ""} ${progress > 25 ? "done" : ""}`}>
-                        <span>☕ Java 17</span>
+                        <span>☕ Java</span>
                     </div>
                     <div className={`stage ${stage === "minecraft" ? "active" : ""} ${progress > 60 ? "done" : ""}`}>
                         <span>📦 Minecraft</span>
                     </div>
                     <div className={`stage ${stage === "neoforge" ? "active" : ""} ${progress > 85 ? "done" : ""}`}>
-                        <span>🔧 NeoForge</span> {/* ← Cambiado */}
+                        <span>🔧 Forge</span>
                     </div>
                     <div className={`stage ${stage === "mods" ? "active" : ""} ${progress >= 100 ? "done" : ""}`}>
                         <span>🧩 Mods</span>

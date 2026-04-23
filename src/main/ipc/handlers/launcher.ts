@@ -1,4 +1,4 @@
-import { BrowserWindow } from 'electron';
+import { BrowserWindow, shell } from 'electron';
 import { spawn } from 'child_process';
 import path from 'path';
 import os from 'os';
@@ -229,4 +229,18 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
   } catch (error: any) {
     return { success: false, error: error.message };
   }
+}
+
+/**
+ * Abre la carpeta de mods en el explorador de archivos.
+ */
+export async function handleOpenModsFolder() {
+  const gameDir = getGameDir();
+  const modsDir = path.join(gameDir, 'mods');
+  
+  if (!await fs.pathExists(modsDir)) {
+    await fs.ensureDir(modsDir);
+  }
+  
+  shell.openPath(modsDir);
 }

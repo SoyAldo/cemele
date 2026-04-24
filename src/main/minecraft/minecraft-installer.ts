@@ -314,6 +314,21 @@ export async function downloadMods(
     return;
   }
 
+  // Eliminar mods extra que no están en el manifest oficial
+  try {
+    const expectedFiles = new Set(modsManifest.mods.map(m => m.filename.endsWith('.jar') ? m.filename : `${m.filename}.jar`));
+    const localFiles = await fs.readdir(modsDir);
+    
+    for (const file of localFiles) {
+      if (file.endsWith('.jar') && !expectedFiles.has(file)) {
+        await fs.remove(path.join(modsDir, file));
+        log.info('mods', `🗑️ Archivo borrado (no oficial): ${file}`);
+      }
+    }
+  } catch (e: any) {
+    log.warn('mods', `Error al limpiar mods no oficiales: ${e.message}`);
+  }
+
   for (let i = 0; i < modsManifest.mods.length; i++) {
     const mod = modsManifest.mods[i];
 
@@ -403,4 +418,76 @@ export async function downloadConfigs(
   }
 
   onProgress(100, 'Configuraciones instaladas');
+}
+
+/**
+ * Verifica sincrónicamente (esperando las promesas) si los mods coinciden
+ * exactamente con el mods.json remoto.
+ */
+export async function verifyModsSync(config: ServerConfig, gameDir: string): Promise<boolean> {
+  const modsDir = path.join(gameDir, 'mods');
+  if (!await fs.pathExists(modsDir)) return false;
+
+  try {
+    const modsManifest = await downloadJson<ModsManifest>(config.modsListUrl);
+    if (!modsManifest.mods || modsManifest.mods.length === 0) return true;
+
+    const expectedFiles = new Set(modsManifest.mods.map(m => m.filename.endsWith('.jar') ? m.filename : `${m.filename}.jar`));
+    const localFiles = await fs.readdir(modsDir);
+    
+    // Verificar si hay archivos extra no oficiales
+    for (const file of localFiles) {
+      if (file.endsWith('.jar') && !expectedFiles.has(file)) {
+        return false; // Sobran archivos
+      }
+    }
+
+    // Verificar si falta alguno o tiene un tamaño incorrecto
+    for (const mod of modsManifest.mods) {
+      const filename = mod.filename.endsWith('.jar') ? mod.filename : `${mod.filename}.jar`;
+      const modPath = path.join(modsDir, filename);
+      
+      if (!await fs.pathExists(modPath)) {
+        return false; // Falta un archivo
+      }
+      
+      if (mod.size && mod.size > 0) {
+        const stats = await fs.stat(modPath);
+        if (stats.size !== mod.size) {
+          return false; // El tamaño es diferente (actualización)
+        }
+      }
+    }
+    
+    return true; // Todo coincide perfecto
+  } catch (e: any) {
+    log.warn('check', `No se pudo verificar mods.json (¿offline?): ${e.message}`);
+    // Fallback: si no hay internet, comprobamos si la carpeta tiene archivos
+    return (await fs.readdir(modsDir)).length > 0;
+  }
+}
+
+/**
+ * Verifica sincrónicamente si los archivos de configuración coinciden
+ * con el mods.json remoto.
+ */
+export async function verifyConfigsSync(config: ServerConfig, gameDir: string): Promise<boolean> {
+  const configDir = path.join(gameDir, 'config');
+  if (!await fs.pathExists(configDir)) return false;
+
+  try {
+    const modsManifest = await downloadJson<ModsManifest>(config.modsListUrl);
+    if (!modsManifest.configFiles || modsManifest.configFiles.length === 0) return true;
+
+    for (const file of modsManifest.configFiles) {
+      const targetPath = path.join(configDir, file.path);
+      if (!await fs.pathExists(targetPath)) {
+        return false;
+      }
+    }
+    return true;
+  } catch (e: any) {
+    // Fallback: si no hay internet
+    return (await fs.readdir(configDir)).length > 0;
+  }
 }

@@ -5,6 +5,7 @@ import PlayScreen from "./components/PlayScreen";
 import TitleBar from "./components/TitleBar";
 import SettingsModal from "./components/SettingsModal";
 import { AuthSession, InstallStatus, ServerConfigData } from "../shared/types";
+import hostLogo from "./assets/natublockhost_logo.png";
 
 type Screen = "loading" | "login" | "install" | "play";
 
@@ -122,6 +123,8 @@ const App: React.FC = () => {
             </main>
 
             {showSettings && config && <SettingsModal config={config} onSave={handleUpdateConfig} onClose={() => setShowSettings(false)} />}
+
+            <img src={hostLogo} alt="NatuBlockHost" className="host-logo" />
         </div>
     );
 };

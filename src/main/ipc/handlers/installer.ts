@@ -12,7 +12,9 @@ import {
   installMinecraft,
   installForge,
   downloadMods,
-  downloadConfigs
+  downloadConfigs,
+  verifyModsSync,
+  verifyConfigsSync
 } from '../../minecraft/minecraft-installer';
 
 /**
@@ -28,11 +30,9 @@ export async function handleCheckInstallation(_event: IpcMainInvokeEvent) {
     const hasJava = await isJavaInstalled(gameDir);
     const hasMinecraft = await isMinecraftInstalled(serverConfig);
     
-    const modsDir = path.join(gameDir, 'mods');
-    const hasMods = await fs.pathExists(modsDir) && (await fs.readdir(modsDir)).length > 0;
-
-    const configDir = path.join(gameDir, 'config');
-    const hasConfigs = await fs.pathExists(configDir) && (await fs.readdir(configDir)).length > 0;
+    // Verificación inteligente de mods y configuraciones con el servidor remoto
+    const hasMods = await verifyModsSync(serverConfig, gameDir);
+    const hasConfigs = await verifyConfigsSync(serverConfig, gameDir);
     
     log.info('check', `Java: ${hasJava} | Minecraft: ${hasMinecraft} | Mods: ${hasMods} | Configs: ${hasConfigs}`);
     

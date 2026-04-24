@@ -442,11 +442,16 @@ body {
 }
 
 .btn-logout {
-    padding: 6px 12px;
-    background: var(--accent);
-    color: black;
+    padding: 8px 12px;
     cursor: pointer;
     font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+    background: var(--accent);
+    color: #000;
+    border-radius: 6px;
+    border: none;
 }
 
 .btn-logout:hover {
@@ -462,30 +467,31 @@ body {
 
 .header-actions {
     display: flex;
-    gap: 8px;
+    background: var(--accent);
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+    overflow: hidden;
 }
 
 .btn-icon {
-    width: 32px;
+    width: 36px;
     height: 32px;
-    background: rgba(11, 11, 26, 0.6);
-    border: 1px solid var(--border);
-    color: var(--accent);
-    border-radius: 8px;
+    background: transparent;
+    border: none;
+    color: #000;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
     transition: all 0.2s;
-    box-shadow: 0 0 5px var(--accent-glow);
+}
+
+.btn-icon:first-child {
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .btn-icon:hover {
-    background: var(--accent);
-    color: #000;
-    box-shadow: 0 0 15px var(--accent);
-    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .play-content {
@@ -534,16 +540,16 @@ body {
     width: 100%;
     max-width: 400px;
     padding: 16px;
-    background: var(--accent);
-    color: #000;
-    border: none;
-    border-radius: 12px;
     font-size: 16px;
     font-weight: 800;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
     text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+    background: var(--accent);
+    color: #000;
+    border-radius: 12px;
+    border: none;
 
     position: fixed;
     right: 150px;
@@ -657,11 +663,13 @@ body {
 }
 
 .modal-card {
-    background: var(--bg-card);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     width: 100%;
     max-width: 450px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -741,10 +749,19 @@ body {
     padding: 10px 24px;
     background: var(--accent);
     border: none;
-    color: white;
+    color: black;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    transform: translateY(-1px);
 }
 
 /* Button Settings Top */
@@ -770,4 +787,15 @@ body {
     background: rgba(255, 255, 255, 0.1);
     color: var(--text);
     border-color: var(--text-muted);
+}
+
+/* Host Logo Fixed Bottom Right */
+.host-logo {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 86px;
+    z-index: 1000;
+    pointer-events: none;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }

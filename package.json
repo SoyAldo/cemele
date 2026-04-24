@@ -17,7 +17,7 @@
     "type": "commonjs",
     "build": {
         "appId": "com.soyaldo.cemele",
-        "productName": "Cemele",
+        "productName": "Raccoon City",
         "directories": {
             "output": "release"
         },
@@ -29,7 +29,7 @@
         ],
         "win": {
             "target": "nsis",
-            "icon": "assets/icon.ico"
+            "icon": "assets/icon.png"
         },
         "nsis": {
             "oneClick": false,

@@ -136,9 +136,52 @@ export async function installMinecraft(
     if (!await fs.pathExists(indexPath)) {
       await downloadFile(assetIndex.url, indexPath);
     }
+    
+    onProgress(60, 'Verificando y descargando assets (esto puede tardar)...');
+    await downloadAssets(indexPath, onProgress);
   }
   
   onProgress(100, 'Minecraft vanilla instalado');
+}
+
+async function downloadAssets(indexPath: string, onProgress: (percentage: number, message: string) => void): Promise<void> {
+  const assetsDir = getAssetsDir();
+  const objectsDir = path.join(assetsDir, 'objects');
+  await fs.ensureDir(objectsDir);
+
+  const indexData = await fs.readJson(indexPath);
+  const objects = indexData.objects;
+  if (!objects) return;
+
+  const entries = Object.values(objects) as Array<{hash: string, size: number}>;
+  let downloadedCount = 0;
+  const totalAssets = entries.length;
+
+  // Límite de concurrencia para no saturar la red ni crear miles de promesas al mismo tiempo
+  const concurrency = 20;
+  for (let i = 0; i < totalAssets; i += concurrency) {
+    const chunk = entries.slice(i, i + concurrency);
+    await Promise.all(chunk.map(async (obj) => {
+      const hash = obj.hash;
+      const prefix = hash.substring(0, 2);
+      const destPath = path.join(objectsDir, prefix, hash);
+      
+      if (!await fs.pathExists(destPath)) {
+        const url = `https://resources.download.minecraft.net/${prefix}/${hash}`;
+        try {
+          await downloadFile(url, destPath);
+        } catch (e: any) {
+          log.warn('assets', `No se pudo descargar asset ${hash}: ${e.message}`);
+        }
+      }
+      downloadedCount++;
+    }));
+    
+    // Actualizamos el progreso visualmente cada cierto bloque
+    if (i % (concurrency * 2) === 0 || i + concurrency >= totalAssets) {
+      onProgress(60 + Math.round((downloadedCount / totalAssets) * 35), `Descargando assets... ${downloadedCount}/${totalAssets}`);
+    }
+  }
 }
 
 // ========== FORGE ==========
@@ -286,6 +329,7 @@ interface ModInfo {
 interface ModsManifest {
   mods: ModInfo[];
   configFiles?: Array<{ path: string; url: string }>;
+  config?: { fileName: string; url: string; size: number; sha1?: string; required: boolean };
 }
 
 export async function downloadMods(
@@ -377,43 +421,70 @@ export async function downloadConfigs(
     return;
   }
 
+  const configObj = modsManifest.config;
   const configFiles = modsManifest.configFiles;
   
-  if (!configFiles || configFiles.length === 0) {
+  if (!configObj && (!configFiles || configFiles.length === 0)) {
     log.info('configs', 'No se encontraron archivos de configuración.');
     onProgress(100, 'Sin configuraciones por instalar');
     return;
   }
 
-  // 1. Definimos explícitamente la carpeta 'config' dentro de la raíz del juego
   const configDir = path.join(getGameDir(), 'config');
   await fs.ensureDir(configDir);
 
-  const totalConfigs = configFiles.length;
-  log.info('configs', `Encontrados ${totalConfigs} archivos de configuración.`);
-
-  for (let i = 0; i < totalConfigs; i++) {
-    const configFile = configFiles[i];
+  // 1. Soporte para el archivo ZIP (nueva forma)
+  if (configObj) {
+    const zipPath = path.join(getGameDir(), configObj.fileName || 'mods.zip');
     
-    // 2. Unimos la carpeta 'config' con el nombre del archivo
-    // Ahora caerán en: .cemele-modpack/config/dynamic_fps.json
-    const destPath = path.join(configDir, configFile.path);
-    
-    // Mantenemos esto por si en el futuro agregas subcarpetas (ej: jei/jei.properties)
-    await fs.ensureDir(path.dirname(destPath));
-
-    if (await fs.pathExists(destPath)) {
-      log.info('configs', `Saltando config (ya existe): ${configFile.path}`);
-      continue;
+    let needsDownload = true;
+    if (await fs.pathExists(zipPath)) {
+      const stats = await fs.stat(zipPath);
+      if (stats.size === configObj.size) {
+        needsDownload = false;
+        log.info('configs', `El archivo config zip (${configObj.fileName}) ya existe y no ha cambiado, no se descarga.`);
+      }
     }
     
-    onProgress(10 + Math.round((i / totalConfigs) * 90), `Descargando config ${i+1}/${totalConfigs}...`);
-    
-    try {
-      await downloadFile(configFile.url, destPath);
-      log.info('configs', `✅ Config descargada en: ${destPath}`);
-    } catch (err: any) {
-      log.error('configs', `❌ Falló descarga de config "${configFile.path}": ${err.message}`);
+    if (needsDownload) {
+      onProgress(30, 'Descargando configuraciones...');
+      try {
+        await downloadFile(configObj.url, zipPath);
+        log.info('configs', `✅ Config descargada en: ${zipPath}`);
+        
+        onProgress(70, 'Extrayendo configuraciones...');
+        const AdmZip = require('adm-zip');
+        const zip = new AdmZip(zipPath);
+        zip.extractAllTo(configDir, true);
+        log.info('configs', '✅ Configuraciones extraídas');
+      } catch (err: any) {
+        log.error('configs', `❌ Falló descarga o extracción de config zip: ${err.message}`);
+      }
+    }
+  }
+
+  // 2. Soporte para archivos sueltos (forma antigua)
+  if (configFiles && configFiles.length > 0) {
+    const totalConfigs = configFiles.length;
+    log.info('configs', `Encontrados ${totalConfigs} archivos de configuración sueltos.`);
+
+    for (let i = 0; i < totalConfigs; i++) {
+      const configFile = configFiles[i];
+      const destPath = path.join(configDir, configFile.path);
+      
+      await fs.ensureDir(path.dirname(destPath));
+
+      if (await fs.pathExists(destPath)) {
+        continue;
+      }
+      
+      onProgress(10 + Math.round((i / totalConfigs) * 90), `Descargando config ${i+1}/${totalConfigs}...`);
+      
+      try {
+        await downloadFile(configFile.url, destPath);
+      } catch (err: any) {
+        log.error('configs', `❌ Falló descarga de config "${configFile.path}": ${err.message}`);
+      }
     }
   }
 
@@ -477,6 +548,17 @@ export async function verifyConfigsSync(config: ServerConfig, gameDir: string): 
 
   try {
     const modsManifest = await downloadJson<ModsManifest>(config.modsListUrl);
+    
+    // Si usa el nuevo formato ZIP
+    if (modsManifest.config) {
+      const zipPath = path.join(gameDir, modsManifest.config.fileName || 'mods.zip');
+      if (!await fs.pathExists(zipPath)) return false;
+      const stats = await fs.stat(zipPath);
+      if (stats.size !== modsManifest.config.size) return false;
+      return true;
+    }
+    
+    // Si usa formato de archivos sueltos
     if (!modsManifest.configFiles || modsManifest.configFiles.length === 0) return true;
 
     for (const file of modsManifest.configFiles) {

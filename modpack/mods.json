@@ -1568,5 +1568,12 @@
       "sha1": "98e4af60aa0f272105b7ffcdf154d7ab670a73bc",
       "required": true
     }
-  ]
+  ],
+  "config": {
+    "fileName": "mods.zip",
+    "url": "https://soyaldo.github.io/example-modpack/mods.zip",
+    "size": 545356563,
+    "sha1": "2a85cc30ea62c5918db26e67ed600a6872560e84",
+    "required": true
+  }
 }

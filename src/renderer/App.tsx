@@ -51,7 +51,7 @@ const App: React.FC = () => {
             // Actualizar config para capturar el lastUsername
             const serverConfig = await window.electronAPI.getServerConfig();
             setConfig(serverConfig);
-            
+
             setSession(result.session);
             const status = await window.electronAPI.checkInstallation();
             setInstallStatus(status);
@@ -106,34 +106,22 @@ const App: React.FC = () => {
                     </div>
                 )}
 
-                {screen === "login" && (
-                    <LoginScreen 
-                        onLogin={handleLogin} 
-                        onOfflineLogin={handleOfflineLogin}
-                        config={config} 
-                    />
-                )}
+                {screen === "login" && <LoginScreen onLogin={handleLogin} onOfflineLogin={handleOfflineLogin} config={config} />}
 
-                {screen === "install" && <InstallScreen onComplete={handleInstallComplete} session={session!} />}
+                {screen === "install" && <InstallScreen onComplete={handleInstallComplete} session={session!} onLogout={handleLogout} />}
 
                 {screen === "play" && (
-                    <PlayScreen 
-                        session={session!} 
-                        installStatus={installStatus!} 
+                    <PlayScreen
+                        session={session!}
+                        installStatus={installStatus!}
                         config={config}
-                        onLogout={handleLogout} 
+                        onLogout={handleLogout}
                         onOpenSettings={() => setShowSettings(true)}
                     />
                 )}
             </main>
 
-            {showSettings && config && (
-                <SettingsModal 
-                    config={config} 
-                    onSave={handleUpdateConfig} 
-                    onClose={() => setShowSettings(false)} 
-                />
-            )}
+            {showSettings && config && <SettingsModal config={config} onSave={handleUpdateConfig} onClose={() => setShowSettings(false)} />}
         </div>
     );
 };

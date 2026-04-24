@@ -4,9 +4,10 @@ import { AuthSession, InstallProgressData } from "../../shared/types";
 interface Props {
     onComplete: () => void;
     session: AuthSession;
+    onLogout: () => void;
 }
 
-const InstallScreen: React.FC<Props> = ({ onComplete, session }) => {
+const InstallScreen: React.FC<Props> = ({ onComplete, session, onLogout }) => {
     const [progress, setProgress] = useState(0);
     const [installing, setInstalling] = useState(false);
     const [stage, setStage] = useState("");
@@ -49,66 +50,38 @@ const InstallScreen: React.FC<Props> = ({ onComplete, session }) => {
         }
     };
 
-    const getStageIcon = () => {
-        switch (stage) {
-            case "java":
-                return "☕";
-            case "minecraft":
-                return "📦";
-            case "neoforge":
-                return "🔧"; // ← Cambiado
-            case "mods":
-                return "🧩";
-            default:
-                return "📥";
-        }
-    };
-
     return (
         <div className="screen install-screen">
-            <div className="install-card">
+            <button className="btn-back" onClick={onLogout} title="Volver al inicio" disabled={installing || !!error}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            </button>
+            <div className="install-card-mockup">
                 <h2>Instalación</h2>
                 <p className="welcome">Bienvenido, {session.username}</p>
 
-                <div className="install-stages">
-                    <div className={`stage ${stage === "java" ? "active" : ""} ${progress > 25 ? "done" : ""}`}>
-                        <span>☕ Java</span>
-                    </div>
-                    <div className={`stage ${stage === "minecraft" ? "active" : ""} ${progress > 60 ? "done" : ""}`}>
-                        <span>📦 Minecraft</span>
-                    </div>
-                    <div className={`stage ${stage === "neoforge" ? "active" : ""} ${progress > 85 ? "done" : ""}`}>
-                        <span>🔧 Forge</span>
-                    </div>
-                    <div className={`stage ${stage === "mods" ? "active" : ""} ${progress >= 100 ? "done" : ""}`}>
-                        <span>🧩 Mods</span>
-                    </div>
-                </div>
-
-                {installing ? (
-                    <div className="progress-section">
-                        <div className="stage-icon">{getStageIcon()}</div>
-                        <div className="progress-bar-bg">
-                            <div className="progress-bar-fill" style={{ width: `${progress}%` }} />
-                        </div>
-                        <span className="progress-text">{message}</span>
-                        <span className="progress-percent">{progress}%</span>
-                    </div>
-                ) : (
-                    <button onClick={handleInstall} className="btn-install" disabled={!!error}>
-                        📥 Instalar Modpack
-                    </button>
-                )}
+                <button onClick={handleInstall} className={`btn-install-mockup ${error ? "btn-install-error" : ""}`} disabled={installing}>
+                    {error ? "REINTENTAR" : "EMPEZAR"}
+                </button>
 
                 {error && (
                     <div className="error-message">
                         ❌ Error: {error}
-                        <button onClick={handleInstall} className="btn-retry">
-                            Reintentar
-                        </button>
                     </div>
                 )}
             </div>
+
+            {installing && (
+                <div className="progress-mockup">
+                    <div className="progress-text-mockup">
+                        ({Math.round(progress)}% | {message}...)
+                    </div>
+                    <div className="progress-bar-bg-mockup">
+                        <div className="progress-bar-fill-mockup" style={{ width: `${progress}%` }} />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

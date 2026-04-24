@@ -8,8 +8,8 @@ import { log } from '../utils/logger';
 
 const MOJANG_VERSIONS_URL = 'https://launchermeta.mojang.com/mc/game/version_manifest.json';
 
-// NeoForge usa Maven diferente
-const NEOFORGE_MAVEN = 'https://maven.neoforged.net/releases/net/neoforged/neoforge';
+// Forge Maven
+const FORGE_MAVEN = 'https://maven.minecraftforge.net/net/minecraftforge/forge';
 
 interface VersionManifest {
   latest: { release: string; snapshot: string };
@@ -62,10 +62,10 @@ export async function isMinecraftInstalled(config: ServerConfig): Promise<boolea
   if (!await fs.pathExists(versionsDir)) return false;
 
   const versions = await fs.readdir(versionsDir);
-  const neoDir = versions.find(v => v.includes('neoforge') && v.includes(config.neoforgeVersion));
-  if (!neoDir) return false;
+  const forgeDir = versions.find(v => v.includes('forge') && v.includes(config.forgeVersion) && !v.includes('neoforge'));
+  if (!forgeDir) return false;
 
-  const jsonFile = path.join(versionsDir, neoDir, `${neoDir}.json`);
+  const jsonFile = path.join(versionsDir, forgeDir, `${forgeDir}.json`);
   return fs.pathExists(jsonFile);
 }
 
@@ -141,9 +141,9 @@ export async function installMinecraft(
   onProgress(100, 'Minecraft vanilla instalado');
 }
 
-// ========== NEOFORGE - SISTEMA DIFERENTE ==========
+// ========== FORGE ==========
 
-interface NeoForgeVersionMeta {
+interface ForgeVersionMeta {
   version: string;
   rawVersion: string;
   stable: boolean;
@@ -183,43 +183,35 @@ async function createMinecraftProfile(gameDir: string, version: string): Promise
   log.info('neoforge', `Perfil de Minecraft creado: ${profilePath}`);
 }
 
-export async function installNeoForge(
+export async function installForge(
   config: ServerConfig,
   onProgress: (percentage: number, message: string) => void
 ): Promise<void> {
-  const { version, neoforgeVersion } = config;
+  const { version, forgeVersion } = config;
   
-  const installerUrl = config.neoforgeInstallerUrl || 
-    `${NEOFORGE_MAVEN}/${neoforgeVersion}/neoforge-${neoforgeVersion}-installer.jar`;
+  const installerUrl = config.forgeInstallerUrl || 
+    `${FORGE_MAVEN}/${version}-${forgeVersion}/forge-${version}-${forgeVersion}-installer.jar`;
 
-  const installerPath = path.join(os.tmpdir(), `neoforge-installer-${Date.now()}.jar`);
+  const installerPath = path.join(os.tmpdir(), `forge-installer-${Date.now()}.jar`);
     
-  onProgress(10, 'Descargando instalador de NeoForge...');
+  onProgress(10, 'Descargando instalador de Forge...');
   
   try {
-    log.info('neoforge', `Descargando installer desde: ${installerUrl}`);
+    log.info('forge', `Descargando installer desde: ${installerUrl}`);
     await downloadFile(installerUrl, installerPath);
-    log.info('neoforge', `Installer descargado: ${installerPath}`);
+    log.info('forge', `Installer descargado: ${installerPath}`);
   } catch (error) {
-    log.warn('neoforge', `Falló descarga principal, intentando URL legacy...`);
-    const legacyUrl = `https://maven.neoforged.net/releases/net/neoforged/forge/${version}-${neoforgeVersion}/forge-${version}-${neoforgeVersion}-installer.jar`;
-    log.info('neoforge', `URL legacy: ${legacyUrl}`);
-    await downloadFile(legacyUrl, installerPath);
+    log.warn('forge', `Falló descarga principal. Verifica la versión o la URL.`);
+    throw error;
   }
 
   onProgress(20, 'Creando perfil de Minecraft...');
   await createMinecraftProfile(getGameDir(), config.version);
 
-  onProgress(30, 'Ejecutando instalador de NeoForge...');
+  onProgress(30, 'Ejecutando instalador de Forge...');
   
   const javaPath = path.join(getGameDir(), 'java', 'bin', 'java.exe');
-  
   const gameDir = getGameDir();
-  const fakeAppData = await fs.mkdtemp(path.join(os.tmpdir(), 'cemele-fake-appdata-'));
-  const dotMinecraft = path.join(fakeAppData, '.minecraft');
-
-  await fs.ensureSymlink(gameDir, dotMinecraft, 'junction');
-  log.info('neoforge', `Junction creado: ${dotMinecraft} → ${gameDir}`);
 
   const stderrLines: string[] = [];
   await new Promise<void>((resolve, reject) => {
@@ -227,60 +219,57 @@ export async function installNeoForge(
       '-Djava.awt.headless=true',
       '-jar', installerPath,
       '--installClient',
+      gameDir
     ], {
       cwd: path.dirname(installerPath),
-      env: {
-        ...process.env,
-        'APPDATA': fakeAppData,
-      }
+      env: process.env
     });
     
     proc.stdout.on('data', (data) => {
       const output = data.toString().trim();
-      log.info('neoforge-installer', output);
-      if (output.includes('Downloading') || output.includes('Extracting') || output.includes('Installing')) {
+      log.info('forge-installer', output);
+      if (output.includes('Downloading') || output.includes('Extracting') || output.includes('Installing') || output.includes('Building')) {
         onProgress(60, output.substring(0, 80));
       }
     });
     
     proc.stderr.on('data', (data) => {
       const line = data.toString().trim();
-      log.warn('neoforge-installer', `stderr: ${line}`);
+      log.warn('forge-installer', `stderr: ${line}`);
       stderrLines.push(line);
     });
     
     proc.on('error', (err) => {
-      log.error('neoforge-installer', 'No se pudo iniciar el proceso', err);
+      log.error('forge-installer', 'No se pudo iniciar el proceso', err);
       reject(new Error(`No se pudo iniciar el instalador: ${err.message}`));
     });
 
     proc.on('close', (code) => {
       if (code === 0) {
-        log.info('neoforge-installer', `Instalador terminó con código 0 (OK)`);
+        log.info('forge-installer', `Instalador terminó con código 0 (OK)`);
         resolve();
       } else {
         const errDetail = stderrLines.slice(-5).join(' | ');
-        log.error('neoforge-installer', `Instalador terminó con código ${code}: ${errDetail}`);
-        reject(new Error(`NeoForge installer falló (código ${code}): ${errDetail}`));
+        log.error('forge-installer', `Instalador terminó con código ${code}: ${errDetail}`);
+        reject(new Error(`Forge installer falló (código ${code}): ${errDetail}`));
       }
     });
   });
   
   await fs.remove(installerPath);
-  await fs.remove(fakeAppData);
-  log.info('neoforge', 'Archivos temporales (installer y fakeAppData) eliminados');
+  log.info('forge', 'Archivos temporales (installer) eliminados');
   
   const versions = await fs.readdir(getVersionsDir()).catch(() => [] as string[]);
-  const neoforgeDir = versions.find(v => v.includes('neoforge') && v.includes(neoforgeVersion));
+  const forgeDir = versions.find(v => v.includes('forge') && v.includes(forgeVersion) && !v.includes('neoforge'));
   
-  if (neoforgeDir) {
-    log.info('neoforge', `Versión detectada exitosamente tras instalación: ${neoforgeDir}`);
+  if (forgeDir) {
+    log.info('forge', `Versión detectada exitosamente tras instalación: ${forgeDir}`);
   } else {
-    log.warn('neoforge', `No se encontró carpeta de NeoForge en ${getVersionsDir()}. Versiones: ${versions.join(', ')}`);
+    log.warn('forge', `No se encontró carpeta de Forge en ${getVersionsDir()}. Versiones: ${versions.join(', ')}`);
   }
   
-  onProgress(100, 'NeoForge instalado correctamente');
-  log.info('neoforge', '✅ NeoForge instalado');
+  onProgress(100, 'Forge instalado correctamente');
+  log.info('forge', '✅ Forge instalado');
 }
 
 // ========== MODS Y CONFIGS ==========
@@ -397,6 +386,11 @@ export async function downloadConfigs(
     
     // Mantenemos esto por si en el futuro agregas subcarpetas (ej: jei/jei.properties)
     await fs.ensureDir(path.dirname(destPath));
+
+    if (await fs.pathExists(destPath)) {
+      log.info('configs', `Saltando config (ya existe): ${configFile.path}`);
+      continue;
+    }
     
     onProgress(10 + Math.round((i / totalConfigs) * 90), `Descargando config ${i+1}/${totalConfigs}...`);
     

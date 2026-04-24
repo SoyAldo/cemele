@@ -34,8 +34,12 @@ const PlayScreen: React.FC<Props> = ({ session, installStatus, config, onLogout,
                 </div>
                 <div className="header-right">
                     <div className="header-actions">
-                        <button onClick={() => window.electronAPI.openModsFolder()} className="btn-icon" title="Abrir carpeta de mods">📁</button>
-                        <button onClick={onOpenSettings} className="btn-icon" title="Configuración">⚙</button>
+                        <button onClick={() => window.electronAPI.openModsFolder()} className="btn-icon" title="Abrir carpeta de mods">
+                            📁
+                        </button>
+                        <button onClick={onOpenSettings} className="btn-icon" title="Configuración">
+                            ⚙
+                        </button>
                     </div>
                     <button onClick={onLogout} className="btn-logout">
                         Cerrar sesión
@@ -44,17 +48,9 @@ const PlayScreen: React.FC<Props> = ({ session, installStatus, config, onLogout,
             </header>
 
             <div className="play-content">
-                <div className="modpack-banner">
-                    <div className="banner-content">
-                        <h1>{config?.name || "Cemele"}</h1>
-                        <p>La mejor experiencia moddeada con mapaches</p>
-                        <div className="version-badge">{installStatus.version}</div>
-                    </div>
-                </div>
-
                 <div className="play-actions">
                     <button onClick={handlePlay} className={`btn-play ${launching ? "loading" : ""}`} disabled={launching}>
-                        {launching ? "Iniciando..." : "▶ JUGAR"}
+                        {launching ? "Iniciando..." : "Jugar"}
                     </button>
                 </div>
             </div>

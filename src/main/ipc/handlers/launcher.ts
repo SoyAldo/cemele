@@ -37,19 +37,19 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
       return { success: false, error: 'Java no está instalado' };
     }
     
-    // Nombre de versión para NeoForge
+    // Nombre de versión para Forge
     let actualVersionName: string | undefined;
     const versionsDir = getVersionsDir();
     
     if (await fs.pathExists(versionsDir)) {
       const versions = await fs.readdir(versionsDir);
       actualVersionName = versions.find(v => 
-        v.includes('neoforge') && v.includes(serverConfig.neoforgeVersion)
+        v.includes('forge') && v.includes(serverConfig.forgeVersion) && !v.includes('neoforge')
       );
     }
     
     if (!actualVersionName) {
-      return { success: false, error: 'NeoForge no está instalado correctamente' };
+      return { success: false, error: 'Forge no está instalado correctamente' };
     }
     
     const versionJsonPath = path.join(versionsDir, actualVersionName, `${actualVersionName}.json`);

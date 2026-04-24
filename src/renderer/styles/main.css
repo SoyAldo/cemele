@@ -411,7 +411,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
 }
 
 .user-info {
@@ -444,10 +443,8 @@ body {
 
 .btn-logout {
     padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 6px;
+    background: var(--accent);
+    color: black;
     cursor: pointer;
     font-size: 12px;
 }
@@ -534,24 +531,29 @@ body {
 }
 
 .btn-play {
-    padding: 12px 64px;
-    background: rgba(11, 11, 26, 0.6);
-    color: var(--accent);
-    border: 2px solid var(--accent);
-    border-radius: 12px;
-    font-size: 24px;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 0 15px var(--accent-glow);
-    transition: all 0.2s;
-    backdrop-filter: blur(5px);
-}
-
-.btn-play:hover {
+    width: 100%;
+    max-width: 400px;
+    padding: 16px;
     background: var(--accent);
     color: #000;
-    box-shadow: 0 0 25px var(--accent);
-    transform: scale(1.05);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+    text-transform: uppercase;
+
+    position: fixed;
+    right: 150px;
+    bottom: 50px;
+}
+
+.btn-play:hover:not(.loading) {
+    background: var(--accent-hover);
+    box-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+    transform: translateY(-2px);
 }
 
 .btn-play.loading {

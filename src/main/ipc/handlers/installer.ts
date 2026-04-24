@@ -10,7 +10,7 @@ import {
   getGameDir,
   isMinecraftInstalled,
   installMinecraft,
-  installNeoForge,
+  installForge,
   downloadMods,
   downloadConfigs
 } from '../../minecraft/minecraft-installer';
@@ -89,16 +89,25 @@ export async function handleInstallModpack(mainWindow: BrowserWindow) {
       });
     });
     
-    // 3. NeoForge (45% al 65%)
-    log.stage('Instalando NeoForge');
-    await installNeoForge(serverConfig, (pct, msg) => {
-      log.info('neoforge', `[${pct}%] ${msg}`);
-      mainWindow.webContents.send('install-progress', {
-        stage: 'neoforge',
-        percentage: 45 + Math.round(pct * 0.20),
-        message: msg
+    // 3. Forge (45% al 65%)
+    if (!await isMinecraftInstalled(serverConfig)) {
+      log.stage('Instalando Forge');
+      await installForge(serverConfig, (pct, msg) => {
+        log.info('forge', `[${pct}%] ${msg}`);
+        mainWindow.webContents.send('install-progress', {
+          stage: 'forge',
+          percentage: 45 + Math.round(pct * 0.20),
+          message: msg
+        });
       });
-    });
+    } else {
+      log.info('forge', 'Forge ya está instalado, saltando.');
+      mainWindow.webContents.send('install-progress', {
+        stage: 'forge',
+        percentage: 65,
+        message: 'Forge comprobado'
+      });
+    }
     
     // 4. Mods (65% al 85%)
     log.stage('Descargando mods');

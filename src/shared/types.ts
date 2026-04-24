@@ -8,7 +8,7 @@ export interface InstallStatus {
 }
 
 export interface InstallProgressData {
-  stage: 'java' | 'minecraft' | 'neoforge' | 'mods';
+  stage: 'java' | 'minecraft' | 'forge' | 'mods' | 'configs';
   percentage: number;
   message: string;
 }
@@ -28,7 +28,7 @@ export interface LaunchResult {
 export interface ServerConfigData {
   name: string;
   version: string;
-  neoforgeVersion: string;
+  forgeVersion: string;
   javaVersion: string;
   baseUrl: string;
   modsListUrl: string;

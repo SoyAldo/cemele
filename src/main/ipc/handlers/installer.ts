@@ -10,9 +10,11 @@ import {
   getGameDir,
   isMinecraftInstalled,
   installMinecraft,
-  installNeoForge,
+  installForge,
   downloadMods,
-  downloadConfigs
+  downloadConfigs,
+  verifyModsSync,
+  verifyConfigsSync
 } from '../../minecraft/minecraft-installer';
 
 /**
@@ -28,11 +30,9 @@ export async function handleCheckInstallation(_event: IpcMainInvokeEvent) {
     const hasJava = await isJavaInstalled(gameDir);
     const hasMinecraft = await isMinecraftInstalled(serverConfig);
     
-    const modsDir = path.join(gameDir, 'mods');
-    const hasMods = await fs.pathExists(modsDir) && (await fs.readdir(modsDir)).length > 0;
-
-    const configDir = path.join(gameDir, 'config');
-    const hasConfigs = await fs.pathExists(configDir) && (await fs.readdir(configDir)).length > 0;
+    // Verificación inteligente de mods y configuraciones con el servidor remoto
+    const hasMods = await verifyModsSync(serverConfig, gameDir);
+    const hasConfigs = await verifyConfigsSync(serverConfig, gameDir);
     
     log.info('check', `Java: ${hasJava} | Minecraft: ${hasMinecraft} | Mods: ${hasMods} | Configs: ${hasConfigs}`);
     
@@ -89,16 +89,25 @@ export async function handleInstallModpack(mainWindow: BrowserWindow) {
       });
     });
     
-    // 3. NeoForge (45% al 65%)
-    log.stage('Instalando NeoForge');
-    await installNeoForge(serverConfig, (pct, msg) => {
-      log.info('neoforge', `[${pct}%] ${msg}`);
-      mainWindow.webContents.send('install-progress', {
-        stage: 'neoforge',
-        percentage: 45 + Math.round(pct * 0.20),
-        message: msg
+    // 3. Forge (45% al 65%)
+    if (!await isMinecraftInstalled(serverConfig)) {
+      log.stage('Instalando Forge');
+      await installForge(serverConfig, (pct, msg) => {
+        log.info('forge', `[${pct}%] ${msg}`);
+        mainWindow.webContents.send('install-progress', {
+          stage: 'forge',
+          percentage: 45 + Math.round(pct * 0.20),
+          message: msg
+        });
       });
-    });
+    } else {
+      log.info('forge', 'Forge ya está instalado, saltando.');
+      mainWindow.webContents.send('install-progress', {
+        stage: 'forge',
+        percentage: 65,
+        message: 'Forge comprobado'
+      });
+    }
     
     // 4. Mods (65% al 85%)
     log.stage('Descargando mods');

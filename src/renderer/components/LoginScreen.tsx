@@ -11,6 +11,7 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onOfflineLogin, config }) => {
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState(config?.lastUsername || "");
 
+    /*
     const handleLogin = async () => {
         setLoading(true);
         console.log("Login button clicked");
@@ -32,6 +33,7 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onOfflineLogin, config }) => {
             setLoading(false);
         }
     };
+    */
 
     const handleOfflineLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -45,12 +47,13 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onOfflineLogin, config }) => {
     return (
         <div className="screen login-screen">
             <div className="login-card">
-                <h1>{config?.name || "Cemele"}</h1>
+                <h1>¡Elige tu nombre!</h1>
+                <p>Escribe el nombre de usuario que deseas utilizar en el servidor.</p>
                 <form onSubmit={handleOfflineLogin} className="offline-login-form">
-                    <input 
-                        type="text" 
-                        placeholder="Nombre de jugador" 
-                        value={username} 
+                    <input
+                        type="text"
+                        placeholder="Nombre de jugador"
+                        value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         disabled={loading}
                         className="input-username"

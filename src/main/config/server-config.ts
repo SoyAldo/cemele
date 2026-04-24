@@ -8,7 +8,7 @@ require("dotenv").config({ path: path.join(__dirname, '../../../.env') });
 export interface ServerConfig {
   name: string;
   version: string;
-  neoforgeVersion: string;
+  forgeVersion: string;
   javaVersion: string;
   baseUrl: string;
   modsListUrl: string;
@@ -17,7 +17,7 @@ export interface ServerConfig {
   ramMax: string;
   lastUsername?: string;
   // Opcional: URLs forzadas
-  neoforgeInstallerUrl?: string;
+  forgeInstallerUrl?: string;
   javaDownloadUrl?: string;
 }
 
@@ -29,14 +29,14 @@ function getEnv(key: string, defaultValue: string): string {
 export const DEFAULT_CONFIG: ServerConfig = {
   name: getEnv("MODPACK_NAME", "Cemele Modpack"),
   version: getEnv("MINECRAFT_VERSION", "1.20.6"),
-  neoforgeVersion: getEnv("NEOFORGE_VERSION", "20.6.139"),
+  forgeVersion: getEnv("FORGE_VERSION", "47.2.20"),
   javaVersion: getEnv("JAVA_VERSION", "17.0.9+9"),
   baseUrl: getEnv("SERVER_BASE_URL", "https://soyaldo.github.io/example-modpack/"),
   modsListUrl: getEnv("SERVER_MODS_LIST_URL", "https://soyaldo.github.io/example-modpack/mods.json"),
   serverIcon: process.env["SERVER_ICON_URL"] || undefined,
   ramMin: getEnv("RAM_MIN", "2G"),
   ramMax: getEnv("RAM_MAX", "4G"),
-  neoforgeInstallerUrl: process.env["NEOFORGE_INSTALLER_URL"] || undefined,
+  forgeInstallerUrl: process.env["FORGE_INSTALLER_URL"] || undefined,
   javaDownloadUrl: process.env["JAVA_DOWNLOAD_URL"] || undefined,
 };
 
@@ -46,11 +46,17 @@ export function loadConfig(): ServerConfig {
 
     if (fs.existsSync(configPath)) {
       const fileConfig = JSON.parse(fs.readFileSync(configPath, "utf-8"));
-      // Mezclar: .env tiene prioridad base, pero el archivo puede sobreescribir
-      return { ...DEFAULT_CONFIG, ...fileConfig };
+      // SOLO cargar las configuraciones del usuario desde el archivo.
+      // Así evitamos que un 'forgeVersion' o 'modsListUrl' viejo guardado sobrescriba el .env
+      return { 
+        ...DEFAULT_CONFIG, 
+        ramMin: fileConfig.ramMin || DEFAULT_CONFIG.ramMin,
+        ramMax: fileConfig.ramMax || DEFAULT_CONFIG.ramMax,
+        lastUsername: fileConfig.lastUsername || DEFAULT_CONFIG.lastUsername
+      };
     }
   } catch (e) {
-    console.log("No se encontró config personalizada, usando .env");
+    console.log("No se encontró config personalizada o hubo un error al leer, usando .env");
   }
   return DEFAULT_CONFIG;
 }

@@ -12,8 +12,7 @@ release/
 *.log
 
 # Modpack
-modpack/mods/
-modpack/config/
+modpack/
 
 # IDE
 .vscode/

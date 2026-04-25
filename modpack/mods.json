@@ -73,22 +73,6 @@
       "required": true
     },
     {
-      "name": "Alltheleaks",
-      "filename": "alltheleaks-0.1.2.1+1.20.1-forge+47.3.10.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/alltheleaks-0.1.2.1%2B1.20.1-forge%2B47.3.10.jar",
-      "size": 523210,
-      "sha1": "0ba7b30a89571cd7f02501accc2f5d6698c8f330",
-      "required": true
-    },
-    {
-      "name": "Alltheleaks",
-      "filename": "alltheleaks-1.1.1+1.20.1-forge.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/alltheleaks-1.1.1%2B1.20.1-forge.jar",
-      "size": 1187126,
-      "sha1": "3c43c2e76093dc7ef5ad6e456d20da9674c653aa",
-      "required": true
-    },
-    {
       "name": "Appleskin Forge Mc1.20.1",
       "filename": "appleskin-forge-mc1.20.1-2.5.1.jar",
       "url": "https://soyaldo.github.io/example-modpack/mods/appleskin-forge-mc1.20.1-2.5.1.jar",
@@ -366,14 +350,6 @@
       "url": "https://soyaldo.github.io/example-modpack/mods/Clumps-forge-1.20.1-12.0.0.4.jar",
       "size": 20299,
       "sha1": "97cc669f68dbe812cb77cc3631339334fc28b877",
-      "required": true
-    },
-    {
-      "name": "Clutternomore",
-      "filename": "clutternomore-1.1.6+1.20.1-forge.jar",
-      "url": "https://soyaldo.github.io/example-modpack/mods/clutternomore-1.1.6%2B1.20.1-forge.jar",
-      "size": 1060320,
-      "sha1": "527223792c9432ed62ec5bdcd592d78decfb4af9",
       "required": true
     },
     {
@@ -1145,6 +1121,14 @@
       "required": true
     },
     {
+      "name": "Oculus Mc1.20.1",
+      "filename": "oculus-mc1.20.1-1.8.0.jar",
+      "url": "https://soyaldo.github.io/example-modpack/mods/oculus-mc1.20.1-1.8.0.jar",
+      "size": 2851119,
+      "sha1": "984f774e71790deaec674c7587bd24e0711871b2",
+      "required": true
+    },
+    {
       "name": "Paladins_oath",
       "filename": "paladins_oath-1.2.1-forge-1.20.1.jar",
       "url": "https://soyaldo.github.io/example-modpack/mods/paladins_oath-1.2.1-forge-1.20.1.jar",
@@ -1570,10 +1554,60 @@
     }
   ],
   "config": {
-    "fileName": "mods.zip",
-    "url": "https://soyaldo.github.io/example-modpack/mods.zip",
-    "size": 545356563,
-    "sha1": "2a85cc30ea62c5918db26e67ed600a6872560e84",
+    "fileName": "configs.zip",
+    "url": "https://soyaldo.github.io/example-modpack/configs.zip",
+    "size": 8291975,
+    "sha1": "daf92325c012be6909eb7035e8959ba979e03fc3",
     "required": true
-  }
+  },
+  "others": [
+    {
+      "fileName": "options.txt",
+      "path": "./",
+      "url": "https://soyaldo.github.io/example-modpack/others/options.txt",
+      "size": 16410,
+      "sha1": "8de85560cf6e870e3c4f608ae62d86d799df804a",
+      "required": true
+    },
+    {
+      "fileName": "BDcraft Better Leaves MC120.zip",
+      "path": "./resourcepacks/",
+      "url": "https://soyaldo.github.io/example-modpack/others/resourcepacks/BDcraft%20Better%20Leaves%20MC120.zip",
+      "size": 33119,
+      "sha1": "44acf1aebdc04c31a0c4d7bad8db62fa53729ed5",
+      "required": true
+    },
+    {
+      "fileName": "BDcraft Font MC120.zip",
+      "path": "./resourcepacks/",
+      "url": "https://soyaldo.github.io/example-modpack/others/resourcepacks/BDcraft%20Font%20MC120.zip",
+      "size": 60600,
+      "sha1": "2089ef71677ea96344e7c214cbd5e49e198432a9",
+      "required": true
+    },
+    {
+      "fileName": "PureBDcraft  64x MC120.zip",
+      "path": "./resourcepacks/",
+      "url": "https://soyaldo.github.io/example-modpack/others/resourcepacks/PureBDcraft%20%2064x%20MC120.zip",
+      "size": 26509221,
+      "sha1": "1bf59178ee9dcd0cb578f7ea5d10fbdfb87a0387",
+      "required": true
+    },
+    {
+      "fileName": "PureBDcraft CTM Transitions MC120.zip",
+      "path": "./resourcepacks/",
+      "url": "https://soyaldo.github.io/example-modpack/others/resourcepacks/PureBDcraft%20CTM%20Transitions%20MC120.zip",
+      "size": 52218,
+      "sha1": "b247bf4d118b94f7d42abe2644b932b3fd4aa40b",
+      "required": true
+    },
+    {
+      "fileName": "BSL_v10.1.3.zip",
+      "path": "./shaderpacks/",
+      "url": "https://soyaldo.github.io/example-modpack/others/shaderpacks/BSL_v10.1.3.zip",
+      "size": 1127026,
+      "sha1": "c2459c82c23dc7442eaf1976dade30c2c2f18a9f",
+      "required": true
+    }
+  ]
 }

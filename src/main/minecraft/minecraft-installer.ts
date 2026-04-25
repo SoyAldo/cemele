@@ -330,6 +330,7 @@ interface ModsManifest {
   mods: ModInfo[];
   configFiles?: Array<{ path: string; url: string }>;
   config?: { fileName: string; url: string; size: number; sha1?: string; required: boolean };
+  others?: Array<{ fileName: string; path: string; url: string; size: number; sha1?: string; required: boolean }>;
 }
 
 export async function downloadMods(
@@ -492,6 +493,62 @@ export async function downloadConfigs(
 }
 
 /**
+ * Función dedicada a descargar los archivos adicionales (resourcepacks, shaderpacks, options.txt, etc.)
+ * leyendo la propiedad 'others' del JSON manifest.
+ */
+export async function downloadOthers(
+  config: ServerConfig,
+  onProgress: (percentage: number, message: string) => void
+): Promise<void> {
+  onProgress(5, 'Obteniendo lista de archivos adicionales...');
+  
+  let modsManifest: ModsManifest;
+  try {
+    modsManifest = await downloadJson<ModsManifest>(config.modsListUrl);
+  } catch (e: any) {
+    log.error('others', `No se pudo obtener el manifest: ${e.message}`);
+    onProgress(100, 'Error obteniendo manifest de archivos adicionales');
+    return;
+  }
+
+  const others = modsManifest.others;
+  
+  if (!others || others.length === 0) {
+    log.info('others', 'No se encontraron archivos adicionales.');
+    onProgress(100, 'Sin archivos adicionales por instalar');
+    return;
+  }
+
+  const totalOthers = others.length;
+  log.info('others', `Encontrados ${totalOthers} archivos adicionales.`);
+
+  for (let i = 0; i < totalOthers; i++) {
+    const other = others[i];
+    const destPath = path.join(getGameDir(), other.path, other.fileName);
+    
+    await fs.ensureDir(path.dirname(destPath));
+
+    if (await fs.pathExists(destPath)) {
+      const stats = await fs.stat(destPath);
+      if (stats.size > 0 && (other.size === 0 || stats.size === other.size)) {
+        console.log(`[Others] Saltando (ya existe): ${other.fileName}`);
+        continue;
+      }
+    }
+    
+    onProgress(10 + Math.round((i / totalOthers) * 90), `Descargando archivo adicional ${i+1}/${totalOthers}...`);
+    
+    try {
+      await downloadFile(other.url, destPath);
+    } catch (err: any) {
+      log.error('others', `❌ Falló descarga de "${other.fileName}": ${err.message}`);
+    }
+  }
+
+  onProgress(100, 'Archivos adicionales instalados');
+}
+
+/**
  * Verifica sincrónicamente (esperando las promesas) si los mods coinciden
  * exactamente con el mods.json remoto.
  */
@@ -571,5 +628,28 @@ export async function verifyConfigsSync(config: ServerConfig, gameDir: string): 
   } catch (e: any) {
     // Fallback: si no hay internet
     return (await fs.readdir(configDir)).length > 0;
+  }
+}
+
+/**
+ * Verifica sincrónicamente si los archivos adicionales coinciden
+ * con el mods.json remoto.
+ */
+export async function verifyOthersSync(config: ServerConfig, gameDir: string): Promise<boolean> {
+  try {
+    const modsManifest = await downloadJson<ModsManifest>(config.modsListUrl);
+    
+    if (!modsManifest.others || modsManifest.others.length === 0) return true;
+
+    for (const file of modsManifest.others) {
+      const targetPath = path.join(gameDir, file.path, file.fileName);
+      if (!await fs.pathExists(targetPath)) {
+        return false;
+      }
+    }
+    return true;
+  } catch (e: any) {
+    // Fallback: si no hay internet asumimos true si no podemos comprobarlo
+    return true;
   }
 }

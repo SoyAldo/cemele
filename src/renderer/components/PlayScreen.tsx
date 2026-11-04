@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AuthSession, InstallStatus, ServerConfigData } from "../../shared/types";
 
 interface Props {
@@ -11,6 +11,18 @@ interface Props {
 
 const PlayScreen: React.FC<Props> = ({ session, installStatus, config, onLogout, onOpenSettings }) => {
     const [launching, setLaunching] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = window.electronAPI.onGameClosed?.((data) => {
+            setLaunching(false);
+            if (data?.code !== 0 && data?.code !== null) {
+                console.warn("Minecraft finalizó con código:", data?.code);
+            }
+        });
+        return () => {
+            if (unsubscribe) unsubscribe();
+        };
+    }, []);
 
     const handlePlay = async () => {
         setLaunching(true);

@@ -788,14 +788,3 @@ body {
   color: var(--text);
   border-color: var(--text-muted);
 }
-
-/* Host Logo Fixed Bottom Right */
-.host-logo {
-  position: fixed;
-  bottom: 5px;
-  right: 5px;
-  width: 96px;
-  z-index: 1000;
-  pointer-events: none;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
-}

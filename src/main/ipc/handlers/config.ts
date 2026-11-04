@@ -1,10 +1,9 @@
 import { IpcMainInvokeEvent } from 'electron';
-import path from 'path';
-import os from 'os';
 import fs from 'fs-extra';
 import { log } from '../../utils/logger';
 import { appState } from '../../stateManager';
 import { ServerConfig } from '../../config/server-config';
+import { getLauncherDataDir, getServerConfigPath } from '../../utils/paths';
 
 /**
  * Maneja la actualización y guardado de la configuración del servidor.
@@ -19,9 +18,9 @@ export async function handleSetServerConfig(
     // 1. Actualizar el estado global en memoria (instantáneo para el resto de la app)
     appState.set('serverConfig', config);
 
-    // 2. Definir la ruta de guardado
-    const configDir = path.join(os.homedir(), 'AppData', 'Roaming', '.cemele-launcher');
-    const configPath = path.join(configDir, 'server-config.json');
+    // 2. Definir la ruta de guardado en assets/launcher/server-config.json
+    const configDir = getLauncherDataDir();
+    const configPath = getServerConfigPath();
 
     // 3. Asegurar que el directorio exista y escribir el archivo
     await fs.ensureDir(configDir);    
@@ -37,8 +36,6 @@ export async function handleSetServerConfig(
 
 /**
  * Maneja la obtención de la configuración actual.
- * (Opcional, ya que también podrías llamarlo directo desde el index.ts, 
- * pero mantenerlo aquí da más simetría al código).
  */
 export function handleGetServerConfig(_event?: IpcMainInvokeEvent): ServerConfig {
   return appState.get('serverConfig');

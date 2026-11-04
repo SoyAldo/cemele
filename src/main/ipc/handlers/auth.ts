@@ -1,3 +1,4 @@
+import { getLauncherDataDir, getServerConfigPath } from '../../utils/paths';
 import { IpcMainInvokeEvent } from 'electron';
 import path from 'path';
 import os from 'os';
@@ -55,8 +56,8 @@ export async function handleOfflineLogin(_event: IpcMainInvokeEvent, username: s
     const newConfig = { ...config, lastUsername: session.username };
     appState.set('serverConfig', newConfig);
 
-    const configDir = path.join(os.homedir(), 'AppData', 'Roaming', '.cemele-launcher');
-    const configPath = path.join(configDir, 'server-config.json');
+    const configDir = getLauncherDataDir();
+    const configPath = getServerConfigPath();
     await fs.ensureDir(configDir);
     await fs.writeJson(configPath, newConfig, { spaces: 2 });
 

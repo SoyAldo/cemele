@@ -1,3 +1,4 @@
+import { findInstalledModLoader, mavenToPath } from '../../minecraft/modloader-manager';
 import { BrowserWindow, shell } from 'electron';
 import { spawn } from 'child_process';
 import path from 'path';
@@ -37,19 +38,21 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
       return { success: false, error: 'Java no está instalado' };
     }
     
-    // Nombre de versión para Forge
+    // Nombre de versión para el ModLoader configurado (Forge, NeoForge o Fabric)
     let actualVersionName: string | undefined;
     const versionsDir = getVersionsDir();
     
     if (await fs.pathExists(versionsDir)) {
-      const versions = await fs.readdir(versionsDir);
-      actualVersionName = versions.find(v => 
-        v.includes('forge') && v.includes(serverConfig.forgeVersion) && !v.includes('neoforge')
+      actualVersionName = await findInstalledModLoader(
+        versionsDir,
+        serverConfig.modLoader,
+        serverConfig.version,
+        serverConfig.modLoaderVersion
       );
     }
     
     if (!actualVersionName) {
-      return { success: false, error: 'Forge no está instalado correctamente' };
+      return { success: false, error: `${serverConfig.modLoader} no está instalado correctamente` };
     }
     
     const versionJsonPath = path.join(versionsDir, actualVersionName, `${actualVersionName}.json`);
@@ -82,10 +85,13 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
         if (disallowRule && (!disallowRule.os || disallowRule.os.name === osName)) allow = false;
       }
       
-      if (allow && lib.downloads?.artifact?.path) {
-        const libPath = path.join(librariesDir, lib.downloads.artifact.path);
-        if (await fs.pathExists(libPath)) {
-          uniqueClasspath.add(libPath);
+      if (allow) {
+        const relPath = lib.downloads?.artifact?.path || (lib.name ? mavenToPath(lib.name) : undefined);
+        if (relPath) {
+          const libPath = path.join(librariesDir, relPath);
+          if (await fs.pathExists(libPath)) {
+            uniqueClasspath.add(libPath);
+          }
         }
       }
     }
@@ -220,11 +226,48 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
       stdio: 'pipe'
     });
     
-    mcProcess.stdout.on('data', (data) => console.log(`[MC] ${data}`));
-    mcProcess.stderr.on('data', (data) => console.error(`[MC] ${data}`));
-    mcProcess.on('close', (code) => console.log(`Minecraft cerrado: ${code}`));
-    
-    mainWindow.minimize();
+    mcProcess.stdout.on('data', (data) => {
+      const msg = data.toString().trim();
+      if (msg) log.debug('mc', msg);
+    });
+    mcProcess.stderr.on('data', (data) => {
+      const msg = data.toString().trim();
+      if (msg) log.warn('mc', msg);
+    });
+
+    let hasHandledExit = false;
+    const handleGameExit = (code: number | null) => {
+      if (hasHandledExit) return;
+      hasHandledExit = true;
+      log.info('launch', `Proceso de Minecraft finalizado (código: ${code})`);
+
+      if (!mainWindow.isDestroyed()) {
+        try {
+          mainWindow.webContents.setAudioMuted(false);
+        } catch {}
+
+        if (mainWindow.isMinimized()) {
+          mainWindow.restore();
+        }
+        mainWindow.show();
+        mainWindow.focus();
+        mainWindow.webContents.send('game-closed', { code });
+      }
+    };
+
+    mcProcess.on('exit', (code) => handleGameExit(code));
+    mcProcess.on('close', (code) => handleGameExit(code));
+    mcProcess.on('error', (err) => {
+      log.error('launch', `Error en el proceso de Minecraft: ${err.message}`, err);
+      handleGameExit(-1);
+    });
+
+    // Ocultar el launcher inmediatamente para liberar recursos de CPU/GPU y que no estorbe
+    try {
+      mainWindow.webContents.setAudioMuted(true);
+    } catch {}
+    mainWindow.hide();
+
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message };

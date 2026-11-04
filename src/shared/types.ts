@@ -1,3 +1,5 @@
+export type ModLoaderType = "FORGE" | "NEOFORGE" | "FABRIC";
+
 export interface InstallStatus {
   installed: boolean;
   hasJava?: boolean;
@@ -5,10 +7,15 @@ export interface InstallStatus {
   hasMods?: boolean;
   gameDir?: string;
   version?: string;
+  needsUpdate?: boolean;
+  currentVersion?: string | null;
+  latestVersion?: string | null;
+  pendingUpdatesCount?: number;
+  error?: string;
 }
 
 export interface InstallProgressData {
-  stage: 'java' | 'minecraft' | 'forge' | 'mods' | 'configs';
+  stage: "java" | "minecraft" | "forge" | "mods" | "configs" | "updates";
   percentage: number;
   message: string;
 }
@@ -28,13 +35,32 @@ export interface LaunchResult {
 export interface ServerConfigData {
   name: string;
   version: string;
+  modLoader: ModLoaderType;
+  modLoaderVersion?: string;
   forgeVersion: string;
   javaVersion: string;
   baseUrl: string;
   modsListUrl: string;
+  githubRepositoryUrl?: string;
+  manifestUrl?: string;
   ramMin: string;
   ramMax: string;
   lastUsername?: string;
+}
+
+export interface CreatorActionItem {
+  id: string;
+  type: "COPY" | "REPLACE" | "DELETE";
+  localSourcePath?: string;
+  targetPath: string;
+}
+
+export interface CreatorPackageResult {
+  success: boolean;
+  sha256?: string;
+  zipPath?: string;
+  size?: number;
+  error?: string;
 }
 
 declare global {
@@ -57,6 +83,21 @@ declare global {
       openSettings: () => Promise<void>;
       minimizeWindow: () => Promise<void>;
       closeWindow: () => Promise<void>;
+
+      // Modo Creador
+      verifyCreatorPin: (pin: string) => Promise<boolean>;
+      selectFilesDialog: (options: { title?: string; filters?: any[]; multi?: boolean }) => Promise<string[]>;
+      selectSaveZipDialog: (defaultFileName: string) => Promise<string | null>;
+      getLocalManifestData: () => Promise<any>;
+      packageUpdate: (data: {
+        version: string;
+        name?: string;
+        changelog: string[];
+        actions: { type: "COPY" | "REPLACE" | "DELETE"; localSourcePath?: string; targetPath: string }[];
+        destinationZipPath: string;
+      }) => Promise<CreatorPackageResult>;
+      openItemInFolder: (fullPath: string) => Promise<void>;
+      onGameClosed?: (callback: (data: { code: number | null }) => void) => () => void;
     };
   }
 }

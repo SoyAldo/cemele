@@ -4,8 +4,9 @@ import InstallScreen from "./components/InstallScreen";
 import PlayScreen from "./components/PlayScreen";
 import TitleBar from "./components/TitleBar";
 import SettingsModal from "./components/SettingsModal";
+import CreatorPinModal from "./components/CreatorPinModal";
+import CreatorStudioModal from "./components/CreatorStudioModal";
 import { AuthSession, InstallStatus, ServerConfigData } from "../shared/types";
-import hostLogo from "./assets/natublockhost_logo.png";
 
 type Screen = "loading" | "login" | "install" | "play";
 
@@ -15,6 +16,8 @@ const App: React.FC = () => {
     const [installStatus, setInstallStatus] = useState<InstallStatus | null>(null);
     const [config, setConfig] = useState<ServerConfigData | null>(null);
     const [showSettings, setShowSettings] = useState(false);
+    const [showCreatorPin, setShowCreatorPin] = useState(false);
+    const [showCreatorStudio, setShowCreatorStudio] = useState(false);
 
     useEffect(() => {
         checkInitialState();
@@ -74,8 +77,9 @@ const App: React.FC = () => {
         }
     };
 
-    const handleInstallComplete = () => {
-        setInstallStatus({ installed: true, version: "1.20.1-forge" });
+    const handleInstallComplete = async () => {
+        const status = await window.electronAPI.checkInstallation();
+        setInstallStatus(status);
         setScreen("play");
     };
 
@@ -90,6 +94,9 @@ const App: React.FC = () => {
         if (success) {
             setConfig(newConfig);
             setShowSettings(false);
+            const status = await window.electronAPI.checkInstallation();
+            setInstallStatus(status);
+            setScreen(status.installed ? "play" : "install");
         } else {
             alert("Error al guardar la configuración");
         }
@@ -97,7 +104,7 @@ const App: React.FC = () => {
 
     return (
         <div className="app">
-            <TitleBar config={config} />
+            <TitleBar config={config} onOpenCreator={() => setShowCreatorPin(true)} />
 
             <main className="main-content">
                 {screen === "loading" && (
@@ -109,7 +116,14 @@ const App: React.FC = () => {
 
                 {screen === "login" && <LoginScreen onLogin={handleLogin} onOfflineLogin={handleOfflineLogin} config={config} />}
 
-                {screen === "install" && <InstallScreen onComplete={handleInstallComplete} session={session!} onLogout={handleLogout} />}
+                {screen === "install" && (
+                    <InstallScreen
+                        onComplete={handleInstallComplete}
+                        session={session!}
+                        onLogout={handleLogout}
+                        installStatus={installStatus}
+                    />
+                )}
 
                 {screen === "play" && (
                     <PlayScreen
@@ -124,7 +138,23 @@ const App: React.FC = () => {
 
             {showSettings && config && <SettingsModal config={config} onSave={handleUpdateConfig} onClose={() => setShowSettings(false)} />}
 
-            <img src={hostLogo} alt="NatuBlockHost" className="host-logo" />
+            {/* Modal de PIN de Creador */}
+            {showCreatorPin && (
+                <CreatorPinModal
+                    onClose={() => setShowCreatorPin(false)}
+                    onSuccess={() => {
+                        setShowCreatorPin(false);
+                        setShowCreatorStudio(true);
+                    }}
+                />
+            )}
+
+            {/* Modal Principal de Creator Studio */}
+            {showCreatorStudio && (
+                <CreatorStudioModal
+                    onClose={() => setShowCreatorStudio(false)}
+                />
+            )}
         </div>
     );
 };

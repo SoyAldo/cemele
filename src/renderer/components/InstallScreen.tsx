@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { AuthSession, InstallProgressData } from "../../shared/types";
+import { AuthSession, InstallProgressData, InstallStatus } from "../../shared/types";
 
 interface Props {
     onComplete: () => void;
     session: AuthSession;
     onLogout: () => void;
+    installStatus?: InstallStatus | null;
 }
 
-const InstallScreen: React.FC<Props> = ({ onComplete, session, onLogout }) => {
+const InstallScreen: React.FC<Props> = ({ onComplete, session, onLogout, installStatus }) => {
+    const isUpdate = !!installStatus?.needsUpdate;
     const [progress, setProgress] = useState(0);
     const [installing, setInstalling] = useState(false);
     const [stage, setStage] = useState("");
-    const [message, setMessage] = useState("Listo para instalar");
+    const [message, setMessage] = useState(isUpdate ? "Actualización lista para aplicar" : "Listo para instalar");
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -22,7 +24,7 @@ const InstallScreen: React.FC<Props> = ({ onComplete, session, onLogout }) => {
         });
 
         window.electronAPI.onInstallComplete(() => {
-            setMessage("¡Instalación completa!");
+            setMessage(isUpdate ? "¡Actualización completada!" : "¡Instalación completa!");
             setTimeout(onComplete, 1500);
         });
 
@@ -36,12 +38,12 @@ const InstallScreen: React.FC<Props> = ({ onComplete, session, onLogout }) => {
             window.electronAPI.removeAllListeners("install-complete");
             window.electronAPI.removeAllListeners("install-error");
         };
-    }, [onComplete]);
+    }, [onComplete, isUpdate]);
 
     const handleInstall = async () => {
         setInstalling(true);
         setError("");
-        setMessage("Iniciando instalación...");
+        setMessage(isUpdate ? "Descargando actualización..." : "Iniciando instalación...");
         const result = await window.electronAPI.installModpack();
 
         if (!result.success && !error) {
@@ -58,11 +60,20 @@ const InstallScreen: React.FC<Props> = ({ onComplete, session, onLogout }) => {
                 </svg>
             </button>
             <div className="install-card-mockup">
-                <h2>Instalación</h2>
+                <h2>{isUpdate ? "Actualización" : "Instalación"}</h2>
                 <p className="welcome">Bienvenido, {session.username}</p>
 
+                {isUpdate && installStatus?.latestVersion && (
+                    <div style={{ margin: "10px 0", fontSize: "14px", color: "#a0aec0" }}>
+                        <span>Versión: </span>
+                        <strong style={{ color: "#fff" }}>{installStatus.currentVersion || "Base"}</strong>
+                        <span> ➔ </span>
+                        <strong style={{ color: "#48bb78" }}>v{installStatus.latestVersion}</strong>
+                    </div>
+                )}
+
                 <button onClick={handleInstall} className={`btn-install-mockup ${error ? "btn-install-error" : ""}`} disabled={installing}>
-                    {error ? "REINTENTAR" : "EMPEZAR"}
+                    {error ? "REINTENTAR" : isUpdate ? "ACTUALIZAR" : "EMPEZAR"}
                 </button>
 
                 {error && (

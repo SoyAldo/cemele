@@ -1,3 +1,6 @@
+import { getGameDir, getAssetsDir, getLibrariesDir, getVersionsDir } from '../utils/paths';
+export { getGameDir, getAssetsDir, getLibrariesDir, getVersionsDir };
+import { isModLoaderInstalled, installModLoader, mavenToPath } from './modloader-manager';
 import os from 'os';
 import path from 'path';
 import fs from 'fs-extra';
@@ -41,32 +44,15 @@ interface MojangVersion {
   };
 }
 
-export function getGameDir(): string {
-  return path.join(os.homedir(), 'AppData', 'Roaming', '.cemele-modpack');
-}
-
-export function getAssetsDir(): string {
-  return path.join(getGameDir(), 'assets');
-}
-
-export function getLibrariesDir(): string {
-  return path.join(getGameDir(), 'libraries');
-}
-
-export function getVersionsDir(): string {
-  return path.join(getGameDir(), 'versions');
-}
 
 export async function isMinecraftInstalled(config: ServerConfig): Promise<boolean> {
   const versionsDir = getVersionsDir();
   if (!await fs.pathExists(versionsDir)) return false;
 
-  const versions = await fs.readdir(versionsDir);
-  const forgeDir = versions.find(v => v.includes('forge') && v.includes(config.forgeVersion) && !v.includes('neoforge'));
-  if (!forgeDir) return false;
+  const versionDir = path.join(versionsDir, config.version);
+  if (!await fs.pathExists(versionDir)) return false;
 
-  const jsonFile = path.join(versionsDir, forgeDir, `${forgeDir}.json`);
-  return fs.pathExists(jsonFile);
+  return await isModLoaderInstalled(config, getGameDir());
 }
 
 export async function getMojangVersionJson(versionId: string): Promise<MojangVersion> {
@@ -230,90 +216,11 @@ export async function installForge(
   config: ServerConfig,
   onProgress: (percentage: number, message: string) => void
 ): Promise<void> {
-  const { version, forgeVersion } = config;
-  
-  const installerUrl = config.forgeInstallerUrl || 
-    `${FORGE_MAVEN}/${version}-${forgeVersion}/forge-${version}-${forgeVersion}-installer.jar`;
-
-  const installerPath = path.join(os.tmpdir(), `forge-installer-${Date.now()}.jar`);
-    
-  onProgress(10, 'Descargando instalador de Forge...');
-  
-  try {
-    log.info('forge', `Descargando installer desde: ${installerUrl}`);
-    await downloadFile(installerUrl, installerPath);
-    log.info('forge', `Installer descargado: ${installerPath}`);
-  } catch (error) {
-    log.warn('forge', `Falló descarga principal. Verifica la versión o la URL.`);
-    throw error;
-  }
-
-  onProgress(20, 'Creando perfil de Minecraft...');
-  await createMinecraftProfile(getGameDir(), config.version);
-
-  onProgress(30, 'Ejecutando instalador de Forge...');
-  
   const javaPath = path.join(getGameDir(), 'java', 'bin', 'java.exe');
-  const gameDir = getGameDir();
-
-  const stderrLines: string[] = [];
-  await new Promise<void>((resolve, reject) => {
-    const proc = spawn(javaPath, [
-      '-Djava.awt.headless=true',
-      '-jar', installerPath,
-      '--installClient',
-      gameDir
-    ], {
-      cwd: path.dirname(installerPath),
-      env: process.env
-    });
-    
-    proc.stdout.on('data', (data) => {
-      const output = data.toString().trim();
-      log.info('forge-installer', output);
-      if (output.includes('Downloading') || output.includes('Extracting') || output.includes('Installing') || output.includes('Building')) {
-        onProgress(60, output.substring(0, 80));
-      }
-    });
-    
-    proc.stderr.on('data', (data) => {
-      const line = data.toString().trim();
-      log.warn('forge-installer', `stderr: ${line}`);
-      stderrLines.push(line);
-    });
-    
-    proc.on('error', (err) => {
-      log.error('forge-installer', 'No se pudo iniciar el proceso', err);
-      reject(new Error(`No se pudo iniciar el instalador: ${err.message}`));
-    });
-
-    proc.on('close', (code) => {
-      if (code === 0) {
-        log.info('forge-installer', `Instalador terminó con código 0 (OK)`);
-        resolve();
-      } else {
-        const errDetail = stderrLines.slice(-5).join(' | ');
-        log.error('forge-installer', `Instalador terminó con código ${code}: ${errDetail}`);
-        reject(new Error(`Forge installer falló (código ${code}): ${errDetail}`));
-      }
-    });
-  });
-  
-  await fs.remove(installerPath);
-  log.info('forge', 'Archivos temporales (installer) eliminados');
-  
-  const versions = await fs.readdir(getVersionsDir()).catch(() => [] as string[]);
-  const forgeDir = versions.find(v => v.includes('forge') && v.includes(forgeVersion) && !v.includes('neoforge'));
-  
-  if (forgeDir) {
-    log.info('forge', `Versión detectada exitosamente tras instalación: ${forgeDir}`);
-  } else {
-    log.warn('forge', `No se encontró carpeta de Forge en ${getVersionsDir()}. Versiones: ${versions.join(', ')}`);
-  }
-  
-  onProgress(100, 'Forge instalado correctamente');
-  log.info('forge', '✅ Forge instalado');
+  await installModLoader(config, getGameDir(), javaPath, onProgress);
 }
+
+export { installModLoader, mavenToPath };
 
 // ========== MODS Y CONFIGS ==========
 

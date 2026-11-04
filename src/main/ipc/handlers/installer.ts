@@ -16,12 +16,13 @@ import {
   verifyConfigsSync,
   verifyOthersSync,
 } from "../../minecraft/minecraft-installer";
+import { checkUpdatesStatus, applyAllPendingUpdates } from "../../minecraft/updater-patcher";
 
 /**
- * Verifica si el juego, Java, los mods y las configuraciones ya están instalados.
+ * Verifica si el juego, Java, y los archivos del modpack están instalados y al día con el manifest.
  */
-export async function handleCheckInstallation(_event: IpcMainInvokeEvent) {
-  log.info("check", "Verificando instalación...");
+export async function handleCheckInstallation(_event?: IpcMainInvokeEvent) {
+  log.info("check", "Verificando instalación y actualizaciones...");
 
   try {
     const serverConfig = appState.get("serverConfig");
@@ -30,22 +31,59 @@ export async function handleCheckInstallation(_event: IpcMainInvokeEvent) {
     const hasJava = await isJavaInstalled(gameDir);
     const hasMinecraft = await isMinecraftInstalled(serverConfig);
 
-    // Verificación inteligente de mods y configuraciones con el servidor remoto
-    const hasMods = await verifyModsSync(serverConfig, gameDir);
-    const hasConfigs = await verifyConfigsSync(serverConfig, gameDir);
-    const hasOthers = await verifyOthersSync(serverConfig, gameDir);
+    // 1. Verificación primaria: Sistema de Manifest y Releases
+    let needsUpdate = false;
+    let hasMods = false;
+    let currentVersion: string | null = null;
+    let latestVersion: string | null = null;
+    let pendingUpdatesCount = 0;
 
-    log.info("check", `Java: ${hasJava} | Minecraft: ${hasMinecraft} | Mods: ${hasMods} | Configs: ${hasConfigs} | Otros: ${hasOthers}`);
+    try {
+      const updateStatus = await checkUpdatesStatus(serverConfig, gameDir);
+      currentVersion = updateStatus.currentVersion;
+      latestVersion = updateStatus.latestVersion;
+      pendingUpdatesCount = updateStatus.pendingUpdates.length;
+
+      if (updateStatus.latestVersion) {
+        // El manifest remoto existe y respondió
+        if (updateStatus.isUpToDate) {
+          hasMods = true;
+          needsUpdate = false;
+        } else {
+          hasMods = false;
+          needsUpdate = true;
+        }
+      } else {
+        // Offline o manifest inaccesible: fallback a verificación legacy
+        const legacyMods = await verifyModsSync(serverConfig, gameDir);
+        const legacyConfigs = await verifyConfigsSync(serverConfig, gameDir);
+        const legacyOthers = await verifyOthersSync(serverConfig, gameDir);
+        hasMods = legacyMods && legacyConfigs && legacyOthers;
+      }
+    } catch (e: any) {
+      log.warn("check", `Verificación con manifest no disponible: ${e.message}. Usando verificación local.`);
+      const legacyMods = await verifyModsSync(serverConfig, gameDir);
+      hasMods = legacyMods;
+    }
+
+    log.info(
+      "check",
+      `Java: ${hasJava} | Minecraft: ${hasMinecraft} | Mods/Updates: ${hasMods} | Versión Local: ${currentVersion || "ninguna"} | Última: ${latestVersion || "desconocida"}`,
+    );
+
+    const isFullyInstalled = hasJava && hasMinecraft && hasMods && !needsUpdate;
 
     return {
-      // Requerimos que las configs también existan para dar el OK final
-      installed: hasJava && hasMinecraft && hasMods && hasConfigs && hasOthers,
+      installed: isFullyInstalled,
       hasJava,
       hasMinecraft,
       hasMods,
-      hasConfigs,
-      hasOthers,
+      needsUpdate,
+      currentVersion,
+      latestVersion,
+      pendingUpdatesCount,
       gameDir,
+      version: currentVersion || serverConfig.version,
     };
   } catch (error: any) {
     log.error("check", "Error verificando instalación", error);
@@ -54,14 +92,13 @@ export async function handleCheckInstallation(_event: IpcMainInvokeEvent) {
 }
 
 /**
- * Orquesta toda la instalación del modpack.
- * Nota: Recibe `mainWindow` para poder enviarle los eventos de progreso.
+ * Orquesta toda la instalación del modpack y la aplicación de actualizaciones del manifest.
  */
 export async function handleInstallModpack(mainWindow: BrowserWindow) {
   const serverConfig = appState.get("serverConfig");
   const gameDir = getGameDir();
 
-  log.stage("INSTALACIÓN DEL MODPACK");
+  log.stage("INSTALACIÓN O ACTUALIZACIÓN DEL MODPACK");
   log.info("install", `gameDir: ${gameDir}`);
 
   try {
@@ -78,6 +115,11 @@ export async function handleInstallModpack(mainWindow: BrowserWindow) {
       });
     } else {
       log.info("java", "Java ya está instalado, saltando.");
+      mainWindow.webContents.send("install-progress", {
+        stage: "java",
+        percentage: 20,
+        message: "Java comprobado",
+      });
     }
 
     // 2. Minecraft Vanilla (20% al 45%)
@@ -91,9 +133,9 @@ export async function handleInstallModpack(mainWindow: BrowserWindow) {
       });
     });
 
-    // 3. Forge (45% al 65%)
+    // 3. ModLoader: Forge, NeoForge o Fabric (45% al 65%)
     if (!(await isMinecraftInstalled(serverConfig))) {
-      log.stage("Instalando Forge");
+      log.stage(`Instalando ${serverConfig.modLoader}`);
       await installForge(serverConfig, (pct, msg) => {
         log.info("forge", `[${pct}%] ${msg}`);
         mainWindow.webContents.send("install-progress", {
@@ -103,48 +145,76 @@ export async function handleInstallModpack(mainWindow: BrowserWindow) {
         });
       });
     } else {
-      log.info("forge", "Forge ya está instalado, saltando.");
+      log.info("forge", `${serverConfig.modLoader} ya está instalado, saltando.`);
       mainWindow.webContents.send("install-progress", {
         stage: "forge",
         percentage: 65,
-        message: "Forge comprobado",
+        message: `${serverConfig.modLoader} comprobado`,
       });
     }
 
-    // 4. Mods (65% al 85%)
-    log.stage("Descargando mods");
-    await downloadMods(serverConfig, (pct, msg) => {
-      log.info("mods", `[${pct}%] ${msg}`);
-      mainWindow.webContents.send("install-progress", {
-        stage: "mods",
-        percentage: 65 + Math.round(pct * 0.2),
-        message: msg,
-      });
-    });
+    // 4. Sistema de Actualizaciones por Manifest (65% al 100%)
+    log.stage("Comprobando actualizaciones del modpack");
+    let usedManifest = false;
 
-    // 5. Configuraciones (85% al 95%)
-    log.stage("Descargando configuraciones");
-    await downloadConfigs(serverConfig, (pct, msg) => {
-      log.info("configs", `[${pct}%] ${msg}`);
-      mainWindow.webContents.send("install-progress", {
-        stage: "configs",
-        percentage: 85 + Math.round(pct * 0.1),
-        message: msg,
-      });
-    });
+    try {
+      const updateStatus = await checkUpdatesStatus(serverConfig, gameDir);
 
-    // 6. Archivos adicionales (95% al 100%)
-    log.stage("Descargando archivos adicionales");
-    await downloadOthers(serverConfig, (pct, msg) => {
-      log.info("others", `[${pct}%] ${msg}`);
-      mainWindow.webContents.send("install-progress", {
-        stage: "others",
-        percentage: 95 + Math.round(pct * 0.05),
-        message: msg,
-      });
-    });
+      if (updateStatus.latestVersion && updateStatus.pendingUpdates.length > 0) {
+        log.stage("Aplicando paquetes de actualización vía Manifest");
+        usedManifest = true;
 
-    log.info("install", "✅ Instalación completada exitosamente");
+        await applyAllPendingUpdates(serverConfig, gameDir, (pct, msg) => {
+          log.info("updates", `[${pct}%] ${msg}`);
+          mainWindow.webContents.send("install-progress", {
+            stage: "updates",
+            percentage: 65 + Math.round(pct * 0.35),
+            message: msg,
+          });
+        });
+      } else if (updateStatus.latestVersion && updateStatus.isUpToDate) {
+        log.info("updates", "El modpack ya se encuentra en la versión más reciente.");
+        usedManifest = true;
+      }
+    } catch (manifestError: any) {
+      log.warn("updates", `No se pudo aplicar actualización vía manifest: ${manifestError.message}`);
+    }
+
+    // 5. Fallback a mods.json legacy si el manifest no fue utilizado
+    if (!usedManifest) {
+      log.info("install", "Ejecutando sincronización de mods clásica (fallback)...");
+
+      await downloadMods(serverConfig, (pct, msg) => {
+        mainWindow.webContents.send("install-progress", {
+          stage: "mods",
+          percentage: 65 + Math.round(pct * 0.2),
+          message: msg,
+        });
+      });
+
+      await downloadConfigs(serverConfig, (pct, msg) => {
+        mainWindow.webContents.send("install-progress", {
+          stage: "configs",
+          percentage: 85 + Math.round(pct * 0.1),
+          message: msg,
+        });
+      });
+
+      await downloadOthers(serverConfig, (pct, msg) => {
+        mainWindow.webContents.send("install-progress", {
+          stage: "mods",
+          percentage: 95 + Math.round(pct * 0.05),
+          message: msg,
+        });
+      });
+    }
+
+    log.info("install", "✅ Instalación/Actualización completada exitosamente");
+    mainWindow.webContents.send("install-progress", {
+      stage: "updates",
+      percentage: 100,
+      message: "¡Completado con éxito!",
+    });
     mainWindow.webContents.send("install-complete", { success: true });
     return { success: true };
   } catch (error: any) {

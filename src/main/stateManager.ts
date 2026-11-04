@@ -1,3 +1,4 @@
+import { getSessionPath } from './utils/paths';
 import { loadConfig, ServerConfig } from './config/server-config';
 import path from 'path';
 import os from 'os';
@@ -16,7 +17,7 @@ export interface AppState {
  */
 class StateManager {
   private state: AppState;
-  private sessionPath = path.join(os.homedir(), 'AppData', 'Roaming', '.cemele-launcher', 'session.json');
+  private sessionPath = getSessionPath();
 
   constructor() {
     this.state = {

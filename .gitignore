@@ -4,6 +4,7 @@ node_modules/
 # Build
 dist/
 release/
+dist-updates/
 
 # Variables de entorno (NO SUBIR)
 .env
@@ -11,8 +12,9 @@ release/
 # Logs
 *.log
 
-# Modpack
-modpack/
+# Modpack (ignorar archivos grandes pero permitir el manifest)
+modpack/*
+!modpack/manifest.json
 
 # IDE
 .vscode/
@@ -21,3 +23,7 @@ modpack/
 # OS
 .DS_Store
 Thumbs.db
+# Runtime local de modpack y launcher
+assets/modpack/
+assets/launcher/
+updates/

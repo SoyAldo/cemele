@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import os from 'os';
+import { getLogsDir } from './paths';
 
 // ─────────────────────────────────────────────────────────────
 //  Tipos
@@ -27,10 +27,6 @@ const nativeConsole = {
 //  Helpers
 // ─────────────────────────────────────────────────────────────
 
-function getLogsDir(): string {
-  const gameDir = path.join(os.homedir(), 'AppData', 'Roaming', '.cemele-modpack');
-  return path.join(gameDir, 'internal_logs');
-}
 
 function buildFileName(): string {
   const d = sessionStart;

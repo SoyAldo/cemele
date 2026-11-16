@@ -80,7 +80,7 @@ const App: React.FC = () => {
     const handleInstallComplete = async () => {
         const status = await window.electronAPI.checkInstallation();
         setInstallStatus(status);
-        setScreen("play");
+        setScreen(status.installed ? "play" : "install");
     };
 
     const handleLogout = async () => {
@@ -132,6 +132,11 @@ const App: React.FC = () => {
                         config={config}
                         onLogout={handleLogout}
                         onOpenSettings={() => setShowSettings(true)}
+                        onNeedUpdate={async () => {
+                            const status = await window.electronAPI.checkInstallation();
+                            setInstallStatus(status);
+                            setScreen(status.installed ? "play" : "install");
+                        }}
                     />
                 )}
             </main>

@@ -65,10 +65,17 @@ const InstallScreen: React.FC<Props> = ({ onComplete, session, onLogout, install
 
                 {isUpdate && installStatus?.latestVersion && (
                     <div style={{ margin: "10px 0", fontSize: "14px", color: "#a0aec0" }}>
-                        <span>Versión: </span>
-                        <strong style={{ color: "#fff" }}>{installStatus.currentVersion || "Base"}</strong>
-                        <span> ➔ </span>
-                        <strong style={{ color: "#48bb78" }}>v{installStatus.latestVersion}</strong>
+                        <div>
+                            <span>Versión: </span>
+                            <strong style={{ color: "#fff" }}>{installStatus.currentVersion ? `v${installStatus.currentVersion.replace(/^v/i, "")}` : "Base"}</strong>
+                            <span> ➔ </span>
+                            <strong style={{ color: "#48bb78" }}>v{installStatus.latestVersion.replace(/^v/i, "")}</strong>
+                        </div>
+                        {installStatus.pendingUpdatesCount && installStatus.pendingUpdatesCount > 1 ? (
+                            <div style={{ fontSize: "12px", color: "#63b3ed", marginTop: "4px" }}>
+                                ({installStatus.pendingUpdatesCount} actualizaciones pendientes que se aplicarán secuencialmente)
+                            </div>
+                        ) : null}
                     </div>
                 )}
 

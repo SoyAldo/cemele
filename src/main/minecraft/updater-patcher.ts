@@ -118,6 +118,20 @@ export async function saveLocalVersion(gameDir: string, newVersion: string, sha2
 }
 
 /**
+ * Limpia errores sintácticos comunes en JSON como comas finales (trailing commas)
+ * o comentarios JavaScript introducidos manualmente en manifest.json.
+ */
+export function sanitizeJsonString(raw: string): string {
+  // 1. Eliminar comentarios multilínea (/* ... */)
+  let cleaned = raw.replace(/\/\*[\s\S]*?\*\//g, "");
+  // 2. Eliminar comentarios de una línea (// ...) respetando URLs http:// o https://
+  cleaned = cleaned.replace(/(^|[^:])\/\/[^\r\n]*/g, "$1");
+  // 3. Eliminar comas finales (trailing commas) antes de ] o }
+  cleaned = cleaned.replace(/,(\s*[\]\}])/g, (_, m) => m);
+  return cleaned;
+}
+
+/**
  * Descarga y parsea el archivo manifest.json remoto.
  * Admite una URL individual o un listado de URLs candidatas (por ejemplo en GitHub raw).
  * Si el archivo es un README.md o documento con texto, buscará bloques JSON internamente.
@@ -129,8 +143,19 @@ export async function fetchManifest(manifestUrlOrCandidates: string | string[]):
   for (const url of urls) {
     try {
       log.info("updater", `Consultando manifiesto desde: ${url}`);
-      const cacheBusterUrl = url.includes("?") ? `${url}&_t=${Date.now()}` : `${url}?_t=${Date.now()}`;
-      const response = await fetch(cacheBusterUrl);
+      const isApi = url.includes("api.github.com");
+      const cacheBusterUrl = isApi ? url : (url.includes("?") ? `${url}&_t=${Date.now()}` : `${url}?_t=${Date.now()}`);
+
+      const response = await fetch(cacheBusterUrl, {
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+          "User-Agent": "CemeleLauncher",
+          Accept: "application/vnd.github.v3.raw, application/json, text/plain, */*",
+        },
+        timeout: 10000,
+      });
 
       if (!response.ok) {
         log.info("updater", `HTTP ${response.status} en ${url}`);
@@ -139,20 +164,21 @@ export async function fetchManifest(manifestUrlOrCandidates: string | string[]):
 
       const text = await response.text();
       let parsed: any;
+      const sanitizedText = sanitizeJsonString(text);
 
       try {
-        parsed = JSON.parse(text);
+        parsed = JSON.parse(sanitizedText);
       } catch {
         // Soporte si el manifiesto está en un bloque ```json de un README.md
         const jsonBlockMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
         if (jsonBlockMatch) {
-          parsed = JSON.parse(jsonBlockMatch[1]);
+          parsed = JSON.parse(sanitizeJsonString(jsonBlockMatch[1]));
         } else {
           // Búsqueda del primer objeto JSON dentro del texto
-          const firstBrace = text.indexOf("{");
-          const lastBrace = text.lastIndexOf("}");
+          const firstBrace = sanitizedText.indexOf("{");
+          const lastBrace = sanitizedText.lastIndexOf("}");
           if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-            parsed = JSON.parse(text.substring(firstBrace, lastBrace + 1));
+            parsed = JSON.parse(sanitizeJsonString(sanitizedText.substring(firstBrace, lastBrace + 1)));
           } else {
             throw new Error("El archivo no contiene un JSON de manifiesto válido.");
           }
@@ -160,7 +186,7 @@ export async function fetchManifest(manifestUrlOrCandidates: string | string[]):
       }
 
       if (parsed && parsed.latestVersion && Array.isArray(parsed.updates)) {
-        log.info("updater", `✅ Manifiesto cargado exitosamente desde: ${url}`);
+        log.info("updater", `✅ Manifiesto cargado exitosamente desde: ${url} (latestVersion: ${parsed.latestVersion})`);
         return parsed as ModpackManifest;
       }
     } catch (e: any) {
@@ -187,28 +213,68 @@ export function calculateSha256(filePath: string): Promise<string> {
 }
 
 /**
+ * Limpia y normaliza una cadena de versión eliminando prefijos 'v' y espacios.
+ */
+export function cleanVersion(version: string | null | undefined): string {
+  if (!version) return "";
+  return version.trim().replace(/^v/i, "");
+}
+
+/**
+ * Compara dos versiones semánticas (por ejemplo "1.0.0" y "1.1.0").
+ * Devuelve:
+ *  > 0 si v1 > v2
+ *  < 0 si v1 < v2
+ *    0 si v1 === v2
+ */
+export function compareVersions(v1: string | null | undefined, v2: string | null | undefined): number {
+  const c1 = cleanVersion(v1);
+  const c2 = cleanVersion(v2);
+
+  if (!c1 && !c2) return 0;
+  if (!c1) return -1;
+  if (!c2) return 1;
+  if (c1 === c2) return 0;
+
+  const parts1 = c1.split(/[-+]/)[0].split(".").map((n) => parseInt(n, 10) || 0);
+  const parts2 = c2.split(/[-+]/)[0].split(".").map((n) => parseInt(n, 10) || 0);
+  const maxLen = Math.max(parts1.length, parts2.length);
+
+  for (let i = 0; i < maxLen; i++) {
+    const num1 = parts1[i] ?? 0;
+    const num2 = parts2[i] ?? 0;
+    if (num1 > num2) return 1;
+    if (num1 < num2) return -1;
+  }
+
+  return 0;
+}
+
+/**
  * Determina qué actualizaciones están pendientes a partir de la versión local.
+ * Ordena todas las actualizaciones del manifiesto cronológicamente de menor a mayor
+ * y selecciona secuencialmente todas las versiones superiores a la actual.
  */
 export function getPendingUpdates(currentVersion: string | null, manifest: ModpackManifest): UpdatePackageInfo[] {
-  if (!manifest.updates || manifest.updates.length === 0) {
+  if (!manifest.updates || !Array.isArray(manifest.updates) || manifest.updates.length === 0) {
     return [];
   }
 
-  // Si no hay versión instalada, necesitamos todas las actualizaciones o desde el inicio
-  if (!currentVersion) {
-    return manifest.updates;
+  // Ordenar todas las actualizaciones del manifiesto de menor a mayor (ascendente)
+  const sortedUpdates = [...manifest.updates].sort((a, b) => compareVersions(a.version, b.version));
+
+  // Si no hay versión instalada, necesitamos todas las actualizaciones en orden secuencial
+  if (!currentVersion || !cleanVersion(currentVersion)) {
+    return sortedUpdates;
   }
 
-  const currentIndex = manifest.updates.findIndex((u) => u.version.trim() === currentVersion.trim());
-
-  if (currentIndex === -1) {
-    // Si la versión actual no está en la lista de updates (por ejemplo versión vieja '0.0.0'),
-    // aplicamos todas las actualizaciones disponibles.
-    return manifest.updates;
+  // Si la versión actual es '0.0.0' (versión legacy sin version.json), aplicar todas
+  if (cleanVersion(currentVersion) === "0.0.0") {
+    return sortedUpdates;
   }
 
-  // Las actualizaciones pendientes son las que van después de currentIndex
-  return manifest.updates.slice(currentIndex + 1);
+  // Filtrar estrictamente las actualizaciones superiores a la versión local actual
+  return sortedUpdates.filter((u) => compareVersions(u.version, currentVersion) > 0);
 }
 
 /**
@@ -511,7 +577,11 @@ export async function checkUpdatesStatus(
     candidates.push(...getManifestUrlsFromRepo(config.githubRepositoryUrl));
   }
   if (config.manifestUrl && !candidates.includes(config.manifestUrl)) {
-    candidates.push(config.manifestUrl);
+    if (config.manifestUrl.toLowerCase().endsWith("readme.md")) {
+      candidates.push(config.manifestUrl);
+    } else {
+      candidates.unshift(config.manifestUrl);
+    }
   }
   if (candidates.length === 0 && config.baseUrl) {
     candidates.push(`${config.baseUrl.replace(/\/+$/, "")}/manifest.json`);
@@ -521,7 +591,11 @@ export async function checkUpdatesStatus(
     const manifest = await fetchManifest(candidates);
     const pendingUpdates = getPendingUpdates(local.currentVersion, manifest);
 
-    const isUpToDate = pendingUpdates.length === 0 && local.currentVersion === manifest.latestVersion;
+    const isUpToDate =
+      pendingUpdates.length === 0 &&
+      !!local.currentVersion &&
+      !!manifest.latestVersion &&
+      compareVersions(local.currentVersion, manifest.latestVersion) >= 0;
 
     return {
       isUpToDate,
@@ -532,9 +606,9 @@ export async function checkUpdatesStatus(
     };
   } catch (error: any) {
     log.warn("updater", `No se pudo consultar el manifest de actualizaciones: ${error.message}`);
-    // Fallback offline-safe si ya tiene versión instalada
+    // Si falló la consulta no podemos afirmar que esté al día
     return {
-      isUpToDate: !!local.currentVersion,
+      isUpToDate: false,
       currentVersion: local.currentVersion,
       latestVersion: null,
       pendingUpdates: [],
@@ -543,16 +617,23 @@ export async function checkUpdatesStatus(
 }
 
 /**
- * Aplica todas las actualizaciones pendientes de forma secuencial.
+ * Aplica todas las actualizaciones pendientes de forma secuencial una tras otra.
  */
 export async function applyAllPendingUpdates(
   config: ServerConfig,
   gameDir: string,
   onProgress?: (percentage: number, message: string) => void,
+  preloadedStatus?: {
+    isUpToDate?: boolean;
+    currentVersion?: string | null;
+    latestVersion?: string | null;
+    pendingUpdates: UpdatePackageInfo[];
+    manifest?: ModpackManifest;
+  },
 ): Promise<{ success: boolean; appliedVersions: string[] }> {
-  const status = await checkUpdatesStatus(config, gameDir);
+  const status = preloadedStatus || (await checkUpdatesStatus(config, gameDir));
 
-  if (status.isUpToDate) {
+  if (status.isUpToDate || status.pendingUpdates.length === 0) {
     log.info("updater", "El cliente ya se encuentra en la última versión.");
     if (onProgress) onProgress(100, "El modpack ya está actualizado");
     return { success: true, appliedVersions: [] };
@@ -560,25 +641,38 @@ export async function applyAllPendingUpdates(
 
   const pending = status.pendingUpdates;
   const total = pending.length;
-  log.info("updater", `Iniciando aplicación de ${total} actualización(es) pendiente(s)...`);
+  log.info("updater", `Iniciando aplicación secuencial de ${total} actualización(es) pendiente(s)...`);
 
   const appliedVersions: string[] = [];
 
   for (let i = 0; i < total; i++) {
     const update = pending[i];
+    log.info("updater", `[${i + 1}/${total}] Preparando actualización v${update.version}...`);
+
     const updateProgressBase = Math.round((i / total) * 100);
     const updateProgressSlice = Math.round(100 / total);
 
-    await applyUpdatePackage(update, gameDir, (pct, msg) => {
-      if (onProgress) {
-        const overall = updateProgressBase + Math.round((pct / 100) * updateProgressSlice);
-        onProgress(Math.min(overall, 99), `[${i + 1}/${total}] ${msg}`);
-      }
-    });
+    if (onProgress) {
+      onProgress(updateProgressBase, `[${i + 1}/${total}] Actualización v${update.version}...`);
+    }
 
-    appliedVersions.push(update.version);
+    try {
+      await applyUpdatePackage(update, gameDir, (pct, msg) => {
+        if (onProgress) {
+          const overall = updateProgressBase + Math.round((pct / 100) * updateProgressSlice);
+          onProgress(Math.min(overall, 99), `[${i + 1}/${total}] ${msg}`);
+        }
+      });
+
+      appliedVersions.push(update.version);
+      log.info("updater", `✅ [${i + 1}/${total}] Actualización v${update.version} completada y registrada en version.json`);
+    } catch (updateError: any) {
+      log.error("updater", `❌ Error al aplicar actualización v${update.version} (${i + 1} de ${total}): ${updateError.message}`);
+      throw new Error(`Error en actualización v${update.version} (${i + 1} de ${total}): ${updateError.message}`);
+    }
   }
 
-  if (onProgress) onProgress(100, "Todas las actualizaciones han sido aplicadas con éxito");
+  if (onProgress) onProgress(100, `Todas las actualizaciones (${appliedVersions.join(", ")}) han sido aplicadas con éxito`);
+  log.info("updater", `🎉 Se aplicaron exitosamente todas las actualizaciones: ${appliedVersions.join(" ➔ ")}`);
   return { success: true, appliedVersions };
 }

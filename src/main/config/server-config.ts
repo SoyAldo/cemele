@@ -65,7 +65,8 @@ export function parseGitHubRepo(urlOrSlug?: string): { owner: string; repo: stri
 }
 
 /**
- * Genera la lista ordenada de URLs candidatas para buscar el manifest.json o README.md en GitHub raw.
+ * Genera la lista ordenada de URLs candidatas para buscar el manifest.json o README.md en GitHub.
+ * Prioriza la API directa de GitHub (sin caché CDN) y raw manifest.json antes que README.md.
  */
 export function getManifestUrlsFromRepo(githubRepoUrl?: string): string[] {
   const parsed = parseGitHubRepo(githubRepoUrl);
@@ -73,8 +74,15 @@ export function getManifestUrlsFromRepo(githubRepoUrl?: string): string[] {
 
   const { owner, repo } = parsed;
   const rawBase = `https://raw.githubusercontent.com/${owner}/${repo}/refs/heads/main`;
+  const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents`;
 
-  return [`${rawBase}/README.md`, `${rawBase}/manifest.json`, `${rawBase}/modpack/manifest.json`];
+  return [
+    `${apiBase}/manifest.json`,
+    `${rawBase}/manifest.json`,
+    `${apiBase}/modpack/manifest.json`,
+    `${rawBase}/modpack/manifest.json`,
+    `${rawBase}/README.md`,
+  ];
 }
 
 const envGithubRepo = getEnv("GITHUB_REPOSITORY_URL", "");
@@ -114,7 +122,10 @@ export function loadConfig(): ServerConfig {
         modLoader: fileConfig.modLoader ? normalizeModLoader(fileConfig.modLoader) : DEFAULT_CONFIG.modLoader,
         modLoaderVersion: fileConfig.modLoaderVersion !== undefined ? fileConfig.modLoaderVersion : DEFAULT_CONFIG.modLoaderVersion,
         githubRepositoryUrl: fileConfig.githubRepositoryUrl || DEFAULT_CONFIG.githubRepositoryUrl,
-        manifestUrl: fileConfig.manifestUrl || DEFAULT_CONFIG.manifestUrl,
+        manifestUrl:
+          fileConfig.manifestUrl && !fileConfig.manifestUrl.toLowerCase().endsWith("readme.md")
+            ? fileConfig.manifestUrl
+            : DEFAULT_CONFIG.manifestUrl,
         ramMin: fileConfig.ramMin || DEFAULT_CONFIG.ramMin,
         ramMax: fileConfig.ramMax || DEFAULT_CONFIG.ramMax,
         lastUsername: fileConfig.lastUsername || DEFAULT_CONFIG.lastUsername,

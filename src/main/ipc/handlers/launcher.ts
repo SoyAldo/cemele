@@ -1,5 +1,5 @@
 import { findInstalledModLoader, mavenToPath } from '../../minecraft/modloader-manager';
-import { BrowserWindow, shell } from 'electron';
+import { BrowserWindow, shell, app } from 'electron';
 import { spawn } from 'child_process';
 import path from 'path';
 import os from 'os';
@@ -14,6 +14,51 @@ import {
   getAssetsDir,
   getVersionsDir
 } from '../../minecraft/minecraft-installer';
+import { checkUpdatesStatus } from '../../minecraft/updater-patcher';
+
+/**
+ * Detecta y elimina archivos de configuración .toml vacíos o con bytes nulos (0x00)
+ * para evitar que NightConfig/NeoForge arroje ParsingException: Not enough data available.
+ */
+async function cleanCorruptedConfigFiles(gameDir: string): Promise<void> {
+  const configDir = path.join(gameDir, "config");
+  if (!(await fs.pathExists(configDir))) return;
+
+  const checkAndCleanDir = async (dir: string) => {
+    try {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          await checkAndCleanDir(full);
+        } else if (entry.isFile() && entry.name.endsWith(".toml")) {
+          try {
+            const stat = await fs.stat(full);
+            if (stat.size === 0) {
+              await fs.remove(full);
+              log.warn("launch", `Archivo de configuración vacío eliminado: ${entry.name}`);
+              continue;
+            }
+
+            const fd = await fs.open(full, "r");
+            const buf = Buffer.alloc(Math.min(stat.size, 64));
+            const { bytesRead } = await fs.read(fd, buf, 0, buf.length, 0);
+            await fs.close(fd);
+
+            if (bytesRead > 0 && buf.subarray(0, bytesRead).every((b) => b === 0)) {
+              await fs.remove(full);
+              log.warn("launch", `Archivo de configuración corrupto (bytes nulos) eliminado: ${entry.name}`);
+            }
+          } catch (e: any) {
+            log.warn("launch", `No se pudo inspeccionar ${entry.name}: ${e.message}`);
+          }
+        }
+      }
+    } catch {}
+  };
+
+  await checkAndCleanDir(configDir);
+}
 
 /**
  * Orquesta la preparación de variables, classpath y argumentos para lanzar el proceso de Java.
@@ -32,6 +77,28 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
 
   try {
     const gameDir = getGameDir();
+
+    // Auto-sanitizar archivos de config corruptos (0 bytes o null bytes) que impiden iniciar NeoForge
+    try {
+      await cleanCorruptedConfigFiles(gameDir);
+    } catch (e: any) {
+      log.warn("launch", `Error al limpiar archivos de config: ${e.message}`);
+    }
+
+    // Verificar que no existan actualizaciones pendientes antes de iniciar
+    try {
+      const updateStatus = await checkUpdatesStatus(serverConfig, gameDir);
+      if (updateStatus.latestVersion && !updateStatus.isUpToDate && updateStatus.pendingUpdates.length > 0) {
+        log.warn("launch", `Inicio bloqueado: modpack desactualizado (v${updateStatus.currentVersion || "base"} vs v${updateStatus.latestVersion})`);
+        return {
+          success: false,
+          needsUpdate: true,
+          error: `Hay ${updateStatus.pendingUpdates.length} actualización(es) pendiente(s) (versión actual: v${updateStatus.currentVersion || "base"} ➔ última: v${updateStatus.latestVersion}). Por favor actualiza el modpack antes de jugar.`,
+        };
+      }
+    } catch (checkErr: any) {
+      log.warn("launch", `No se pudo comprobar actualización antes de jugar: ${checkErr.message}`);
+    }
     const javaPath = getJavaPath(gameDir);
     
     if (!await fs.pathExists(javaPath)) {
@@ -184,7 +251,7 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
       '${classpath_separator}': separator,
       '${natives_directory}': path.join(gameDir, 'versions', actualVersionName, 'natives'),
       '${launcher_name}': 'cemele',
-      '${launcher_version}': '1.0',
+      '${launcher_version}': app.getVersion() || '1.1.0',
       '${classpath}': classpath.join(separator),
       
       '${auth_player_name}': currentSession.username,
@@ -226,13 +293,45 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
       stdio: 'pipe'
     });
     
+    const recentErrors: string[] = [];
+    const recordErrorCandidate = (line: string) => {
+      const trimmed = line.trim();
+      if (!trimmed) return;
+      if (
+        trimmed.includes('Exception') ||
+        trimmed.includes('Error') ||
+        trimmed.includes('FATAL') ||
+        trimmed.includes('Crash')
+      ) {
+        recentErrors.push(trimmed);
+        if (recentErrors.length > 8) {
+          recentErrors.shift();
+        }
+      }
+    };
+
     mcProcess.stdout.on('data', (data) => {
-      const msg = data.toString().trim();
-      if (msg) log.debug('mc', msg);
+      const text = data.toString();
+      const lines = text.split(/\r?\n/);
+      for (const line of lines) {
+        const msg = line.trim();
+        if (msg) {
+          log.debug('mc', msg);
+          recordErrorCandidate(msg);
+        }
+      }
     });
+
     mcProcess.stderr.on('data', (data) => {
-      const msg = data.toString().trim();
-      if (msg) log.warn('mc', msg);
+      const text = data.toString();
+      const lines = text.split(/\r?\n/);
+      for (const line of lines) {
+        const msg = line.trim();
+        if (msg) {
+          log.warn('mc', msg);
+          recordErrorCandidate(msg);
+        }
+      }
     });
 
     let hasHandledExit = false;
@@ -251,7 +350,12 @@ export async function handleLaunchGame(mainWindow: BrowserWindow) {
         }
         mainWindow.show();
         mainWindow.focus();
-        mainWindow.webContents.send('game-closed', { code });
+
+        const errorDetails = (code !== 0 && code !== null && recentErrors.length > 0)
+          ? recentErrors.join('\n')
+          : undefined;
+
+        mainWindow.webContents.send('game-closed', { code, error: errorDetails });
       }
     };
 

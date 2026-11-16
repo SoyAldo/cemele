@@ -35,7 +35,7 @@ contextBridge.exposeInMainWorld("electronAPI", {
   getLocalManifestData: () => ipcRenderer.invoke("get-local-manifest-data"),
   packageUpdate: (data: any) => ipcRenderer.invoke("package-update", data),
   openItemInFolder: (fullPath: string) => ipcRenderer.invoke("open-item-in-folder", fullPath),
-  onGameClosed: (callback: (data: { code: number | null }) => void) => {
+  onGameClosed: (callback: (data: { code: number | null; error?: string }) => void) => {
     const handler = (_: any, data: any) => callback(data);
     ipcRenderer.on("game-closed", handler);
     return () => {

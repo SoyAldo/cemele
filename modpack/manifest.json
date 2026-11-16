@@ -2,7 +2,7 @@
   "modpack": "Arturo RPG - Temporada 1",
   "minecraftVersion": "1.21.1",
   "forgeVersion": "47.2.20",
-  "latestVersion": "1.1.0",
+  "latestVersion": "1.4.0",
   "updates": [
     {
       "version": "1.0.0",
@@ -20,10 +20,76 @@
       "name": "Actualización v1.1.0",
       "releaseDate": "2026-11-04",
       "url": "https://github.com/SoyAldo/ArturoRPG/releases/download/v1.1.0/update-1.1.0.zip",
-      "sha256": "a924c13ffdbcd26c9662416cf88d0127e91583a38499966bff5ecadfe547b05d",
+      "sha256": "c57096026fa3607ac9b3dd2ac3ada10917ad58f983eb7b88f3181f66a5d0a5c1",
       "size": 3957200,
       "changelog": [
         "Actualización v1.1.0"
+      ]
+    },
+    {
+      "version": "1.1.2",
+      "name": "Actualización v1.1.2",
+      "releaseDate": "2026-11-04",
+      "url": "https://github.com/SoyAldo/ArturoRPG/releases/download/v1.1.2/update-1.1.2.zip",
+      "sha256": "975b6b7323eb72c8300234d5ca5820f3057e030f409662dd18685478c88bd34c",
+      "size": 5509257,
+      "changelog": [
+        "Actualización v1.1.2"
+      ]
+    },
+    {
+      "version": "1.2.0",
+      "name": "Actualización v1.2.0",
+      "releaseDate": "2026-11-04",
+      "url": "https://github.com/SoyAldo/ArturoRPG/releases/download/v1.2.0/update-1.2.0.zip",
+      "sha256": "1ecbd558a2e5d279e6391c375312ebf3e4ad309065e5ce80ec4ee1d5c0fccc2b",
+      "size": 263,
+      "changelog": [
+        "Actualización v1.2.0"
+      ]
+    },
+    {
+      "version": "1.2.1",
+      "name": "Actualización v1.2.1",
+      "releaseDate": "2026-11-04",
+      "url": "https://github.com/SoyAldo/ArturoRPG/releases/download/v1.2.1/update-1.2.1.zip",
+      "sha256": "22c1402bf4680ddf21655273be3c15fa7dc6d8a7d449ccb12b990ca9e6dafbce",
+      "size": 249,
+      "changelog": [
+        "Actualización v1.2.1"
+      ]
+    },
+    {
+      "version": "1.3.0",
+      "name": "Actualización v1.3.0",
+      "releaseDate": "2026-11-04",
+      "url": "https://github.com/SoyAldo/ArturoRPG/releases/download/v1.3.0/update-1.3.0.zip",
+      "sha256": "2ca2b1a10851a152dbc1404464b48ad6d5ac8a3a508887b2ffeba151fd3dd01d",
+      "size": 270,
+      "changelog": [
+        "Actualización v1.3.0"
+      ]
+    },
+    {
+      "version": "1.3.1",
+      "name": "Actualización v1.3.1",
+      "releaseDate": "2026-11-04",
+      "url": "https://github.com/SoyAldo/ArturoRPG/releases/download/v1.3.1/update-1.3.1.zip",
+      "sha256": "5cca45950debcf6b6afcd2a7f1d1e0047a1153773d7b2c832f24ad045b7940c7",
+      "size": 2920,
+      "changelog": [
+        "Actualización v1.3.1"
+      ]
+    },
+    {
+      "version": "1.4.0",
+      "name": "Actualización v1.4.0",
+      "releaseDate": "2026-11-10",
+      "url": "https://github.com/SoyAldo/ArturoRPG/releases/download/v1.4.0/update-1.4.0.zip",
+      "sha256": "71c4adcacebe863942df61aff76dbae541ad96a987731bd2454e0b87f0383ab7",
+      "size": 5423203,
+      "changelog": [
+        "Actualización v1.4.0"
       ]
     }
   ]

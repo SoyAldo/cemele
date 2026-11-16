@@ -54,11 +54,23 @@ export async function handleCheckInstallation(_event?: IpcMainInvokeEvent) {
           needsUpdate = true;
         }
       } else {
-        // Offline o manifest inaccesible: fallback a verificación legacy
-        const legacyMods = await verifyModsSync(serverConfig, gameDir);
-        const legacyConfigs = await verifyConfigsSync(serverConfig, gameDir);
-        const legacyOthers = await verifyOthersSync(serverConfig, gameDir);
-        hasMods = legacyMods && legacyConfigs && legacyOthers;
+        // Si el modpack usa GitHub/Manifest y no se pudo obtener latestVersion
+        if (serverConfig.githubRepositoryUrl || serverConfig.manifestUrl) {
+          if (currentVersion) {
+            log.info("check", `Modo offline-safe: versión local instalada v${currentVersion}, pero sin conexión al manifiesto.`);
+            hasMods = true;
+            needsUpdate = false;
+          } else {
+            hasMods = false;
+            needsUpdate = true;
+          }
+        } else {
+          // Fallback a verificación legacy
+          const legacyMods = await verifyModsSync(serverConfig, gameDir);
+          const legacyConfigs = await verifyConfigsSync(serverConfig, gameDir);
+          const legacyOthers = await verifyOthersSync(serverConfig, gameDir);
+          hasMods = legacyMods && legacyConfigs && legacyOthers;
+        }
       }
     } catch (e: any) {
       log.warn("check", `Verificación con manifest no disponible: ${e.message}. Usando verificación local.`);
@@ -156,28 +168,42 @@ export async function handleInstallModpack(mainWindow: BrowserWindow) {
     // 4. Sistema de Actualizaciones por Manifest (65% al 100%)
     log.stage("Comprobando actualizaciones del modpack");
     let usedManifest = false;
+    let updateStatus = null;
 
     try {
-      const updateStatus = await checkUpdatesStatus(serverConfig, gameDir);
+      updateStatus = await checkUpdatesStatus(serverConfig, gameDir);
+    } catch (checkErr: any) {
+      log.warn("updates", `No se pudo consultar el manifest de actualizaciones: ${checkErr.message}`);
+    }
 
-      if (updateStatus.latestVersion && updateStatus.pendingUpdates.length > 0) {
-        log.stage("Aplicando paquetes de actualización vía Manifest");
-        usedManifest = true;
-
-        await applyAllPendingUpdates(serverConfig, gameDir, (pct, msg) => {
-          log.info("updates", `[${pct}%] ${msg}`);
-          mainWindow.webContents.send("install-progress", {
-            stage: "updates",
-            percentage: 65 + Math.round(pct * 0.35),
-            message: msg,
-          });
-        });
-      } else if (updateStatus.latestVersion && updateStatus.isUpToDate) {
+    if (updateStatus && updateStatus.latestVersion) {
+      usedManifest = true;
+      if (updateStatus.pendingUpdates.length > 0) {
+        log.stage(`Aplicando ${updateStatus.pendingUpdates.length} paquetes de actualización vía Manifest`);
+        await applyAllPendingUpdates(
+          serverConfig,
+          gameDir,
+          (pct, msg) => {
+            log.info("updates", `[${pct}%] ${msg}`);
+            mainWindow.webContents.send("install-progress", {
+              stage: "updates",
+              percentage: 65 + Math.round(pct * 0.35),
+              message: msg,
+            });
+          },
+          updateStatus,
+        );
+      } else if (!updateStatus.isUpToDate) {
+        throw new Error(
+          `La versión más reciente es v${updateStatus.latestVersion}, pero no se encontraron paquetes para actualizar desde v${updateStatus.currentVersion || "base"}.`,
+        );
+      } else {
         log.info("updates", "El modpack ya se encuentra en la versión más reciente.");
-        usedManifest = true;
       }
-    } catch (manifestError: any) {
-      log.warn("updates", `No se pudo aplicar actualización vía manifest: ${manifestError.message}`);
+    } else if (serverConfig.githubRepositoryUrl || serverConfig.manifestUrl) {
+      throw new Error(
+        "No se pudo conectar con el servidor de actualizaciones en GitHub. Comprueba tu conexión a internet o intenta nuevamente.",
+      );
     }
 
     // 5. Fallback a mods.json legacy si el manifest no fue utilizado

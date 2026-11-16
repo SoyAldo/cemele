@@ -30,6 +30,7 @@ export interface AuthSession {
 export interface LaunchResult {
   success: boolean;
   error?: string;
+  needsUpdate?: boolean;
 }
 
 export interface ServerConfigData {
@@ -97,7 +98,7 @@ declare global {
         destinationZipPath: string;
       }) => Promise<CreatorPackageResult>;
       openItemInFolder: (fullPath: string) => Promise<void>;
-      onGameClosed?: (callback: (data: { code: number | null }) => void) => () => void;
+      onGameClosed?: (callback: (data: { code: number | null; error?: string }) => void) => () => void;
     };
   }
 }
